@@ -1,0 +1,11 @@
+site_name,sample_code,collected_at,signal,estimated_band,confidence,operator,notes
+Fire Training Ground A,RM-FTG-003,2026-07-08T09:15:00Z,91,very_high,high,Field Team A,Strong response adjacent to burn pad
+Runway Drainage Outfall,RM-RW-003,2026-07-08T10:05:00Z,64,high,high,Field Team A,Post-rainfall first flush
+Southern Perimeter Ditch,RM-PD-003,2026-07-08T10:50:00Z,24,trace,medium,Field Team A,
+Offsite Abstraction BH West,RM-AB-003,2026-07-08T11:40:00Z,71,high,high,Field Team A,Consistent with previous rounds
+Longmoor WTW Raw Intake,KV-LM-004,2026-07-08T13:20:00Z,49,elevated,medium,Field Team B,Repeat of KV-LM-003 signal rise
+Hartfield Landfill Perimeter BH-3,KV-HF-003,2026-07-08T14:00:00Z,44,elevated,high,Field Team B,
+Brackenford Industrial Estate BH-1,KV-BF-003,2026-07-08T14:45:00Z,18,trace,high,Field Team B,Turbidity resolved since last visit
+St Aidan's Rural Spring,KV-SA-003,2026-07-08T15:30:00Z,6,nd,high,Field Team B,Clean control site
+Mill Cottage Spring Supply,RV-MC-003,2026-07-09T08:30:00Z,86,very_high,high,Field Team A,URGENT - repeat strong signal on drinking supply
+Vale Farm Borehole,RV-VF-003,2026-07-09T09:20:00Z,12,trace,high,Field Team A,
