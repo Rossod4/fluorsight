@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# Manual trigger only. To publish: make the repo public, set Pages source to
+# "GitHub Actions" (Settings → Pages), then run this workflow (Actions tab →
+# "Deploy to GitHub Pages" → Run workflow), or re-add the `push` trigger below.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
