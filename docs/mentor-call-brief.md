@@ -49,7 +49,7 @@ Whoever is not talking takes notes. Circulate them the same evening.
 
 ---
 
-## The three questions to ask
+## The four questions to ask
 
 Chosen because they target the weakest points of the entry, and because a mentor is
 genuinely better placed to answer them than you are.
@@ -79,6 +79,17 @@ Celebration Day is worth more than any amount of polish.
 
 Asks for an introduction without demanding one. Mentors often know exactly the right person,
 and a warm introduction converts vastly better than a cold email.
+
+**4. "Who actually pays for the lab analysis?"**
+> When a consultancy runs a site investigation, is the lab spend usually inside a fixed fee they
+> bid, or passed through to the client with a margin? We need to know because if it's passed
+> through with a margin, we're asking a consultancy to pay us to shrink their own invoice.
+
+**Ask this one even if you run out of time for the others.** It is the single sharpest commercial
+objection to the whole business — a judge from the sector will raise it, it is not answered
+anywhere in our research, and no amount of desk work will settle it. A practitioner can answer it
+in one sentence. Depending on the answer, our customer may not be the consultancy at all but the
+developer or council paying the bill. See `qa-bank.md` question B4 for the current holding answer.
 
 ---
 

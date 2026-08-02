@@ -323,7 +323,7 @@ reconciliation, they will ask for the breakdown and you will not have one.
 
 ---
 
-### ⭐ B5. "Consultancies bill lab analysis to their clients, often with a margin. Why would one of them pay you to reduce their own invoice?"
+### ⭐ B4. "Consultancies bill lab analysis to their clients, often with a margin. Why would one of them pay you to reduce their own invoice?"
 
 **Why they're asking.** Because they have worked in or bought from consultancies, and this is
 the actual commercial objection. It is not in your research pack. **This is the question most
@@ -331,21 +331,26 @@ likely to catch you cold.**
 
 **Answer (40s, MATHS).**
 > That's the sharpest objection we've had and we don't think it's fatal, for three reasons.
-> First, consultancies increasingly bid fixed-price site investigations — under a fixed fee,
-> unnecessary lab spend is their cost, not the client's. Second, the pain the sector actually
-> described to Parliament isn't cost, it's rejection: planning authorities refusing to accept
-> PFAS risk assessments at named developments — Cambridge East, Dunsfold Park, RAF Abingdon.
-> A documented, defensible prioritisation is what gets a report accepted. Third, if the
-> pass-through model dominates, the buyer changes — it's the developer or the council paying
-> the bill, and we sell to them. We'd rather tell you we're not sure who signs than pretend
-> we are.
+> First, it depends on the contract — where a site investigation is bid at a fixed fee,
+> unnecessary lab spend is the consultancy's cost, not the client's. Second, the pain the
+> sector actually described to Parliament isn't cost, it's rejection: planning authorities
+> refusing to accept PFAS risk assessments at named developments — Cambridge East, Dunsfold
+> Park, RAF Abingdon. A documented, defensible prioritisation is what gets a report accepted.
+> Third, if the pass-through model dominates, the buyer changes — it's the developer or the
+> council paying the bill, and we sell to them. We'd rather tell you we're not sure who signs
+> than pretend we are.
 
 **Trap.** Waving it off with "they want to be efficient". No, they want to be paid.
 Consultancies are not charities and this judge knows it.
 
+> ⚠️ **Unverified premise.** Nobody has confirmed what share of UK site investigations are bid
+> fixed-fee versus cost-plus. Say "it depends on the contract" — do not assert that fixed-fee
+> dominates. **Ask the mentor on 5 August; it is a one-sentence answer for a practitioner and
+> it decides whether this objection is survivable.**
+
 ---
 
-### B4. "Year three is twenty-five councils. You've also told me local authority procurement is slow and fragmented. Which of those do you believe?"
+### B5. "Year three is twenty-five councils. You've also told me local authority procurement is slow and fragmented. Which of those do you believe?"
 
 **Why they're asking.** They found an internal contradiction between your projection and your
 own risk list.
@@ -914,9 +919,9 @@ had two months."**
 **Third-level follow-up, if the chemist is really pushing: "How much enrichment do you actually
 get for PFAS versus humic acid on that resin?"**
 
-> We don't know. Cyclopure publishes PFAS capture performance, not comparative selectivity
-> against dissolved organic carbon, and we haven't found a paper that gives the ratio. That's a
-> measurement, and it's on the list.
+> We don't know. What's published on DEXSORB is PFAS capture performance, not a selectivity
+> ratio against dissolved organic carbon — and we're not aware of a number for it either way.
+> That's a measurement, and it's on the list.
 
 ---
 
@@ -1467,7 +1472,7 @@ on 5 August is the obvious route. It is the highest-value action left on the cal
 
 **6. Related, and worth naming:** the team cannot say what a consultancy currently pays for
 PFAS analysis or how they price it on to clients. That single unknown sits underneath the
-savings model, the pricing model, and question B5. It is unpublished anywhere and only a
+savings model, the pricing model, and question B4. It is unpublished anywhere and only a
 practitioner can answer it.
 
 ---
