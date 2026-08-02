@@ -150,12 +150,18 @@ you'll bluff.
 > The best commercial field kit, FREDsense, is ten times above it. The best cyclodextrin array
 > gets to 31–38 nanograms per litre, below the limit, but that's a 300-fold outlier and we
 > don't assume we'll match it. Two answers. First, what bridges the gap isn't the dye, it's
-> preconcentration — DEXSORB concentrates by up to five hundred thousand fold and none of those
-> academic sensors include that step. Second, we don't need to measure the limit. We need to
-> rank samples well enough to decide which ones to pay a lab for.
+> preconcentration — you pass 250 millilitres through the cartridge and elute into about a
+> millilitre, so a few hundred fold, and up to a couple of thousand if we size the field protocol
+> around a litre. None of those academic sensors include that step at all. Second, we don't need
+> to measure the limit. We need to rank samples well enough to decide which ones to pay a lab for.
 
 **Trap.** Quoting the 31–38 ng/L array as if it's your expected performance. If you do, someone
 will ask you to justify matching the single best result in the field.
+
+> 🔴 **Never say "500,000×".** Cyclopure's 500,000× figure is from their *water treatment* line and
+> describes waste-volume reduction during remediation — it is not an analytical preconcentration
+> factor. The kit is 250 mL. A chemist who knows the product will catch this instantly and you
+> will lose the room. Quote the volumes, not a vendor headline. See `chemistry-brief-for-dom.md` §4.
 
 ---
 
@@ -1042,11 +1048,11 @@ entries can say that. Let it land.
 even for?"**
 
 > Preconcentration is doing most of the sensitivity work, yes, and we lead with that rather
-> than with the dye. DEXSORB claims concentration factors up to five hundred thousand fold, and
-> that step is missing from every academic sensor in the comparison table — which is why their
-> LODs sit above the regulatory limit. The dye's job is only to turn what's on the resin into a
-> number a field instrument can read. It doesn't have to be sensitive. It has to be
-> reproducible.
+> than with the dye. It's a few hundred fold — 250 millilitres onto the cartridge, eluted into
+> about a millilitre — and that step is missing from every academic sensor in the comparison
+> table, which is part of why their LODs sit above the regulatory limit. The dye's job is only to
+> turn what's on the resin into a number a field instrument can read. It doesn't have to be
+> sensitive. It has to be reproducible.
 
 ---
 

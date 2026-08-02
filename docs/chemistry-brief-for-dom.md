@@ -68,7 +68,57 @@ Four live options. None is free.
 
 Whichever dye/host pairing you land on, this is the point that should open the technical narrative, not the dye chemistry:
 
-**DEXSORB's job in the architecture is preconcentration, not just hosting.** Cyclopure (the maker) claims up to **~500,000× concentration** of PFAS from a sample onto the adsorbent. That is the step that plausibly bridges the sensitivity gap between "what a fluorescent dye can resolve in solution" and "what the DWI's non-statutory guideline (0.1 µg/L) requires you to distinguish." Look at the comparison table in `docs/research-2026-08.md` §2.2: almost every published fluorescence PFAS sensor sits *above* the 0.1 µg/L threshold — the leading 2025 on-site system (BODIPY-MIP microfluidic, *Nat. Commun.* 2025) is **455× above it**. The two systems that do reach below the threshold (the Han et al. β-CD dye array at 31–38 ng/L, and an amplifying-fluorescent-polymer system at 0.08 ppb) do it with fundamentally more elaborate instrumentation than a single dye in a cuvette.
+> ### 🔴 CORRECTION — 3 August 2026. Read this before using the 500,000× figure anywhere.
+>
+> An earlier version of this brief, and the research pack, cited Cyclopure's "**up to ~500,000×
+> concentration**" as the preconcentration factor. **That is the wrong number for this argument
+> and using it in front of a chemist would be badly damaging.**
+>
+> - The 500,000× figure comes from Cyclopure's **water treatment / remediation** line. It
+>   describes how far the *waste volume* is reduced when concentrating PFAS out of a large volume
+>   of contaminated water for destruction. It is not an analytical preconcentration factor.
+> - The **Water Test Kit** passes **250 mL** through the DEXSORB disc. Analytical preconcentration
+>   is the load volume divided by the elution volume: 250 mL into roughly 1 mL is about **250×**.
+>   A purpose-built 1 L field protocol eluted into 0.5 mL would give about **2,000×**.
+>
+> **Do not say 500,000×.** Say: *"250 mL through the disc, eluted into about a millilitre — call it
+> a few hundred fold, and up to a couple of thousand if we design the field protocol around a
+> larger sample volume."* Then state the volumes, because a chemist will ask for them.
+>
+> The argument still works at 250–2,000×; see the recalculated numbers below. It is a weaker claim
+> than the one we started with, but it is a true one, and it is checkable.
+
+**DEXSORB's job in the architecture is preconcentration, not just hosting.** A realistic analytical
+preconcentration factor of **250–2,000×** (see the correction above) is the step that plausibly
+bridges part of the sensitivity gap between "what a fluorescent dye can resolve in solution" and "what the DWI's non-statutory guideline (0.1 µg/L) requires you to distinguish." Look at the comparison table in `docs/research-2026-08.md` §2.2: almost every published fluorescence PFAS sensor sits *above* the 0.1 µg/L threshold — the leading 2025 on-site system (BODIPY-MIP microfluidic, *Nat. Commun.* 2025) is **455× above it**. The two systems that do reach below the threshold (the Han et al. β-CD dye array at 31–38 ng/L, and an amplifying-fluorescent-polymer system at 0.08 ppb) do it with fundamentally more elaborate instrumentation than a single dye in a cuvette.
+
+### The arithmetic, done honestly
+
+Work it forwards from the guideline rather than backwards from a marketing number. The EU/DWI
+value is **0.1 µg/L = 100 ng/L**. Preconcentration multiplies what arrives at the detector:
+
+| Preconcentration | 100 ng/L becomes | Detector sensitivity you then need |
+|---|---|---|
+| 250× (250 mL → 1 mL, the actual kit) | 25 µg/L | Must resolve ~25 µg/L |
+| 1,000× (1 L → 1 mL) | 100 µg/L | Must resolve ~100 µg/L |
+| 2,000× (1 L → 0.5 mL) | 200 µg/L | Must resolve ~200 µg/L |
+
+Now compare against what fluorescence actually achieves:
+
+- **FREDsense** commercial field kit, ~1 µg/L → clears the guideline at only ~10× preconcentration.
+  At 250× you would have roughly two orders of magnitude of headroom.
+- **BODIPY-MIP microfluidic** (*Nat. Commun.* 2025), ~45 µg/L → needs ~450×, i.e. a **1 L** field
+  protocol, not the 250 mL kit.
+- A **single dye in a cuvette** with a weak host–guest Ka is the least sensitive option of all, and
+  we have no measured figure for it. This is the honest gap.
+
+**Two conclusions to take to the mentor.** First, the sample volume is a design parameter that
+buys sensitivity linearly and cheaply — it deserves to be stated explicitly rather than inherited
+from Cyclopure's kit. Second, and more strategically: if the achievable detector sensitivity is
+poor, the defensible product is **not** a guideline-level screen but an **AFFF source-zone screen**
+operating at 10 µg/L to mg/L, where concentrations are orders of magnitude higher. That is worth
+raising on Wednesday — it also happens to be exactly where the risk engine already puts its
+heaviest site weight (firefighting foam / airfield, 10 points).
 
 **No published academic sensor in this space includes a preconcentration step like DEXSORB's.** That is genuinely novel to your design, and it's the honest reason a cheap, simple dye-based readout might still get somewhere near a useful detection limit even though the dye chemistry alone, on the numbers above, would not. Frame it this way to the mentor and in any write-up: *the dye is a solved-elsewhere, swappable component; the preconcentration step is the actual engineering contribution.* That framing survives the 1,8-ANS problem intact, because it was never resting on the dye being special.
 
