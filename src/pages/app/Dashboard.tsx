@@ -15,10 +15,10 @@ import { useApp } from '../../store/AppStore';
 import { assessRisk, latestScreening } from '../../lib/riskEngine';
 import { RISK_COLORS, fmtDateTime, STATUS_LABELS } from '../../lib/labels';
 import { Card, EmptyState, PageHeader, RiskBadge, StatCard } from '../../components/ui';
+import { INDICATIVE_LAB_COST_GBP, gbp } from '../../lib/economics';
 import type { RiskAssessment, RiskBand, Sample, Site } from '../../types';
 
 const BAND_ORDER: RiskBand[] = ['Low', 'Medium', 'High', 'Critical'];
-const LAB_COST_GBP = 250;
 
 export default function Dashboard() {
   const { state } = useApp();
@@ -46,7 +46,8 @@ export default function Dashboard() {
   );
   const awaitingLab = samples.filter((s) => s.status === 'sent_to_lab').length;
   const escalationRate = screened.length > 0 ? Math.round((escalated.length / screened.length) * 100) : 0;
-  const spendAvoided = (screened.length - escalated.length) * LAB_COST_GBP;
+  const notEscalated = screened.length - escalated.length;
+  const spendAvoided = notEscalated * INDICATIVE_LAB_COST_GBP;
 
   const bandData = useMemo(
     () =>
@@ -101,9 +102,9 @@ export default function Dashboard() {
           detail="of screened samples flagged for lab confirmation"
         />
         <StatCard
-          label="Est. lab spend avoided"
-          value={`£${spendAvoided.toLocaleString('en-GB')}`}
-          detail="at ~£250 per LC-MS/MS analysis (indicative)"
+          label="Lab spend avoided"
+          value={gbp(spendAvoided)}
+          detail={`${notEscalated} of ${screened.length} screened samples not escalated, at ~${gbp(INDICATIVE_LAB_COST_GBP)}/analysis (indicative). This demo portfolio only — see the business case for the annual model.`}
         />
       </div>
 

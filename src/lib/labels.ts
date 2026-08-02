@@ -1,7 +1,7 @@
 // Shared display labels and styling tokens so every page renders domain
 // values consistently.
 
-import type { RiskBand, SampleStatus, Sensitivity, SourceType } from '../types';
+import type { RiskBand, RiskWeights, SampleStatus, Sensitivity, SourceType } from '../types';
 
 export const STATUS_LABELS: Record<SampleStatus, string> = {
   new: 'New',
@@ -67,6 +67,21 @@ export const RISK_FACTOR_LABELS: Record<string, string> = {
   wastewaterTreatment: 'Wastewater treatment proximity',
   historicalContamination: 'Historical contamination',
   priorLabConfirmedNearby: 'Prior lab-confirmed PFAS nearby',
+};
+
+/** Short label for each scoring weight. Mirrors the driver labels in riskEngine. */
+export const WEIGHT_LABELS: Record<keyof RiskWeights, string> = {
+  screeningSignal: 'Screening signal strength',
+  concentrationBand: 'Estimated concentration band',
+  repeatPositives: 'Repeat positive screens',
+  fireTrainingOrAirport: 'Firefighting foam / airfield',
+  landfill: 'Landfill proximity',
+  industrial: 'Industrial activity',
+  wastewaterTreatment: 'Wastewater treatment proximity',
+  historicalContamination: 'Historical contamination',
+  priorLabConfirmedNearby: 'Prior lab-confirmed PFAS nearby',
+  sensitivity: 'Receptor sensitivity',
+  sourceType: 'Water source exposure pathway',
 };
 
 export function fmtDate(iso: string): string {

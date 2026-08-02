@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { CircleMarker, MapContainer, Popup, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 import { useApp } from '../../store/AppStore';
 import { assessRisk } from '../../lib/riskEngine';
 import { RISK_COLORS } from '../../lib/labels';

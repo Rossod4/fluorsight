@@ -11,6 +11,18 @@ import {
   YAxis,
 } from 'recharts';
 import { Card, PageHeader, StatCard } from '../components/ui';
+import {
+  ALL_LAB_COST_GBP,
+  ESCALATED_SAMPLES,
+  LAB_SAMPLES_AVOIDED,
+  MODELLED_ANNUAL_SAVING_GBP,
+  MODELLED_COST_REDUCTION,
+  MODELLED_PLATFORM_COST_GBP,
+  MODELLED_PORTFOLIO_SAMPLES,
+  TRIAGED_LAB_COST_GBP,
+  TRIAGED_TOTAL_COST_GBP,
+  gbp,
+} from '../lib/economics';
 
 // ---------------------------------------------------------------------------
 // Data — every figure below is either a directly-cited public statistic
@@ -85,8 +97,8 @@ const MILESTONES: Milestone[] = [
 ];
 
 const COST_DATA = [
-  { scenario: 'Test everything in the lab', labCost: 125000, platformCost: 0 },
-  { scenario: 'Aegis-triaged', labCost: 25000, platformCost: 25000 },
+  { scenario: 'Test everything in the lab', labCost: ALL_LAB_COST_GBP, platformCost: 0 },
+  { scenario: 'Aegis-triaged', labCost: TRIAGED_LAB_COST_GBP, platformCost: MODELLED_PLATFORM_COST_GBP },
 ];
 
 const MARKET_DATA = [
@@ -315,9 +327,21 @@ export default function Why() {
           </p>
         </Card>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <StatCard label="Modelled cost reduction" value="60%" detail="£125,000 (all-lab) vs £50,000 (Aegis-triaged), illustrative 500-sample portfolio." />
-          <StatCard label="Modelled annual saving" value="£75,000" detail="Per 500-sample portfolio, illustrative figures above." />
-          <StatCard label="Lab samples avoided" value="400 / year" detail="500 samples minus the ~100 escalated for lab confirmation." />
+          <StatCard
+            label="Modelled cost reduction"
+            value={`${Math.round(MODELLED_COST_REDUCTION * 100)}%`}
+            detail={`${gbp(ALL_LAB_COST_GBP)} (all-lab) vs ${gbp(TRIAGED_TOTAL_COST_GBP)} (Aegis-triaged), illustrative ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio.`}
+          />
+          <StatCard
+            label="Modelled annual saving"
+            value={gbp(MODELLED_ANNUAL_SAVING_GBP)}
+            detail={`Net of the platform cost, per ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio. Illustrative figures above.`}
+          />
+          <StatCard
+            label="Lab samples avoided"
+            value={`${LAB_SAMPLES_AVOIDED} / year`}
+            detail={`${MODELLED_PORTFOLIO_SAMPLES} samples minus the ~${ESCALATED_SAMPLES} escalated for lab confirmation.`}
+          />
         </div>
       </section>
 

@@ -18,6 +18,10 @@ function BrandMark({ className = 'h-7 w-7' }: { className?: string }) {
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `text-sm font-medium transition-colors ${isActive ? 'text-teal-700' : 'text-slate-600 hover:text-slate-900'}`;
 
+// Four items plus the CTA is too much for a 375px phone, so "Product" drops out
+// on the narrowest screens — the brand mark already links home.
+const navLinkClassWide = (args: { isActive: boolean }) => `hidden sm:block ${navLinkClass(args)}`;
+
 export default function PublicLayout() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -27,9 +31,12 @@ export default function PublicLayout() {
             <BrandMark />
             <span className="text-lg font-semibold tracking-tight text-slate-900">Aegis</span>
           </Link>
-          <nav className="flex items-center gap-6">
-            <NavLink to="/" end className={navLinkClass}>
+          <nav className="flex items-center gap-4 sm:gap-6">
+            <NavLink to="/" end className={navLinkClassWide}>
               Product
+            </NavLink>
+            <NavLink to="/demo" className={navLinkClass}>
+              Live demo
             </NavLink>
             <NavLink to="/why" className={navLinkClass}>
               Why Aegis
