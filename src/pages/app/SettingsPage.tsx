@@ -7,14 +7,9 @@ import type { RiskBand, RiskThresholds, RiskWeights, Settings } from '../../type
 
 const SCREENING_WEIGHT_FIELDS: { key: keyof RiskWeights; label: string; hint: string }[] = [
   {
-    key: 'screeningSignal',
-    label: 'Screening signal strength',
-    hint: 'Maximum points when the field-screening signal is 100/100 at high confidence.',
-  },
-  {
-    key: 'concentrationBand',
-    label: 'Estimated concentration band',
-    hint: 'Maximum points when the latest screen estimates the "very high" (> 500 ng/L) band.',
+    key: 'screeningEvidence',
+    label: 'Screening evidence',
+    hint: 'Maximum points at a full-scale signal or the "very high" (> 500 ng/L) band, at high confidence. Signal and band are one measurement, so we score the stronger of the two rather than both.',
   },
   {
     key: 'repeatPositives',

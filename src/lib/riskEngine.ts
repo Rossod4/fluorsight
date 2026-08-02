@@ -20,8 +20,7 @@ import type {
 
 export const DEFAULT_SETTINGS: Settings = {
   weights: {
-    screeningSignal: 30,
-    concentrationBand: 15,
+    screeningEvidence: 35,
     repeatPositives: 10,
     fireTrainingOrAirport: 10,
     landfill: 6,
@@ -32,7 +31,11 @@ export const DEFAULT_SETTINGS: Settings = {
     sensitivity: 10,
     sourceType: 6,
   },
-  thresholds: { medium: 30, high: 55, critical: 75 },
+  // Re-derived when the weights were changed to total 100 rather than 110.
+  // The old 30/55/75 sat at 27%/50%/68% of the maximum achievable score; these
+  // preserve those proportions on the new scale rather than being retuned to
+  // flatter the demo data. Operators are expected to set their own.
+  thresholds: { medium: 30, high: 50, critical: 70 },
 };
 
 export const BAND_FRACTION: Record<ConcentrationBand, number> = {
@@ -110,22 +113,23 @@ export function assessRisk(sample: Sample, site: Site, settings: Settings): Risk
   let uncertaintyNote: string | undefined;
   if (screening) {
     const conf = CONFIDENCE_FACTOR[screening.confidence];
-    const signalPts = (Math.min(Math.max(screening.signal, 0), 100) / 100) * w.screeningSignal * conf;
-    drivers.push({
-      key: 'screeningSignal',
-      label: 'Screening signal strength',
-      points: round1(signalPts),
-      max: w.screeningSignal,
-      detail: `Fluorescence response ${screening.signal}/100 at ${screening.confidence} confidence (evidence weighted ×${conf}).`,
-    });
 
-    const bandPts = BAND_FRACTION[screening.estimatedBand] * w.concentrationBand;
+    // The raw fluorescence response and the estimated band are not independent
+    // evidence — the operator reads the response and bins it, so the band is a
+    // function of the signal. Scoring both would count one reading twice and
+    // would put nearly half the available points behind a single measurement.
+    // We take the stronger of the two instead, so a disagreement between
+    // instrument and operator resolves precautionarily rather than additively.
+    const signalFraction = Math.min(Math.max(screening.signal, 0), 100) / 100;
+    const bandFraction = BAND_FRACTION[screening.estimatedBand];
+    const leading = signalFraction >= bandFraction ? 'signal' : 'band';
+    const evidencePts = Math.max(signalFraction, bandFraction) * w.screeningEvidence * conf;
     drivers.push({
-      key: 'concentrationBand',
-      label: 'Estimated PFAS concentration band',
-      points: round1(bandPts),
-      max: w.concentrationBand,
-      detail: `Estimated ${BAND_LABELS[screening.estimatedBand]}.`,
+      key: 'screeningEvidence',
+      label: 'Screening evidence',
+      points: round1(evidencePts),
+      max: w.screeningEvidence,
+      detail: `Fluorescence response ${screening.signal}/100, estimated ${BAND_LABELS[screening.estimatedBand]}. Scored on the ${leading} (the stronger of the two, never both) at ${screening.confidence} confidence (weighted ×${conf}).`,
     });
 
     const positives = sample.screenings.filter((s) =>

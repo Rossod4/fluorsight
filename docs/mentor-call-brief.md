@@ -62,14 +62,28 @@ genuinely better placed to answer them than you are.
 Tests the entire market thesis in one question. If they disagree, you want to know in
 August, not September.
 
-**2. "How hard will we be hit on the chemistry?"**
-> The sensor concept — 1,8-ANS with a cyclodextrin adsorbent — has no published precedent
-> for PFAS specifically. We've been explicit about that everywhere rather than hiding it,
-> and argued that the risk engine is method-agnostic so the sensor can be swapped. Is that
-> a defensible position in front of an academic chemist, or does it need more?
+**2. "What concentration range should we honestly be claiming?"**
+> Working the preconcentration maths forwards: 250 mL through the cartridge eluted into about
+> a millilitre is roughly 250×, maybe 2,000× if we design around a litre. That turns the
+> 0.1 µg/L guideline into 25–200 µg/L at the detector. Given a weak host–guest binding
+> constant, we're not confident a single-dye readout resolves that. Should we stop positioning
+> this as a guideline-level screen and position it as an **AFFF source-zone screen at
+> 10 µg/L to mg/L** instead?
 
-This is your most attackable point. Rehearsing the answer against a real expert before the
-Celebration Day is worth more than any amount of polish.
+**⚠️ This is now the most important question on the call — Dom decides the answer and the whole
+poster follows from it.** It is a genuine repositioning, and the argument for saying yes is that
+it is the only claim the thermodynamics supports, it is *stronger* rather than weaker (it explains
+why firefighting foam / airfield is the heaviest weight in our risk model), and conceding a
+narrower true claim beats defending a broad one that a chemist can dismantle.
+
+**Before this call, Dom must read the correction in `chemistry-brief-for-dom.md` §4.** We had been
+citing Cyclopure's "500,000× preconcentration". That figure is from their water *treatment* line
+and describes waste-volume reduction during remediation — it is not an analytical preconcentration
+factor, and the real number is ~250×. Do not say 500,000× to a chemist.
+
+Also still worth asking, if time allows: the dye/host pairing has no published precedent for PFAS,
+and a paper published 17 July 2026 indicates 1,8-ANS is a poor match for the β-cyclodextrin in
+DEXSORB+. Is moving to 2,6-ANS or a γ-CD host the right response?
 
 **3. "What would make this credible to someone who does this for a living?"**
 > Everything in our cost model is currently modelled, not measured — we've assumed £250 per

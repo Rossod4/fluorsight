@@ -21,7 +21,11 @@ import type {
 import { seedState } from '../data/seed';
 import type { ScreeningImportRow } from '../lib/csv';
 
-const STORAGE_KEY = 'aegis:v1';
+// Bumped to v2 when screeningSignal + concentrationBand were merged into a
+// single screeningEvidence weight. A persisted v1 settings object would leave
+// the new weight undefined and produce NaN scores, so old state is discarded
+// rather than migrated — this is demo data.
+const STORAGE_KEY = 'aegis:v2';
 
 export function uid(prefix: string): string {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;

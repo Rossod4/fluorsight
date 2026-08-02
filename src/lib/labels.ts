@@ -71,8 +71,7 @@ export const RISK_FACTOR_LABELS: Record<string, string> = {
 
 /** Short label for each scoring weight. Mirrors the driver labels in riskEngine. */
 export const WEIGHT_LABELS: Record<keyof RiskWeights, string> = {
-  screeningSignal: 'Screening signal strength',
-  concentrationBand: 'Estimated concentration band',
+  screeningEvidence: 'Screening evidence',
   repeatPositives: 'Repeat positive screens',
   fireTrainingOrAirport: 'Firefighting foam / airfield',
   landfill: 'Landfill proximity',

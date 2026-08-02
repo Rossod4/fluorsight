@@ -111,8 +111,13 @@ export interface Sample {
 // ---- Risk model configuration (user-editable in Settings) ----
 
 export interface RiskWeights {
-  screeningSignal: number;
-  concentrationBand: number;
+  /**
+   * One screening reading, scored once. The fluorescence signal and the
+   * estimated concentration band are the same measurement expressed two ways —
+   * the operator reads a response and bins it — so they share a single weight
+   * rather than contributing separately.
+   */
+  screeningEvidence: number;
   repeatPositives: number;
   fireTrainingOrAirport: number;
   landfill: number;
