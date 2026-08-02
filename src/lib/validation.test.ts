@@ -136,6 +136,34 @@ describe('thresholdSweep', () => {
     expect(missed[missed.length - 1]).toBe(1);
   });
 
+  it('excludes unscreened samples from the escalation rate', () => {
+    // A sample with no screening result still scores on site context, but the
+    // engine recommends screening it rather than sending it to a laboratory.
+    // Counting it as escalated would overstate the cost of triage.
+    const unscreened: Sample = {
+      id: 'noscreen',
+      siteId: 'hot',
+      code: 'NOSCREEN',
+      collectedAt: '2026-06-10T00:00:00Z',
+      status: 'new',
+      history: [],
+      screenings: [],
+    };
+    const withUnscreened = [...samples, unscreened];
+    const scored = scoreAll(withUnscreened, sites, DEFAULT_SETTINGS);
+    const it0 = scored.find((s) => s.sampleId === 'noscreen');
+    expect(it0?.screened).toBe(false);
+    expect(it0?.escalated).toBe(false);
+    expect(it0!.score).toBeGreaterThan(0); // scores on site context alone
+
+    // Denominator counts only the three screened samples, not the fourth.
+    const points = thresholdSweep(withUnscreened, sites, DEFAULT_SETTINGS, 100);
+    expect(points).toHaveLength(1);
+    expect(points[0].escalationRate).toBe(0);
+    const low = thresholdSweep(withUnscreened, sites, DEFAULT_SETTINGS, 5)[0];
+    expect(low.escalated).toBeLessThanOrEqual(3);
+  });
+
   it('reports escalation rate as a fraction of screened samples', () => {
     const points = thresholdSweep(samples, sites, DEFAULT_SETTINGS, 25);
     expect(points.map((p) => p.threshold)).toEqual([25, 50, 75, 100]);

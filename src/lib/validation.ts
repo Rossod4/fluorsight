@@ -17,7 +17,7 @@
 // reused by the UI, a poster figure, or a future calibration script.
 
 import type { Sample, Settings, Site } from '../types';
-import { assessRisk } from './riskEngine';
+import { assessRisk, latestScreening } from './riskEngine';
 
 /**
  * EU Drinking Water Directive 2020/2184 "Sum of PFAS" parametric value:
@@ -29,6 +29,12 @@ export interface ScoredSample {
   sampleId: string;
   code: string;
   score: number;
+  /**
+   * Whether the sample has a field screening result. Samples without one score
+   * on site context alone and the engine recommends screening them, not sending
+   * them to a laboratory — so they must not count toward an escalation rate.
+   */
+  screened: boolean;
   /** The model said this is worth paying a laboratory for. */
   escalated: boolean;
   /** Sum-PFAS from confirmatory analysis, when the sample has been to a lab. */
@@ -73,6 +79,7 @@ export function scoreAll(samples: Sample[], sites: Site[], settings: Settings): 
       sampleId: sample.id,
       code: sample.code,
       score,
+      screened: latestScreening(sample) !== undefined,
       escalated: action === 'lab_confirm' || action === 'urgent',
       labNgL: sample.labResult?.sumPfasNgL,
       exceeded:
@@ -143,7 +150,7 @@ export function thresholdSweep(
   step = 5,
 ): ThresholdPoint[] {
   const scored = scoreAll(samples, sites, settings);
-  const screened = scored.filter((s) => s.score > 0);
+  const screened = scored.filter((s) => s.screened);
   const points: ThresholdPoint[] = [];
   for (let threshold = step; threshold <= 100; threshold += step) {
     const escalated = screened.filter((s) => s.score >= threshold);
