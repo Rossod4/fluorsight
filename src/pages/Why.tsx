@@ -12,16 +12,26 @@ import {
 } from 'recharts';
 import { Card, PageHeader, StatCard } from '../components/ui';
 import {
+  AEGIS_ANNUAL_COST_GBP,
   ALL_LAB_COST_GBP,
+  CONSUMABLES_ANNUAL_GBP,
+  CONSUMABLE_COST_PER_SAMPLE_GBP,
   ESCALATED_SAMPLES,
+  ESCALATION_RATE_RANGE,
+  INDICATIVE_LAB_COST_GBP,
+  LAB_COST_CONSERVATISM,
   LAB_SAMPLES_AVOIDED,
   MODELLED_ANNUAL_SAVING_GBP,
   MODELLED_COST_REDUCTION,
-  MODELLED_PLATFORM_COST_GBP,
+  MODELLED_ESCALATION_RATE,
   MODELLED_PORTFOLIO_SAMPLES,
+  SUBSCRIPTION_PROGRAMME_GBP,
+  SUBSCRIPTION_STANDARD_GBP,
   TRIAGED_LAB_COST_GBP,
   TRIAGED_TOTAL_COST_GBP,
+  UK_PUBLISHED_LAB_COST_GBP,
   gbp,
+  savingAtEscalationRate,
 } from '../lib/economics';
 
 // ---------------------------------------------------------------------------
@@ -98,7 +108,7 @@ const MILESTONES: Milestone[] = [
 
 const COST_DATA = [
   { scenario: 'Test everything in the lab', labCost: ALL_LAB_COST_GBP, platformCost: 0 },
-  { scenario: 'Aegis-triaged', labCost: TRIAGED_LAB_COST_GBP, platformCost: MODELLED_PLATFORM_COST_GBP },
+  { scenario: 'Aegis-triaged', labCost: TRIAGED_LAB_COST_GBP, platformCost: AEGIS_ANNUAL_COST_GBP },
 ];
 
 const MARKET_DATA = [
@@ -122,10 +132,11 @@ const PROJECTION_DATA = [
 const COMPETITORS: { name: string; approach: string; realTime: string; commercial: string; note: string }[] = [
   {
     name: 'Cyclopure',
-    approach: 'DEXSORB+ extraction disc mailed to an LC-MS lab (55 PFAS, LOQ 1.0 ppt), $79/kit',
+    approach:
+      'DEXSORB+ extraction disc mailed to an LC-MS lab (55 PFAS, LOQ 1.0 ppt), $85/kit, 10–14 business days',
     realTime: 'No — lab turnaround',
     commercial: 'Yes (US)',
-    note: 'A consumer test kit, not a workflow: no risk scoring, no site prioritisation, no audit trail.',
+    note: 'A consumer test kit, not a workflow: no risk scoring, no site prioritisation, no audit trail. No stated UK availability.',
   },
   {
     name: 'FREDsense',
@@ -136,10 +147,26 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
   },
   {
     name: 'Academic fluorescence sensor arrays',
-    approach: 'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA',
+    approach: 'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA (Han et al. 2025)',
     realTime: 'Lab prototype',
     commercial: 'No',
     note: 'Validates the chemistry Aegis builds on, but has no product, workflow, or UK market presence.',
+  },
+  {
+    name: 'ESdat / EQuIS / Locus EIM',
+    approach:
+      'Environmental data management: ingest lab results, compare against pre-loaded UK guideline values, flag exceedances, report',
+    realTime: 'Post-lab',
+    commercial: 'Yes — established, sold into UK consultancies',
+    note: 'The closest real competitors, and they solve a different problem: they screen results you have already paid for. Aegis decides which samples become lab results at all. We expect to sit alongside these, not replace them.',
+  },
+  {
+    name: 'EA PFAS Risk Screening Programme',
+    approach:
+      'National GIS ranking of >40,000 potential PFAS source sites; shared with public bodies from end-2026, public from Q3 2027',
+    realTime: 'Desk-based',
+    commercial: 'Free to public bodies',
+    note: 'Ranks sites to allocate regulatory attention — it tells a council where to look. It does not tell an investigator standing on a site which of their 60 samples to pay to analyse. It generates our pipeline rather than competing with us.',
   },
 ];
 
@@ -319,11 +346,18 @@ export default function Why() {
             </ResponsiveContainer>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-slate-500">
-            Illustrative model, not a vendor quote: a portfolio of 500 samples/year; indicative lab
-            cost of £250/sample (UK rate cards are quote-only — see the pain-point data gap above);
-            Aegis triage escalates ~20% of samples to lab confirmation (a conservative assumption
-            relative to the DWI’s finding that only 4.3% of monitored treatment works reached
-            Tier 2+); Aegis platform &amp; consumables assumed at £25,000/year.
+            Illustrative model, not a vendor quote. Portfolio of {MODELLED_PORTFOLIO_SAMPLES}{' '}
+            samples/year. Lab cost modelled at {gbp(INDICATIVE_LAB_COST_GBP)}/sample —{' '}
+            <strong>{Math.round(LAB_COST_CONSERVATISM * 100)}% below</strong> the only published UK
+            figure of {gbp(UK_PUBLISHED_LAB_COST_GBP)}/sample (Environmental Industries Association,
+            written evidence to the Environmental Audit Committee, May 2025), so the saving is
+            deliberately understated; no UK laboratory publishes a rate card and we checked seven.
+            Aegis cost is split into a {gbp(SUBSCRIPTION_STANDARD_GBP)}/year software subscription
+            plus screening consumables at {gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample
+            ({gbp(CONSUMABLES_ANNUAL_GBP)}/year at this volume, benchmarked against Cyclopure’s $85
+            DEXSORB test kit), giving {gbp(AEGIS_ANNUAL_COST_GBP)} total. Escalation rate of{' '}
+            {Math.round(MODELLED_ESCALATION_RATE * 100)}% is an assumption, not an observation — see
+            the sensitivity range below.
           </p>
         </Card>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -335,7 +369,7 @@ export default function Why() {
           <StatCard
             label="Modelled annual saving"
             value={gbp(MODELLED_ANNUAL_SAVING_GBP)}
-            detail={`Net of the platform cost, per ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio. Illustrative figures above.`}
+            detail={`Net of subscription and consumables, per ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio. Illustrative figures above.`}
           />
           <StatCard
             label="Lab samples avoided"
@@ -343,6 +377,42 @@ export default function Why() {
             detail={`${MODELLED_PORTFOLIO_SAMPLES} samples minus the ~${ESCALATED_SAMPLES} escalated for lab confirmation.`}
           />
         </div>
+
+        {/* The escalation rate is the assumption the whole model hinges on and the
+            one we have no data for, so we show what happens when it is wrong. */}
+        <Card className="mt-4 p-5">
+          <h3 className="text-sm font-semibold text-slate-900">
+            Sensitivity to the assumption we are least sure about
+          </h3>
+          <p className="mt-1 text-xs leading-relaxed text-slate-500">
+            We have no empirical basis for the escalation rate — establishing it against paired
+            LC-MS/MS results is the point of a pilot. So rather than defend a single number, here is
+            what the saving becomes if we are wrong in either direction. The case survives even at
+            double our assumed rate.
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {ESCALATION_RATE_RANGE.map((rate) => {
+              const saving = savingAtEscalationRate(rate);
+              const isBase = rate === MODELLED_ESCALATION_RATE;
+              return (
+                <div
+                  key={rate}
+                  className={`rounded-lg p-4 ring-1 ring-inset ${
+                    isBase ? 'bg-teal-50 ring-teal-200' : 'bg-slate-50 ring-slate-200'
+                  }`}
+                >
+                  <p className="text-xs font-medium tracking-wide text-slate-500 uppercase">
+                    {Math.round(rate * 100)}% escalated{isBase ? ' · modelled' : ''}
+                  </p>
+                  <p className="mt-1 text-xl font-semibold text-slate-900">{gbp(saving)}</p>
+                  <p className="mt-0.5 text-xs text-slate-500">
+                    {Math.round((saving / ALL_LAB_COST_GBP) * 100)}% below the all-lab cost
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
       </section>
 
       {/* 4. Market opportunity */}
@@ -498,11 +568,18 @@ export default function Why() {
             </ResponsiveContainer>
           </div>
           <p className="mt-3 text-xs leading-relaxed text-slate-500">
-            Illustrative founder projections only — not guarantees or a signed pipeline. Assumes
-            ~£5,000/year per consultancy customer (platform subscription + consumables) and
-            ~£15,000/year per local-authority customer (larger site portfolios, higher consumables
-            volume). Customer counts: Year 1 — 3 consultancies; Year 2 — 15 consultancies + 5
-            councils; Year 3 — 40 consultancies + 25 councils.
+            Illustrative founder projections only — not guarantees or a signed pipeline. Revenue is
+            the <strong>software subscription only</strong>, priced by programme scale rather than by
+            customer type: {gbp(SUBSCRIPTION_STANDARD_GBP)}/year standard tier, and{' '}
+            {gbp(SUBSCRIPTION_PROGRAMME_GBP)}/year for large multi-site programmes — which is where
+            most local-authority Part 2A portfolios sit, and where some consultancies will too.
+            Screening consumables ({gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample in the cost model
+            above) are assumed <strong>passed through at cost and excluded from revenue</strong>, so
+            these projections are deliberately conservative; consumable margin is a plausible second
+            revenue line but we are not counting it. Customer counts: Year 1 — 3 consultancies;
+            Year 2 — 15 consultancies + 5 councils; Year 3 — 40 consultancies + 25 councils. The
+            Year 3 council figure is the most optimistic number here and depends on the statutory
+            PFAS limit and updated Part 2A guidance landing on schedule.
           </p>
         </Card>
       </section>
@@ -511,10 +588,13 @@ export default function Why() {
       <section className="mb-16" aria-labelledby="competition">
         <SectionHeading eyebrow="7 · Competitive landscape" title="How Aegis differs" />
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-slate-600">
-          Existing PFAS screening products validate market appetite for non-lab rapid testing, but
-          none of them offer a decision-support and triage layer. Aegis is not tied to one sensor —
-          it is the risk-scoring, prioritisation, workflow and audit-trail layer that can sit behind
-          any of them.
+          The honest framing is <strong>pre-lab versus post-lab</strong>. Established environmental
+          data platforms already do exceedance screening against UK guideline values, and they do it
+          well — but they operate on results you have already commissioned and paid for. Aegis
+          operates a step earlier: it uses a cheap screening measurement to decide which samples
+          become laboratory results in the first place. The saving comes from analyses never
+          ordered. Aegis is also not tied to one sensor — it is the risk-scoring, prioritisation,
+          workflow and audit-trail layer, and it can sit behind any screening chemistry.
         </p>
         <Card className="overflow-x-auto p-0">
           <table className="w-full min-w-[640px] text-left text-sm">
