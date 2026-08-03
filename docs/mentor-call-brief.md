@@ -2,6 +2,33 @@
 
 **Wednesday 5 August 2026 · Aegis Innovation Competition · Team Aegis (PFAS screening triage)**
 
+> ## ⚠️ REWRITTEN 4 August 2026 — the mentor is a statistician
+>
+> This brief was originally written assuming a subject specialist and led with chemistry. **The
+> mentor is a statistics lecturer in the School of Maths.** Chemistry questions are largely wasted
+> on them, and asking a statistician to adjudicate cyclodextrin binding will produce a polite
+> non-answer and a mentor who feels they weren't much use — which matters, because their feedback
+> is worth a large share of 20 marks.
+>
+> **This is better news than it looks.** The chemistry belongs to Dom. What Aegis actually
+> *contributes* is a decision model — and every serious open question about it is a statistics
+> question:
+>
+> - The eleven scoring weights are **asserted, not calibrated**. Nobody has fitted them to anything.
+> - Nine of ten weights **change no decision at all** under a ±25% perturbation.
+> - The escalation threshold is a **cost-sensitive classification problem with asymmetric errors**
+>   (a missed exceedance is far worse than a wasted test) and it was set to a round number.
+> - The back-test runs at **n = 3, on synthetic data we wrote ourselves**.
+> - Dom's proposed next step is a **4-probe array classified by linear discriminant analysis** —
+>   textbook multivariate statistics.
+>
+> Go in on that ground. A mentor who spends the call doing something only they can do writes
+> markedly better feedback than one who was shown a demo and asked to approve it.
+>
+> **One gap to note and solve elsewhere:** the panel will include at least one academic who can
+> attack the chemistry, and this mentor cannot rehearse you against that. Dom should find a
+> separate chemistry sense-check — a lecturer, a demonstrator, one of his outstanding contacts.
+
 ---
 
 ## Why this call matters more than it looks
@@ -49,7 +76,85 @@ Whoever is not talking takes notes. Circulate them the same evening.
 
 ---
 
-## The four questions to ask
+## The questions to actually ask — statistics version
+
+**Use these five.** The four below them were written for a subject specialist and are kept only for
+reference; the chemistry ones should go to Dom's own contacts instead.
+
+Send two or three of these in advance. A statistician will enjoy them, and will arrive having
+thought about them — which is exactly the outcome you want.
+
+**S1. "Our weights are asserted. How would you calibrate them with almost no labelled data?"**
+> The risk engine scores each sample from eleven weighted factors. We chose the weights ourselves
+> from domain reasoning — nothing is fitted. We have three lab-confirmed samples, and they're
+> synthetic. Is there a defensible way to set weights in that situation — expert elicitation, an
+> ordinal or rank-based model, something Bayesian with an informative prior — or is the honest
+> answer that you cannot, and we should say so and show the sensitivity instead?
+
+The single most valuable question on the list. It targets the exact criticism a data-literate judge
+will make, and it is squarely their expertise.
+
+**S2. "Nine of our ten weights change no decision at all. What does that actually tell us?"**
+> We ran a one-at-a-time ±25% perturbation across the whole portfolio. Only the screening-evidence
+> weight flips any escalate/don't-escalate decision; the other nine flip none. Is that
+> over-parameterisation, or just an artefact of a 23-sample dataset where most points sit far from
+> the threshold? And is one-at-a-time the right sensitivity analysis, or should we be doing
+> something joint?
+
+Shows you did the analysis and are reading it sceptically. The one-at-a-time-versus-joint point is
+a real methodological weakness they will likely raise unprompted — better that you ask first.
+
+**S3. "How should we choose the escalation threshold?"**
+> Escalation is a binary decision with asymmetric costs: a false negative is a missed contamination,
+> a false positive is a wasted £250 test. Our threshold is currently a round number. Is there a
+> principled way to set it — an explicit cost ratio, a Neyman–Pearson style constraint on the
+> false-negative rate — and how would you present that trade-off to a customer who is not
+> statistical?
+
+Turns the weakest part of the model into the most rigorous part. If they give you a method, that
+goes straight onto the poster as a next step.
+
+**S4. "What sample size do we actually need before any accuracy claim is meaningful?"**
+> Our validation plan is to back-test against paired LC-MS/MS results. At maybe 10–20% prevalence,
+> how many samples do we need for a sensitivity estimate with a confidence interval narrow enough
+> to be worth quoting? And is there anything smarter than simple random sampling — enrichment,
+> stratification by site type — given every confirmatory analysis costs real money?
+
+Directly strengthens the "next steps" panel, which is worth disproportionate marks and is currently
+underspecified about power and cost.
+
+**S5. "Is linear discriminant analysis on a four-probe array realistic for us?"**
+> The published route to distinguishing PFAS types uses four fluorescent probes and LDA on the
+> response pattern rather than one probe read once. We want to propose that as our improvement
+> path. How much training data does LDA realistically need for four predictors and a handful of
+> classes, and what would you watch out for — collinearity between probes, overfitting, class
+> imbalance?
+
+Dom raised this and it is genuinely their subject. It also lets the mentor contribute to the
+*chemistry* roadmap through the statistics door, which is a good feeling to give them.
+
+**If there is time, the one non-statistical question that matters most:**
+> When a consultancy runs a site investigation, is the lab spend inside a fixed fee they bid, or
+> passed through to the client with a margin? If it's passed through, we're asking them to shrink
+> their own invoice.
+
+Not their field, but they may simply know, and it decides who our customer is. See `qa-bank.md` B4.
+
+---
+
+## ⚠️ Also worth raising, because it is a genuine methodological trap
+
+Tell them this before they find it: **our demo portfolio escalates 23.8% and our cost model assumes
+20%.** Those look like mutual confirmation and they are not — we wrote the seed data, chose the
+weights and set the threshold, so it is the same assumption appearing twice. Ask them how to
+present the demo without implying it validates anything.
+
+Volunteering a circularity problem to a statistician is the fastest way to establish that you are
+serious. It is also exactly the kind of thing they will write approvingly about afterwards.
+
+---
+
+## The four original questions — kept for reference only
 
 Chosen because they target the weakest points of the entry, and because a mentor is
 genuinely better placed to answer them than you are.
