@@ -6,6 +6,8 @@ dist
 .tmpscript
 .playwright-mcp
 
-*.html
-!index.html
-soc2.txt
+# Scratch files subagents sometimes drop at the repo root. Scoped to the root
+# only ("/*.html", not "*.html") so real HTML in subdirectories is still tracked.
+/*.html
+!/index.html
+/soc2.txt

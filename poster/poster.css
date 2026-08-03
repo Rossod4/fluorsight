@@ -1,0 +1,239 @@
+/* A0 portrait poster — true print dimensions.
+ *
+ * The competition rules are hard constraints, not guidance:
+ *   A0 portrait = 841 x 1189 mm, PDF, sans-serif,
+ *   body text >= 32pt, captions >= 18pt.
+ *
+ * Everything below is sized in mm and pt so that what renders here is what
+ * prints. Do not switch to px or rem for type sizes -- the whole point of this
+ * file is that "32pt" means 32pt on the printed sheet.
+ *
+ * Round 1 of the poster came in 2.7x oversize because the copy was written
+ * before anyone measured the sheet. The overflow guard at the bottom exists so
+ * that cannot happen silently again.
+ */
+
+:root {
+  --sheet-w: 841mm;
+  --sheet-h: 1189mm;
+  --margin: 28mm;
+  --gutter: 18mm;
+
+  /* Type scale. --body is the floor the rules impose; nothing may go under it
+     except captions, which have their own floor of 18pt. */
+  --title: 130pt;
+  --standfirst: 40pt;
+  --panel-heading: 44pt;
+  --body: 32pt;
+  --caption: 18pt;
+  --stat: 96pt;
+
+  --ink: #0f172a;
+  --muted: #475569;
+  --faint: #94a3b8;
+  --rule: #cbd5e1;
+  --teal: #0d9488;
+  --teal-dark: #0f766e;
+  --teal-wash: #f0fdfa;
+  --amber: #b45309;
+  --red: #b91c1c;
+  --paper: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #64748b;
+  font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+  color: var(--ink);
+}
+
+.sheet {
+  position: relative;
+  width: var(--sheet-w);
+  height: var(--sheet-h);
+  margin: 20mm auto;
+  padding: var(--margin);
+  background: var(--paper);
+  box-shadow: 0 4mm 20mm rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10mm;
+  overflow: hidden; /* anything past the edge is a layout failure, not a scroll */
+}
+
+/* ---- Bands and grid ---------------------------------------------------- */
+
+.band { width: 100%; }
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  align-items: start;
+}
+
+.col { display: flex; flex-direction: column; gap: 10mm; }
+
+/* ---- Type -------------------------------------------------------------- */
+
+h1 {
+  font-size: var(--title);
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.standfirst {
+  font-size: var(--standfirst);
+  line-height: 1.22;
+  color: var(--muted);
+  margin: 6mm 0 0;
+  max-width: 62ch;
+}
+
+h2 {
+  font-size: var(--panel-heading);
+  line-height: 1.08;
+  margin: 0 0 4mm;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h2 .num {
+  color: var(--teal);
+  margin-right: 0.4em;
+}
+
+p, li {
+  font-size: var(--body);
+  line-height: 1.34;
+  margin: 0 0 4mm;
+  color: var(--ink);
+}
+
+ul { margin: 0 0 4mm; padding-left: 1.1em; }
+li { margin-bottom: 2.5mm; }
+
+strong { font-weight: 700; }
+
+.caption {
+  font-size: var(--caption);
+  line-height: 1.35;
+  color: var(--faint);
+  margin: 3mm 0 0;
+}
+
+/* ---- Components -------------------------------------------------------- */
+
+.panel {
+  border-top: 1.2mm solid var(--ink);
+  padding-top: 6mm;
+}
+
+.panel--tint {
+  background: var(--teal-wash);
+  border-top-color: var(--teal);
+  padding: 6mm 7mm 2mm;
+}
+
+.reverse {
+  background: var(--teal-dark);
+  color: #fff;
+  padding: 8mm 10mm;
+  text-align: center;
+}
+.reverse p { color: #fff; font-size: 40pt; margin: 0; font-weight: 600; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter);
+  border-top: 1.2mm solid var(--ink);
+  border-bottom: 0.5mm solid var(--rule);
+  padding: 6mm 0;
+}
+.stat .value { font-size: var(--stat); font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.stat .label { font-size: var(--body); line-height: 1.2; margin-top: 2mm; }
+.stat .src { font-size: var(--caption); color: var(--faint); margin-top: 2mm; }
+
+/* Confidence marks. Kept to three, drawn as shapes rather than glyphs --
+   the round 1 critique noted the filled/half-filled circle distinction is the
+   hardest to read at 1 m and that the half-circle character font-falls-back. */
+.mark {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  margin-right: 0.28em;
+  vertical-align: baseline;
+  border: 0.09em solid currentColor;
+}
+.mark--known { background: currentColor; border-radius: 50%; }
+.mark--assumed { background: linear-gradient(90deg, currentColor 50%, transparent 50%); border-radius: 50%; }
+.mark--open { background: transparent; }
+
+.swot {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter);
+}
+.swot > div { border-top: 1.2mm solid var(--ink); padding-top: 4mm; }
+.swot h3 { font-size: 30pt; margin: 0 0 3mm; text-transform: uppercase; letter-spacing: 0.04em; }
+.swot li { font-size: 26pt; line-height: 1.25; }
+
+.figure {
+  border: 0.5mm solid var(--rule);
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6mm;
+  min-height: 90mm;
+}
+.figure .placeholder { font-size: var(--caption); color: var(--faint); max-width: 70ch; }
+
+.qr { width: 70mm; height: 70mm; border: 0.5mm solid var(--ink); display: grid; place-items: center; }
+
+.footer {
+  border-top: 1.2mm solid var(--ink);
+  padding-top: 5mm;
+  display: flex;
+  gap: var(--gutter);
+  align-items: flex-start;
+}
+.footer p { font-size: var(--caption); color: var(--muted); margin: 0 0 2mm; }
+
+/* ---- Overflow guard ---------------------------------------------------- */
+/* Screen-only. Reports measured word count and flags if content exceeds the
+   sheet. Hidden in print so it never reaches the PDF. */
+
+#guard {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 999;
+  background: #0f172a;
+  color: #fff;
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  padding: 10px 14px;
+  max-width: 340px;
+}
+#guard .ok { color: #4ade80; }
+#guard .bad { color: #f87171; }
+#guard .warn { color: #fbbf24; }
+
+@media print {
+  html, body { background: #fff; }
+  #guard { display: none !important; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    width: var(--sheet-w);
+    height: var(--sheet-h);
+  }
+  @page { size: 841mm 1189mm; margin: 0; }
+}

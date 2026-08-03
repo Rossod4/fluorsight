@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Aegis — A0 poster (draft)</title>
+<link rel="stylesheet" href="poster.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ============ TITLE BAND ============ -->
+  <header class="band">
+    <div style="display:flex; gap:18mm; align-items:flex-start;">
+      <div style="flex:1;">
+        <h1>Which samples are worth<br>£350 to confirm?</h1>
+        <p class="standfirst">
+          Every PFAS investigation is already triaged — today by budget, not by risk.
+          Aegis is a working pre-lab tool that makes that choice explicit, cheap and auditable.
+        </p>
+        <p class="caption">
+          Dom (Chemistry) · Evan (Aerospace Engineering) · Alex (Mathematics) — University of Bristol.
+          Mentored by a statistics lecturer, School of Mathematics.
+          <span class="mark mark--known"></span>evidenced &nbsp;
+          <span class="mark mark--assumed"></span>modelled &nbsp;
+          <span class="mark mark--open"></span>not yet evidenced
+        </p>
+      </div>
+      <div>
+        <div class="qr"><span class="caption">QR</span></div>
+        <p class="caption" style="width:70mm;">Use it now — no login.<br>rossod4.github.io/AEGIS</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS BAND ============ -->
+  <section class="stats band">
+    <div class="stat">
+      <div class="value">£350</div>
+      <div class="label">to confirm one soil sample by LC-MS/MS</div>
+      <div class="src">Environmental Industries Association, evidence PFAS0121 to the Commons EAC, May 2025. Soil; no UK water figure is published.</div>
+    </div>
+    <div class="stat">
+      <div class="value">40,000+</div>
+      <div class="label">sites mapped in England; 2,900–10,200 modelled high-risk</div>
+      <div class="src">Jacobs U.K. Ltd for the Environment Agency, Phase 4 WP4, 2023.</div>
+    </div>
+    <div class="stat">
+      <div class="value">£300k</div>
+      <div class="label">EA contaminated-land budget, against £1.8–2.7m to investigate four sites</div>
+      <div class="src">Guardian / Watershed Investigations, Oct 2024. Programme line, not the EA's £2.1bn total.</div>
+    </div>
+    <div class="stat">
+      <div class="value">ZERO</div>
+      <div class="label">UK screening thresholds for PFAS in soil</div>
+      <div class="src">EIA to the EAC. There is nothing to compare a result against — which is why our output is a rank, not a number.</div>
+    </div>
+  </section>
+
+  <!-- ============ TWO COLUMNS ============ -->
+  <div class="columns band">
+    <div class="col">
+
+      <section class="panel">
+        <h2><span class="num">1</span>Scope and impact</h2>
+        <p>
+          Nobody can afford to analyse everything, so on most sites most samples never are.
+          Which ones do get analysed is decided when the budget runs out — on desk study and
+          professional judgement, and it is almost never written down.
+        </p>
+        <p>
+          <strong><span class="mark mark--known"></span>Goal.</strong> No PFAS investigation in
+          Britain limited by not knowing which samples mattered.
+          <strong><span class="mark mark--known"></span>This year.</strong> A working decision
+          layer, publicly reachable today, that ranks samples and records why.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2><span class="num">3</span>What a screen cannot do</h2>
+        <p>
+          Fluorescence cannot be a compliance instrument. A single probe measures total
+          hydrophobic-anion burden — detergents and humic acids interfere — so it cannot identify
+          which PFAS is present, and we do not claim it can.
+        </p>
+        <p>
+          <strong>That is the argument for triage, not against it.</strong> The output is a risk
+          score, never a concentration, and every escalation goes to accredited LC-MS/MS.
+          Cross-reactivity is a disclosed property of a screening instrument, not a hidden defect.
+        </p>
+      </section>
+
+      <section class="panel panel--tint">
+        <h2><span class="num">4</span>What the threshold is worth</h2>
+        <p>
+          <span class="mark mark--assumed"></span>On a 500-sample annual programme, triage cuts
+          modelled spend from £125,000 to £50,000 — a <strong>£75,000 saving</strong>.
+          Aegis is £5,000/year plus £40/sample consumables.
+        </p>
+        <p>
+          Escalation rate is our weakest assumption, so we publish the range rather than a point:
+          <strong>10% → £87,500 · 20% → £75,000 · 40% → £50,000.</strong> The case survives at
+          double our assumption.
+        </p>
+        <p class="caption">
+          Lab cost modelled at £250/sample — an assumption, not a quote. No UK laboratory publishes
+          a PFAS rate card; we approached seven and all quote on request.
+        </p>
+      </section>
+
+    </div>
+
+    <div class="col">
+
+      <section class="panel">
+        <h2><span class="num">2</span>How the decision gets made</h2>
+        <p>
+          <strong>Measure.</strong> <span class="mark mark--assumed"></span>A β-cyclodextrin
+          cartridge preconcentrates roughly 250-fold, then a 2,6-ANS probe reports displacement as
+          a fluorescence shift. Output: a signal and a confidence flag.
+        </p>
+        <p>
+          <strong>Score.</strong> <span class="mark mark--open"></span>Ten weighted factors —
+          screening evidence, repeat positives, airfield and landfill history, receptor
+          sensitivity. Every point is attributed to a named driver.
+        </p>
+        <p>
+          <strong>Choose.</strong> The threshold, not the chemistry, sets the budget.
+          <strong>Defend.</strong> Each sample carries its score, its drivers, and the threshold in
+          force.
+        </p>
+      </section>
+
+      <section class="panel">
+        <h2><span class="num">5</span>Development and design evolution</h2>
+        <p>
+          Weekly meetings since 1 June, with a written decision record. Three disciplines:
+          chemistry and method (Dom), product and field use (Evan), risk model and cost case
+          (Alex). Registered as five; two never engaged, so three absorbed the scope.
+        </p>
+        <p>
+          <strong>17 Jul.</strong> A new binding study confirmed 2,6-ANS pairs best with
+          β-cyclodextrin — the pairing we had chosen. <strong>Aug.</strong> We found our engine
+          scored signal and concentration band separately when they are one reading; merging them
+          means no single measurement can escalate a sample alone.
+        </p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="panel band">
+    <h2>The one dial — and where it breaks</h2>
+    <div class="figure">
+      <span class="placeholder">
+        FIGURE — threshold sweep. X: escalation threshold 5–100. Left Y: escalation rate (%).
+        Right Y: confirmed exceedances missed. Shade the zero-miss band (5–70). Mark the operating
+        point at 50. Inset right: escalation queue, 21 ranked samples with a heavy rule at the
+        threshold, ESCALATE above / HOLD below.
+      </span>
+    </div>
+    <p>
+      Every triage tool has one dial: turn it up and you save money, turn it too far and you miss
+      contamination. Most products hide it. Ours is on screen and movable. On our demo portfolio,
+      escalation falls from 100% of screened samples to 9.5% with <strong>nothing missed</strong>.
+    </p>
+    <p class="caption">
+      <span class="mark mark--assumed"></span>Shows the shape of the trade-off — a structural
+      property of the scoring model — not our accuracy. Demo data is synthetic and written by us.
+      Back-test n = 3: one true positive (lab returned 1,840 ng/L, 18× the guideline), two true
+      negatives, no misses. We report the method and the n, not a rate.
+    </p>
+  </section>
+
+  <section class="reverse band">
+    <p>A triage layer, not a laboratory replacement.</p>
+  </section>
+
+  <!-- ============ SWOT ============ -->
+  <section class="band">
+    <h2><span class="num">6</span>Where this could fail</h2>
+    <div class="swot">
+      <div>
+        <h3>Strengths</h3>
+        <ul>
+          <li>Working prototype, publicly deployed</li>
+          <li>Every score explained driver by driver</li>
+          <li>Method-agnostic — any chemistry fits behind it</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Weaknesses</h3>
+        <ul>
+          <li>No bench data → first pilot must produce it</li>
+          <li>Weights asserted, not calibrated → paired study</li>
+          <li>One probe cannot speciate → array roadmap</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Opportunities</h3>
+        <ul>
+          <li>EA map reaches councils end-2026 → our pipeline</li>
+          <li>England statutory limit consulted on in 2026</li>
+          <li>Consumable margin as a second revenue line</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Threats</h3>
+        <ul>
+          <li>Cyclopure sells a full mail-in test at $85</li>
+          <li>Labs could bundle a cheap screen themselves</li>
+          <li>UKAS treatment of non-accredited screens unconfirmed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEXT STEPS ============ -->
+  <section class="panel band">
+    <h2><span class="num">7</span>Next steps</h2>
+    <div class="columns">
+      <div>
+        <p>
+          <strong>Sensitivity.</strong> Methylated β-cyclodextrin raises ANS fluorescence roughly
+          120-fold against 8.4-fold for the unmodified host, and gives the tightest binding
+          reported for our probe. With temperature control, that is our route toward the guideline.
+        </p>
+        <p>
+          <strong>Selectivity.</strong> Four probes instead of one, classified by linear
+          discriminant analysis — the published route to telling PFAS apart. We already have the
+          software half that most sensor projects lack.
+        </p>
+      </div>
+      <div>
+        <p>
+          <strong>Validation.</strong> Paired screening and LC-MS/MS on archived samples from a
+          partner consultancy. <em>Kills it if</em> no partner by December — we publish at n = 3
+          and say so.
+        </p>
+        <p>
+          <strong>Fallback market.</strong> If we cannot reach 0.1 µg/L, AFFF source zones at
+          10 µg/L–mg/L are reachable today, and are where our heaviest site weighting already
+          points.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer band">
+    <div style="flex:1;">
+      <p>
+        <strong>Aegis — PFAS screening triage.</strong> Aegis is decision support. Screening
+        estimates carry uncertainty and are never a substitute for accredited LC-MS/MS or used for
+        regulatory compliance reporting. All demo data is synthetic.
+      </p>
+      <p>
+        <strong>We are looking for</strong> a consultancy or laboratory with archived samples
+        already analysed by LC-MS/MS. One partnership removes the largest cost from our validation
+        plan.
+      </p>
+    </div>
+    <div style="width:60mm;">
+      <div class="qr" style="width:52mm;height:52mm;"><span class="caption">QR</span></div>
+      <p class="caption">Sources &amp; decision log</p>
+    </div>
+  </footer>
+
+</div>
+
+<script src="measure.js"></script>
+</body>
+</html>
