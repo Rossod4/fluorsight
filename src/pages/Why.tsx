@@ -19,7 +19,6 @@ import {
   ESCALATED_SAMPLES,
   ESCALATION_RATE_RANGE,
   INDICATIVE_LAB_COST_GBP,
-  LAB_COST_CONSERVATISM,
   LAB_SAMPLES_AVOIDED,
   MODELLED_ANNUAL_SAVING_GBP,
   MODELLED_COST_REDUCTION,
@@ -29,7 +28,7 @@ import {
   SUBSCRIPTION_STANDARD_GBP,
   TRIAGED_LAB_COST_GBP,
   TRIAGED_TOTAL_COST_GBP,
-  UK_PUBLISHED_LAB_COST_GBP,
+  UK_PUBLISHED_SOIL_LAB_COST_GBP,
   gbp,
   savingAtEscalationRate,
 } from '../lib/economics';
@@ -60,7 +59,7 @@ const MILESTONES: Milestone[] = [
     date: '12 Jan 2026',
     title: 'EU Drinking Water Directive PFAS limits in force',
     body:
-      'Directive (EU) 2020/2184’s parametric values — 0.10 µg/L "Sum of PFAS" (20 substances) and 0.50 µg/L "PFAS Total" — become binding across all EU Member States.',
+      'Directive (EU) 2020/2184’s PFAS parametric values — 0.10 µg/L "Sum of PFAS" (20 named substances) and 0.50 µg/L "PFAS Total" — must be complied with from this date. Member States may apply either one or both of the two parameters, and monitoring is risk-triggered rather than universal at every supply.',
     sourceHref: 'https://environment.ec.europa.eu/news/new-eu-rules-limit-pfas-drinking-water-2026-01-12_en',
     sourceLabel: 'European Commission, 12 Jan 2026',
   },
@@ -68,7 +67,7 @@ const MILESTONES: Milestone[] = [
     date: '3 Feb 2026',
     title: 'Defra publishes the UK PFAS Plan',
     body:
-      'The UK’s first national PFAS strategy: understand sources, tackle spread, reduce exposure. Commits to a 2026 consultation on a statutory drinking-water limit, an EA site-prioritisation map for councils, and updated Part 2A guidance.',
+      'The UK’s first national PFAS strategy: understand sources, tackle spread, reduce exposure. Commits to a 2026 consultation on a statutory drinking-water limit, an EA site-prioritisation map for public bodies, and updated advice for councils on managing PFAS-contaminated land under Part 2A.',
     sourceHref: 'https://www.gov.uk/government/publications/pfas-plan/pfas-plan-building-a-safer-future-together',
     sourceLabel: 'GOV.UK PFAS Plan',
   },
@@ -84,7 +83,7 @@ const MILESTONES: Milestone[] = [
     date: '2026 (in progress)',
     title: 'Consultation on a statutory UK limit',
     body:
-      'Government commits to consult during 2026 on turning the 0.1 µg/L DWI guideline into a statutory limit for England (PFAS Plan Action 3.6).',
+      'Government commits to consult during 2026 on introducing a statutory PFAS limit into England’s public water supply regulations (PFAS Plan Action 3.6). Today there is only a DWI guideline value of 0.1 µg/L, above which water companies must report a water quality event and act to reduce concentrations. The consultation does not commit to setting the statutory limit at that value.',
     sourceHref: 'https://www.gov.uk/government/publications/pfas-plan/pfas-plan-building-a-safer-future-together',
     sourceLabel: 'GOV.UK PFAS Plan',
   },
@@ -92,17 +91,17 @@ const MILESTONES: Milestone[] = [
     date: 'End of 2026',
     title: 'EA prioritisation map reaches every council',
     body:
-      'The Environment Agency’s GIS-based PFAS Prioritisation Map — ranking 40,000+ mapped potential-source sites — is made available to all public sector bodies, including local authorities. A public version follows in Q3 2027.',
-    sourceHref: 'https://envirotecmagazine.com/2026/02/12/what-the-uk-governments-pfas-plan-means-for-industry/',
-    sourceLabel: 'Envirotec summary',
+      'The Environment Agency’s GIS-based PFAS Prioritisation Map — risk-scoring 40,000+ mapped sites in England — is made available to all public sector bodies, including local authorities. Defra additionally plans to develop an interactive website by Q3 2027, though its own narrative text says only that this will be "explored" by the end of 2027. No public-access date has been committed.',
+    sourceHref: 'https://www.gov.uk/government/publications/pfas-plan/pfas-plan-building-a-safer-future-together',
+    sourceLabel: 'GOV.UK PFAS Plan, Action 1.2',
   },
   {
     date: '2027 (expected)',
-    title: 'Updated Part 2A guidance; REACH restriction likely finalised',
+    title: 'Technical guidance on legacy PFAS; REACH restriction likely finalised',
     body:
-      'Defra commits to updated Part 2A guidance for councils on legacy PFAS contamination. Separately, the EU REACH class restriction is expected to reach the Commission, with adoption unlikely before 2027.',
-    sourceHref: 'https://www.whitecase.com/insight-alert/europes-pfas-restriction-proposal-moving-forward',
-    sourceLabel: 'White & Case',
+      'Defra’s PFAS Plan commits to technical guidance on legacy PFAS contamination by 2027 (action 3.16). The earlier commitment — updated information and advice to help councils manage such land under Part 2A (action 3.15) — carries no delivery date, only "engagement with local authorities as required", and is not a rewrite of the statutory guidance. Separately, the EU REACH class restriction is expected to reach the Commission, with adoption unlikely before 2027.',
+    sourceHref: 'https://www.gov.uk/government/publications/pfas-plan/pfas-plan-building-a-safer-future-together',
+    sourceLabel: 'GOV.UK PFAS Plan, actions 3.15–3.16',
   },
 ];
 
@@ -133,48 +132,49 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
   {
     name: 'Cyclopure',
     approach:
-      'DEXSORB+ extraction disc mailed to an LC-MS lab (55 PFAS, LOQ 1.0 ppt), $85/kit, 10–14 business days',
+      'DEXSORB® extraction disc mailed to Cyclopure’s own HPLC-MS/MS lab (55 PFAS incl. all 40 EPA 1633 compounds, LOQ 1.0 ppt), $85/kit, 10–14 business days of lab processing after the kit arrives back',
     realTime: 'No — lab turnaround',
-    commercial: 'Yes (US)',
-    note: 'A consumer test kit, not a workflow: no risk scoring, no site prioritisation, no audit trail. No stated UK availability.',
+    commercial: 'Yes — direct from the US',
+    note: 'A finished lab result, not a workflow: no risk scoring, no site prioritisation, no audit trail. International orders accepted on request at the customer’s expense, but the UK is not a named market and there is no UK lab or UK pricing.',
   },
   {
     name: 'FREDsense',
-    approach: 'Electrochemical bacterial biosensor field kit, same-day result',
-    realTime: 'Yes',
-    commercial: 'Yes (field kit)',
-    note: 'A single sensor product. Aegis is method-agnostic: it can sit behind any screening chemistry.',
+    approach: 'Portable electrochemical biosensor field kit for PFAS, result in ~3–4 hours',
+    realTime: 'Same-day, on-site',
+    commercial: 'Yes — sold via contact-sales',
+    note: 'A detection company, not a workflow one: they pair the field kit with their own LC-MS/MS confirmation lab, but publish no risk-scoring, site-prioritisation or case-management layer. Aegis is method-agnostic and can sit behind any screening chemistry, including theirs.',
   },
   {
     name: 'Academic fluorescence sensor arrays',
-    approach: 'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA (Han et al. 2025)',
+    approach:
+      'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA (Zha et al. 2025, Anal. Chim. Acta 1377, 344680)',
     realTime: 'Lab prototype',
     commercial: 'No',
-    note: 'Validates the chemistry Aegis builds on, but has no product, workflow, or UK market presence.',
+    note: 'Validates the general principle Aegis builds on — cyclodextrin host–dye competitive displacement at ng/L levels — but with a four-dye array (NPN, AFR, CC, PR), not our 1,8-ANS probe, which has not been published for PFAS. No product, workflow or UK market presence.',
   },
   {
     name: 'ESdat / EQuIS / Locus EIM',
     approach:
-      'Environmental data management: ingest lab results, compare against pre-loaded UK guideline values, flag exceedances, report',
+      'Environmental data management: ingest lab results, compare against configured regulatory limits, flag exceedances, report. ESdat additionally ships pre-loaded UK guideline values; EQuIS and Locus require the user to define limits.',
     realTime: 'Post-lab',
-    commercial: 'Yes — established, sold into UK consultancies',
-    note: 'The closest real competitors, and they solve a different problem: they screen results you have already paid for. Aegis decides which samples become lab results at all. We expect to sit alongside these, not replace them.',
+    commercial: 'ESdat and EQuIS established in the UK; Locus is US-based',
+    note: 'The closest real competitors. All three include sample-planning and chain-of-custody modules, so they do touch the pre-lab workflow — but their planning is schedule- and template-driven, not risk-driven. None uses field screening data to rank which collected samples are worth paying to analyse. We expect to sit alongside these, not replace them.',
   },
   {
     name: 'EA PFAS Risk Screening Programme',
     approach:
-      'National GIS ranking of >40,000 potential PFAS source sites; shared with public bodies from end-2026, public from Q3 2027',
+      'National GIS risk-scoring of 40,000+ mapped sites in England; prioritisation map to reach all public sector bodies by end-2026. A dedicated interactive website is only being "explored" by end-2027.',
     realTime: 'Desk-based',
-    commercial: 'Free to public bodies',
-    note: 'Ranks sites to allocate regulatory attention — it tells a council where to look. It does not tell an investigator standing on a site which of their 60 samples to pay to analyse. It generates our pipeline rather than competing with us.',
+    commercial: 'Provided to public bodies (cost not stated)',
+    note: 'Ranks sites to allocate regulatory attention — it tells a council where to look. It does not tell an investigator standing on a site which of their samples to pay to analyse. It generates our pipeline rather than competing with us. No public-access date has been committed.',
   },
 ];
 
 const RISKS: string[] = [
-  'Screening sensitivity is roughly 1,000× below accredited LC-MS/MS; screening estimates carry real uncertainty and are never used for regulatory compliance reporting.',
+  'Screening sensitivity is roughly 1–2 orders of magnitude below accredited LC-MS/MS — published cyclodextrin fluorescence arrays report LODs of 31–38 ng/L against accredited reporting levels of about 0.5–20 ng/L — so screening estimates carry real uncertainty and are never used for regulatory compliance reporting.',
   'The specific sensor chemistry (1,8-ANS with a cyclodextrin adsorbent, applied to PFAS) has not itself been peer-reviewed — Aegis treats the sensor as a modular, swappable component while validation of this exact combination matures.',
   'The UK statutory PFAS limit and the Environment Agency’s prioritisation map are both still pending (2026 consultation; map due end-2026) — the regulatory tailwind is real but not yet fully crystallised.',
-  'Local-authority procurement is slow and fragmented across roughly 300+ separate authorities; consultancies are the faster initial commercial path.',
+  'Local-authority procurement is slow and fragmented across roughly 290 separate Part 2A enforcing authorities in England (district and unitary councils; county councils are not Part 2A authorities), and that number is falling as reorganisation creates larger unitaries; consultancies are the faster initial commercial path.',
   'UK GBP lab pricing is quote-only from major labs (ALS, SOCOTEC, Eurofins, RPS); the cost model below uses a published EU proxy figure, explicitly flagged as an assumption pending direct UK quotes.',
 ];
 
@@ -283,22 +283,22 @@ export default function Why() {
           <StatCard
             label="Cost per accredited lab sample"
             value="€175–300"
-            detail="EU proxy pricing (drinking/natural water €175, wastewater €300), ~3 week turnaround. UK labs (ALS, SOCOTEC, Eurofins, RPS) are quote-only — a data gap, honestly flagged. Source: Measurlabs."
+            detail="EU published list prices, excl. VAT, plus a €97 per-order service fee (drinking/natural water €175, wastewater €300). Typically 2–3 weeks from the lab receiving the sample. UK labs (ALS, SOCOTEC, Eurofins, RPS) are quote-only — a data gap, honestly flagged. Source: Measurlabs product pages."
           />
           <StatCard
             label="Potential PFAS source sites"
-            value="10,000+"
-            detail="Identified in England by an EA contractor, from a GIS tool scoring 40,000+ mapped sites. Source: ENDS Report."
+            value="40,000+"
+            detail="Mapped in England by the Environment Agency's PFAS risk-screening work, of which 2,900–10,200 are modelled as high-risk depending on the score threshold. Source: Jacobs U.K. Ltd for the Environment Agency, PFAS Risk Screening Project Phase 4 WP4, July 2023."
           />
           <StatCard
             label="Water-company PFAS analyses, 2024"
             value="770,000+"
-            detail="Individual analyses performed in England & Wales in 2024 alone (1.8m+ since 2012); only 46 of 1,067 treatment works (4.3%) hit Tier 2+. Source: DWI 2024 Chief Inspector's report."
+            detail="Individual analyses performed in England & Wales in 2024 alone (1.7m+ since 2012); only 46 of 1,067 treatment works (4.3%) had Tier 2 detections. Source: DWI 2024 Chief Inspector's report."
           />
           <StatCard
-            label="EA budget mismatch"
+            label="EA contaminated land budget mismatch"
             value="£1.8–2.7m vs ~£300k"
-            detail="Estimated cost to investigate just 4 known sites, against the Environment Agency's annual budget of ~£300,000 (+£200k chemicals funding). Source: ENDS Report / IFSJ."
+            detail="Estimated cost to investigate just 4 known PFAS sites, against the EA's contaminated land budget of £300k plus £200k from a chemicals funding stream, as quoted by the EA in October 2024. This is the contaminated land programme line only — the EA's total annual expenditure is ~£2.1bn. Source: The Guardian / Watershed Investigations, 15 Oct 2024."
           />
         </div>
       </section>
@@ -348,14 +348,18 @@ export default function Why() {
           <p className="mt-3 text-xs leading-relaxed text-slate-500">
             Illustrative model, not a vendor quote. Portfolio of {MODELLED_PORTFOLIO_SAMPLES}{' '}
             samples/year. Lab cost modelled at {gbp(INDICATIVE_LAB_COST_GBP)}/sample —{' '}
-            <strong>{Math.round(LAB_COST_CONSERVATISM * 100)}% below</strong> the only published UK
-            figure of {gbp(UK_PUBLISHED_LAB_COST_GBP)}/sample (Environmental Industries Association,
-            written evidence to the Environmental Audit Committee, May 2025), so the saving is
-            deliberately understated; no UK laboratory publishes a rate card and we checked seven.
-            Aegis cost is split into a {gbp(SUBSCRIPTION_STANDARD_GBP)}/year software subscription
-            plus screening consumables at {gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample
-            ({gbp(CONSUMABLES_ANNUAL_GBP)}/year at this volume, benchmarked against Cyclopure’s $85
-            DEXSORB test kit), giving {gbp(AEGIS_ANNUAL_COST_GBP)} total. Escalation rate of{' '}
+            <strong>an assumption, not a quote.</strong> No UK laboratory we approached publishes a
+            PFAS rate card; we checked seven providers and all quote on request. The nearest
+            published UK figure is {gbp(UK_PUBLISHED_SOIL_LAB_COST_GBP)}/sample (Environmental
+            Industries Association, written evidence PFAS0121 to the Environmental Audit Committee,
+            May 2025) — but that is a rough figure for <strong>soil</strong> analysis and explicitly
+            excludes water, so it sets scale rather than validating our number. We do not know
+            whether water analysis costs more or less, and we are not claiming our figure is
+            conservative. Aegis cost is split into a {gbp(SUBSCRIPTION_STANDARD_GBP)}/year software
+            subscription plus screening consumables at{' '}
+            {gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample ({gbp(CONSUMABLES_ANNUAL_GBP)}/year at this
+            volume — a founder estimate, not a supplier quote), giving{' '}
+            {gbp(AEGIS_ANNUAL_COST_GBP)} total. Escalation rate of{' '}
             {Math.round(MODELLED_ESCALATION_RATE * 100)}% is an assumption, not an observation — see
             the sensitivity range below.
           </p>
@@ -419,9 +423,13 @@ export default function Why() {
       <section className="mb-16" aria-labelledby="market">
         <SectionHeading eyebrow="4 · Market opportunity" title="Market size — TAM, SAM, SOM" />
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-slate-600">
-          Independent market reports disagree sharply on the size of the "PFAS testing market"
-          because they scope it differently (some include instrumentation and remediation, others
-          only laboratory testing services). 2026 estimates range from roughly{' '}
+          Independent market reports disagree sharply on the size of the "PFAS testing market" —
+          by a factor of about eight. Their <em>published</em> segmentations are nearly identical
+          (both cover instruments, consumables, software and services), so the gap reflects
+          differing revenue definitions and estimation methodology rather than any stated
+          difference in scope: the higher estimate appears to count method development, compliance
+          testing, environmental risk assessment and PFAS consulting, while the lower one is
+          defined as laboratory analysis of samples. 2026 estimates range from roughly{' '}
           <strong>$439m</strong> (<SourceLink href="https://www.fortunebusinessinsights.com/pfas-testing-market-115213">Fortune Business Insights</SourceLink>) to{' '}
           <strong>$3.6bn</strong> (<SourceLink href="https://www.researchandmarkets.com/reports/6170631/per-polyfluoroalkyl-substances-pfas-testing">Research and Markets</SourceLink>
           ), with CAGR estimates clustering around <strong>11–14.5%</strong>. We present this honestly as a
@@ -463,16 +471,18 @@ export default function Why() {
           </div>
           <p className="mt-3 text-xs leading-relaxed text-slate-500">
             Single clearly-sourced series shown for consistency: Fortune Business Insights, PFAS
-            Testing Market Report — $439m (2026) growing to $1,037m (2034) at an 11.3% CAGR; other
-            estimates in the text above use different scope and are not plotted here to avoid
-            mixing incompatible series on one axis.
+            Testing Market Report. <strong>Only the endpoints are published</strong> — $439.0m
+            (2026) and $1,037.4m (2034). The intermediate years are smoothed at the implied 11.3%
+            CAGR for illustration and are not separately published by FBI. Other estimates in the
+            text above use different revenue definitions and are not plotted here, to avoid mixing
+            incompatible series on one axis.
           </p>
         </Card>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <StatCard
             label="TAM"
             value="$439m–$3.6bn"
-            detail="Global/European PFAS testing market, 2026 (range reflects differing scope across market reports)."
+            detail="Global PFAS testing market, 2026 — the range reflects differing revenue definitions across market reports, not a stated scope difference. Europe is ~$106m and the UK ~$11.5m (2025, Fortune Business Insights); those are the anchors that matter to us."
           />
           <StatCard
             label="SAM"
@@ -507,7 +517,7 @@ export default function Why() {
             <p className="mt-2 text-sm leading-relaxed text-slate-600">
               Councils hold the statutory Part 2A duty to identify and inspect contaminated land,
               and are the payer of last resort for orphan sites. The 2026 PFAS Plan reinforces this
-              with an incoming prioritisation map, but procurement across ~300+ fragmented
+              with an incoming prioritisation map, but procurement across ~290 fragmented
               authorities is slower.
             </p>
           </Card>
@@ -571,15 +581,21 @@ export default function Why() {
             Illustrative founder projections only — not guarantees or a signed pipeline. Revenue is
             the <strong>software subscription only</strong>, priced by programme scale rather than by
             customer type: {gbp(SUBSCRIPTION_STANDARD_GBP)}/year standard tier, and{' '}
-            {gbp(SUBSCRIPTION_PROGRAMME_GBP)}/year for large multi-site programmes — which is where
-            most local-authority Part 2A portfolios sit, and where some consultancies will too.
+            {gbp(SUBSCRIPTION_PROGRAMME_GBP)}/year for large multi-site programmes. We assume a
+            share of local-authority Part 2A portfolios reach that tier — a founder assumption, not
+            a measured distribution. The most recent national survey (EA/Defra Part 2A review, to
+            Dec 2013) found 47% of responding councils had 50 or more sites still requiring detailed
+            inspection, 19% had 10–50 and 34% had fewer than 10.
             Screening consumables ({gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample in the cost model
             above) are assumed <strong>passed through at cost and excluded from revenue</strong>, so
             these projections are deliberately conservative; consumable margin is a plausible second
             revenue line but we are not counting it. Customer counts: Year 1 — 3 consultancies;
             Year 2 — 15 consultancies + 5 councils; Year 3 — 40 consultancies + 25 councils. The
-            Year 3 council figure is the most optimistic number here and depends on the statutory
-            PFAS limit and updated Part 2A guidance landing on schedule.
+            Year 3 council figure is the most optimistic number here. It depends on Defra’s 2026
+            consultation (PFAS Plan action 3.6) actually resulting in a statutory limit — no in-force
+            date has been published — and on the Part 2A material for local authorities (action
+            3.15, undated) and technical guidance on legacy PFAS (action 3.16, by 2027) landing on
+            schedule.
           </p>
         </Card>
       </section>
@@ -589,12 +605,16 @@ export default function Why() {
         <SectionHeading eyebrow="7 · Competitive landscape" title="How Aegis differs" />
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-slate-600">
           The honest framing is <strong>pre-lab versus post-lab</strong>. Established environmental
-          data platforms already do exceedance screening against UK guideline values, and they do it
-          well — but they operate on results you have already commissioned and paid for. Aegis
-          operates a step earlier: it uses a cheap screening measurement to decide which samples
-          become laboratory results in the first place. The saving comes from analyses never
-          ordered. Aegis is also not tied to one sensor — it is the risk-scoring, prioritisation,
-          workflow and audit-trail layer, and it can sit behind any screening chemistry.
+          data platforms already do exceedance screening well — ESdat, for instance, ships UK
+          regulatory standards pre-loaded and sends real-time exceedance alerts. They do ingest
+          field and sensor data as well as lab results, and they include sample-planning modules, so
+          it would be wrong to say they never touch the pre-lab workflow. But that planning is
+          schedule- and template-driven, and their screening and reporting are built around
+          accredited laboratory chemistry. None of them uses a field measurement to decide whether a
+          collected sample is worth analysing at all. Aegis targets that specific decision, and the
+          saving comes from analyses never ordered. It is also not tied to one sensor — it is the
+          risk-scoring, prioritisation, workflow and audit-trail layer, and it can sit behind any
+          screening chemistry.
         </p>
         <Card className="overflow-x-auto p-0">
           <table className="w-full min-w-[640px] text-left text-sm">

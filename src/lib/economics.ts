@@ -6,22 +6,31 @@
 // checked and all quote only. Every figure derived from the per-sample cost is
 // modelled, not measured, and must be presented that way.
 //
-// What we DO have is a published UK benchmark. The Environmental Industries
-// Association told the Commons Environmental Audit Committee in May 2025
-// (written evidence PFAS0121, lead author Prof. Paul Nathanail, author of CIRIA
-// C819) that PFAS soil analysis costs roughly £350 per sample. We model at £250
-// — 29% below it — because water analysis is generally cheaper than soil and
-// because understating the saving is the defensible direction to err in.
+// The nearest published UK benchmark is £350/sample, from the Environmental
+// Industries Association's written evidence to the Commons Environmental Audit
+// Committee (May 2025, PFAS0121, lead author Prof. Paul Nathanail, author of
+// CIRIA C819).
+//
+// IMPORTANT SCOPE LIMIT: that £350 is a rough figure for PFAS analysis of SOIL,
+// and the evidence explicitly excludes water. Aegis's workflow is water. So
+// £350 is NOT a benchmark our £250 can be called conservative against — we do
+// not know whether water analysis costs more or less. An earlier version of
+// this file claimed £250 was "29% below the published UK figure"; that was a
+// scope error and has been removed. £250 is a modelling assumption whose
+// direction of error is unknown, and must be presented that way.
 
-/** Only published UK per-sample PFAS analysis figure. EIA → EAC, May 2025, evidence PFAS0121. */
-export const UK_PUBLISHED_LAB_COST_GBP = 350;
+/**
+ * Nearest published UK per-sample PFAS figure — but for SOIL, not water.
+ * EIA → EAC, May 2025, evidence PFAS0121. Quote for scale only; do not use it
+ * to characterise the water-matrix assumption below as conservative.
+ */
+export const UK_PUBLISHED_SOIL_LAB_COST_GBP = 350;
 
-/** The rate we model at. Deliberately below the published UK benchmark. */
+/**
+ * The rate we model at, for water. An assumption. No UK laboratory publishes a
+ * PFAS rate card — seven providers were approached and all quote on request.
+ */
 export const INDICATIVE_LAB_COST_GBP = 250;
-
-/** How far below the published UK figure we model, as a fraction. */
-export const LAB_COST_CONSERVATISM =
-  (UK_PUBLISHED_LAB_COST_GBP - INDICATIVE_LAB_COST_GBP) / UK_PUBLISHED_LAB_COST_GBP;
 
 /** Size of the illustrative annual portfolio the business case is modelled on. */
 export const MODELLED_PORTFOLIO_SAMPLES = 500;

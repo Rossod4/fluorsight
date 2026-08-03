@@ -66,7 +66,7 @@ Searched: ANS/PFAS displacement, cyclodextrin PFAS sensing, indicator-displaceme
 
 But the gap is narrower and more defensible than "no precedent":
 
-**The closest precedent uses a near-structural-analogue of your dye.** Han et al.'s β-cyclodextrin-polymer sensor array uses four dyes — **NPN (N-phenyl-1-naphthylamine)**, AFR, CC, PR. NPN is an **anilinonaphthalene**, the same chromophore family as 1,8-ANS, working by the same solvatochromic hydrophobic-cavity mechanism. So the honest framing is not "our dye is untested" but **"the published β-CD array already uses an anilinonaphthalene reporter; we are proposing a sulfonated member of the same family."** That is a materially stronger sentence than what is on the site today.
+**The closest precedent uses a near-structural-analogue of your dye.** Zha et al.'s β-cyclodextrin-polymer sensor array uses four dyes — **NPN (N-phenyl-1-naphthylamine)**, AFR, CC, PR. NPN is an **anilinonaphthalene**, the same chromophore family as 1,8-ANS, working by the same solvatochromic hydrophobic-cavity mechanism. So the honest framing is not "our dye is untested" but **"the published β-CD array already uses an anilinonaphthalene reporter; we are proposing a sulfonated member of the same family."** That is a materially stronger sentence than what is on the site today.
 
 ### 2.2 The precedent table — with LODs converted to regulatory units
 
@@ -74,7 +74,7 @@ This is the single most useful artefact in this document. Build it into the post
 
 | System | Reporter / mechanism | Reported LOD | **In µg/L** | vs DWI 0.1 µg/L | Citation |
 |---|---|---|---|---|---|
-| β-CD polymer + 4-dye array + deep learning | NPN, AFR, CC, PR — competitive displacement | 38 ng/L PFOA; 31 ng/L PFOS | **0.038 / 0.031** | **Below limit** ✓ | Han Z, Rushlow J, Yang Y, Huo J, Zhou H-C. *Anal. Chim. Acta* **2025**, 1377, 344680. DOI [10.1016/j.aca.2025.344680](https://doi.org/10.1016/j.aca.2025.344680) **[P]** |
+| β-CD polymer + 4-dye array + deep learning | NPN, AFR, CC, PR — competitive displacement | 38 ng/L PFOA; 31 ng/L PFOS | **0.038 / 0.031** | **Below limit** ✓ | Zha J, Liu F, Ma M, Zhou Y, Shen Y, Sun L, Su J, Hu C, Wang S, Cui P. "Integrating cyclodextrin fluorescence sensing array and machine learning for rapid screening and detection of perfluoroalkyl substances." *Anal. Chim. Acta* **2025**, 1377, 344680. DOI [10.1016/j.aca.2025.344680](https://doi.org/10.1016/j.aca.2025.344680) **[P — author list re-verified 3 Aug 2026; an earlier version of this table carried a FABRICATED author list ("Han Z, Rushlow J, Yang Y, Huo J, Zhou H-C"), which was wrong. Probes are β-CDP-NPN, β-CDP-CC, β-CDP-AFR, β-CDP-PR.]** |
 | FREDsense FRED-PFAS field kit (**commercial**) | Electrochemical biosensor | 1,000 ppt | **1.0** | 10× above | [fredsense.com](https://fredsense.com/pfas-home/pfas-field-kit/) **[P]** |
 | Guanidinocalix[5]arene + fluorescein IDA | Indicator displacement | 26.4 nM PFOA; 21.4 nM PFOS | **~10.9 / ~10.7** | ~110× above | Nat. Commun. **2019**, 10, 5762. DOI [10.1038/s41467-019-13775-1](https://doi.org/10.1038/s41467-019-13775-1) **[P]** |
 | Guanidine-BODIPY MIP + microfluidic (**2025 state of the art, on-site**) | Ion-pairing/H-bond turn-on, ratiometric | 0.11 µM PFOA | **~45.5** | ~455× above | Nat. Commun. **2025**. DOI [10.1038/s41467-025-66872-9](https://doi.org/10.1038/s41467-025-66872-9) **[P]** |
@@ -85,7 +85,7 @@ This is the single most useful artefact in this document. Build it into the post
 
 **What this table proves, and it is the strongest honest argument the team has:** almost every fluorescence sensor in the literature sits *above* the regulatory threshold — the 2025 Nature Communications on-site system is 455× above it. The two exceptions cluster right at the limit. **Therefore a fluorescence sensor cannot be a compliance instrument, and any product that claims otherwise is overselling.** That is precisely why the correct product is a triage layer, and why the preconcentration step matters more than the dye.
 
-**Corollary the team must own:** the Han et al. array is ~300× more sensitive than the next-best comparable system. Treat it as a promising outlier, not as your expected performance. If your pitch quietly assumes you will land at 38 ng/L, you are betting on the single most optimistic result in the field.
+**Corollary the team must own:** the Zha et al. array is ~300× more sensitive than the next-best comparable system. Treat it as a promising outlier, not as your expected performance. If your pitch quietly assumes you will land at 38 ng/L, you are betting on the single most optimistic result in the field.
 
 ### 2.3 ⚠ The finding that most threatens the specific chemistry
 
@@ -116,7 +116,7 @@ Findings that bear directly on the Aegis design:
 
 1. *"Your dye barely binds β-cyclodextrin — Ka around 50–195 M⁻¹. What is your dynamic range?"* → §2.3. Concede, cite the July 2026 paper, name 2,6-ANS/γ-CD as the design response.
 2. *"PFAS are surfactants. So is your dye an anion. What stops any other anionic surfactant — SDS, SDBS, humic acids, detergent residues — producing the same displacement?"* → **This is the hardest question and there is no clean answer.** Selectivity in every published system comes from the array (multiple dyes + pattern recognition), not from one dye. A single-dye assay is a *non-specific hydrophobic-anion* sensor. Correct answer: Aegis is explicitly a **non-specific screen**, and its output is a *risk score*, not a concentration — which is exactly why the escalation decision goes to LC-MS/MS.
-3. *"Han et al. needed four dyes and deep learning to get selectivity. Why do you think one dye is enough?"* → It probably is not, for speciation. It may be enough for a total-hydrophobic-anion burden proxy. Say that.
+3. *"Zha et al. needed four dyes and deep learning to get selectivity. Why do you think one dye is enough?"* → It probably is not, for speciation. It may be enough for a total-hydrophobic-anion burden proxy. Say that.
 4. *"What are you scoring against? There are no UK soil screening values for PFAS."* → Confirmed by the EIA itself: *"The absence of regulatory thresholds for PFAS (beyond the EQS for PFOS) in surface water impedes risk assessment and screening of PFAS."* **[P]** This is a real gap and it cuts both ways — it is a weakness in the scoring model *and* the clearest statement of why decision-support tooling is needed.
 5. *"Your matrix is soil and groundwater at contaminated sites — high organic carbon, high ionic strength. Every LOD you quoted is from clean or spiked water."* → Concede. Matrix effects are the standard failure mode; this is what a pilot must test.
 6. *"What is your false-negative rate, and who is liable for a missed exceedance?"* → See §7; this is a commercial-risk question dressed as chemistry.
@@ -304,7 +304,7 @@ Pick one and propagate. If the real price is £5,000, the savings chart *improve
 | 11 | **"EA budget mismatch £1.8–2.7m vs ~£300k"** | `Why.tsx:260-262` | Secondary (ENDS/IFSJ) | **Replace** with the far stronger primary pair: **£31bn–£121bn** remediation liability vs **£80m** central fund for orphan sites (EAC, Apr 2026). |
 | 12 | **770,000+ analyses in 2024; 46/1,067 works (4.3%)** | `Why.tsx:255-257` | **[P]** DWI | Accurate. But see claim 3 — do not reuse 4.3% as a triage-rate justification. |
 | 13 | **Cyclopure "$79/kit"** | `Why.tsx:113` | **Out of date** | Now **$85**. Also add: 10–14 business days, no stated UK availability. |
-| 14 | **"LOD 31–38 ng/L"** academic array | `Why.tsx:127` | **[P]** | Correct. Add the full citation (Han et al., *Anal. Chim. Acta* 2025, 1377, 344680) — currently only a bare ScienceDirect link. |
+| 14 | **"LOD 31–38 ng/L"** academic array | `Why.tsx:127` | **[P]** | Correct. Add the full citation (Zha et al., *Anal. Chim. Acta* 2025, 1377, 344680) — currently only a bare ScienceDirect link. |
 | 15 | **"~1,000× below LC-MS/MS"** | `Why.tsx:135` | Defensible, imprecise | True of commercial field kits (FREDsense 1 µg/L). The best arrays are ~30× off. Errs conservative — acceptable, but §2.2's table is more impressive *and* more honest. |
 | 16 | **"~300+ fragmented authorities"** | `Why.tsx:138, 417` | Vague | Use 287. Add that reorganisation is *reducing* the buyer count (134 → 38 unitaries). |
 | 17 | **"none … offer a decision-support and triage layer"** | `Why.tsx:490-493` | **Not defensible** | See §6.2. Reframe as pre-lab vs post-lab. |

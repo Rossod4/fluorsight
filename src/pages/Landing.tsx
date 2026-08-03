@@ -6,24 +6,25 @@ const PROBLEM_STATS: { label: string; value: string; detail: string }[] = [
     label: 'Cost per lab sample',
     value: '€175–300',
     detail:
-      'Accredited LC-MS/MS analysis, EU proxy pricing (drinking/natural water €175, wastewater €300). UK labs quote per-site only. Source: Measurlabs, 2025.',
+      'Accredited LC-MS/MS analysis. EU published list prices, excl. VAT, plus a €97 per-order service fee (drinking/natural water €175, wastewater €300). No UK laboratory we approached publishes a rate card. Source: Measurlabs product pages, 2025.',
   },
   {
     label: 'Typical turnaround',
-    value: '~3 weeks',
-    detail: 'From sampling to accredited lab result, before any remediation decision can be made. Source: Measurlabs.',
+    value: '2–3 weeks',
+    detail:
+      'From the laboratory receiving the sample to an accredited result, before any remediation decision can be made. Source: Measurlabs; SOCOTEC UK quotes 10–15 working days.',
   },
   {
     label: 'Potential PFAS source sites',
-    value: '10,000+',
+    value: '40,000+',
     detail:
-      'Identified in England alone by an Environment Agency contractor, from a GIS tool scoring 40,000+ mapped sites. Source: ENDS Report.',
+      'Mapped in England by the Environment Agency’s PFAS risk-screening work, of which 2,900–10,200 are modelled as high-risk depending on the score threshold. Source: Jacobs U.K. Ltd for the Environment Agency, Phase 4 WP4, July 2023.',
   },
   {
     label: 'EA investigation budget gap',
     value: '£1.8–2.7m vs £300k',
     detail:
-      'Estimated cost to investigate just 4 known sites, against the Environment Agency’s annual budget of roughly £300,000 (+£200k chemicals funding). Source: ENDS Report / IFSJ.',
+      'Estimated cost to investigate just 4 known PFAS sites, against the Environment Agency’s contaminated land budget of £300k plus £200k from a chemicals funding stream, as quoted by the EA in October 2024. This is the contaminated land programme line, not the EA’s total budget. Source: The Guardian / Watershed Investigations.',
   },
 ];
 
