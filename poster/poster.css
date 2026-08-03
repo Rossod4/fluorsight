@@ -21,7 +21,11 @@
 
   /* Type scale. --body is the floor the rules impose; nothing may go under it
      except captions, which have their own floor of 18pt. */
-  --title: 130pt;
+  /* 100pt, not 130. At 130pt a 35-character title needs ~800mm against the
+     ~707mm left once the QR block is placed, so it wrapped to two lines and
+     cost ~45mm for nothing. Measured, not guessed. */
+  --title: 100pt;
+  --brand: 34pt;
   --standfirst: 40pt;
   --panel-heading: 44pt;
   --body: 32pt;
@@ -207,6 +211,53 @@ strong { font-weight: 700; }
   align-items: flex-start;
 }
 .footer p { font-size: var(--caption); color: var(--muted); margin: 0 0 2mm; }
+
+/* ---- Layout blocks ----------------------------------------------------- */
+
+.title-row { display: flex; gap: var(--gutter); align-items: flex-start; }
+.title-main { flex: 1; }
+.title-qr { width: 60mm; flex: none; }
+.key { border-top: 0.5mm solid var(--rule); padding-top: 3mm; margin-top: 5mm; }
+
+/* No full-width 32pt text: at 761 mm a line runs to ~129 characters against a
+   readable maximum near 75. Everything long is constrained to a sane measure. */
+.standfirst, .hero-copy p, .footer p { max-width: 520mm; }
+
+.hero-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--gutter); }
+.figure--queue { min-height: 160mm; }
+.figure--sweep { min-height: 160mm; }
+.brand { font-size: var(--brand); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin: 0 0 3mm; }
+.hero-copy { margin-top: 5mm; }
+
+.diff-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); }
+.diff-row p { margin: 0; font-size: 28pt; line-height: 1.28; }
+
+.statrow { display: flex; gap: var(--gutter); margin: 0 0 5mm; align-items: baseline; }
+.statrow .big { font-size: 60pt; font-weight: 800; letter-spacing: -0.02em; display: block; line-height: 1; }
+.statrow .lbl { font-size: var(--caption); color: var(--faint); display: block; margin-top: 1.5mm; }
+
+.steps { width: 100%; border-collapse: collapse; }
+.steps th {
+  text-align: left;
+  vertical-align: top;
+  width: 60mm;
+  padding: 3mm 6mm 3mm 0;
+  font-size: 30pt;
+  color: var(--teal-dark);
+  border-top: 0.4mm solid var(--rule);
+}
+.steps td {
+  vertical-align: top;
+  padding: 3mm 0;
+  font-size: 30pt;
+  line-height: 1.28;
+  border-top: 0.4mm solid var(--rule);
+}
+.steps em { font-style: normal; font-weight: 700; }
+
+.footer-main { flex: 1; }
+.footer-qr { width: 52mm; flex: none; }
+.qr--small { width: 46mm; height: 46mm; }
 
 /* ---- Overflow guard ---------------------------------------------------- */
 /* Screen-only. Reports measured word count and flags if content exceeds the

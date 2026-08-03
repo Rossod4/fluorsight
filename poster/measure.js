@@ -25,7 +25,10 @@
 
   function countWords(root) {
     let n = 0;
-    root.querySelectorAll('p, li').forEach((el) => {
+    // td/th included: the next-steps table is body copy and consumes the sheet
+    // exactly like a paragraph does. Counting only p/li understated it by ~110
+    // words and would have let the budget drift back up unnoticed.
+    root.querySelectorAll('p, li, td, th').forEach((el) => {
       if (el.closest('#guard')) return;
       if (el.classList.contains('caption')) return;
       const t = el.textContent.trim();
