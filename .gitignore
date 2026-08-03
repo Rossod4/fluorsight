@@ -5,3 +5,7 @@ dist
 
 .tmpscript
 .playwright-mcp
+
+*.html
+!index.html
+soc2.txt
