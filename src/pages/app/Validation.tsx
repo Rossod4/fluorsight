@@ -67,8 +67,6 @@ export default function Validation() {
     [sweep],
   );
 
-  const maxFlips = sensitivity[0]?.totalFlips ?? 0;
-
   return (
     <div>
       <PageHeader
@@ -175,9 +173,18 @@ export default function Validation() {
             </div>
 
             <p className="mt-4 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
-              With n = {result.n}, these rates carry no statistical weight. They are reported to
-              show the measurement we would track, and the value we would optimise for
-              (sensitivity), not to claim performance.
+              With n = {result.n}, these rates carry no statistical weight — and the denominator for
+              a false-negative claim is confirmed <em>exceedances</em>, of which there is exactly
+              one. The 95% interval on sensitivity spans roughly 2.5%&ndash;100%. We report the n
+              and refuse the rate.
+            </p>
+            <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-900 ring-1 ring-amber-200 ring-inset">
+              <strong>The sharper limitation.</strong> The confirmed samples measured 34, 41 and
+              1,840 ng/L — nothing between 41 and 1,840. Because of that gap,{' '}
+              <strong>every escalation threshold from 23 to 72 produces an identical confusion
+              matrix</strong>, so this back-test contains no information about where the threshold
+              belongs. No confirmed sample falls anywhere near the decision boundary, which is the
+              only region triage actually decides. A pilot has to be stratified to fill it.
             </p>
           </>
         )}
@@ -266,36 +273,45 @@ export default function Validation() {
       </Card>
 
       <Card className="mt-6 p-5">
-        <h2 className="text-sm font-semibold text-slate-900">Weight sensitivity</h2>
+        <h2 className="text-sm font-semibold text-slate-900">
+          Weight sensitivity — how far each weight must move to change a decision
+        </h2>
         <p className="mt-0.5 text-xs text-slate-500">
-          Each weight is varied by ±25% on its own, and we count how many escalate / do-not-escalate
-          decisions change across the whole portfolio. Weights near the top are the ones the model
-          is genuinely sensitive to — and therefore the ones that most need real calibration.
+          Each weight is scaled while the others are renormalised to hold the total at 100, so a
+          changed decision reflects that factor&rsquo;s relative importance rather than a shift in
+          the overall scale. The bar shows the <strong>breakdown point</strong>: the smallest change
+          to that weight that flips any escalate / hold decision. Shorter is more influential.
         </p>
         <div className="mt-4 space-y-2">
-          {sensitivity.map((w) => (
-            <div key={w.weight} className="flex items-center gap-3">
-              <span className="w-56 shrink-0 truncate text-sm text-slate-700">
-                {WEIGHT_LABELS[w.weight]}
-              </span>
-              <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
-                <div
-                  className="h-full rounded-full bg-teal-600"
-                  style={{ width: maxFlips === 0 ? '0%' : `${(w.totalFlips / maxFlips) * 100}%` }}
-                />
+          {sensitivity.map((w) => {
+            const bp = w.breakdownPoint;
+            return (
+              <div key={w.weight} className="flex items-center gap-3">
+                <span className="w-56 shrink-0 truncate text-sm text-slate-700">
+                  {WEIGHT_LABELS[w.weight]}
+                </span>
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
+                  <div
+                    className={`h-full rounded-full ${bp === undefined ? 'bg-slate-300' : 'bg-teal-600'}`}
+                    style={{ width: `${Math.min(1, bp ?? 1) * 100}%` }}
+                  />
+                </div>
+                <span className="w-32 shrink-0 text-right text-xs text-slate-500">
+                  {bp === undefined ? 'over 100%' : `${Math.round(bp * 100)}%`}
+                </span>
               </div>
-              <span className="w-28 shrink-0 text-right text-xs text-slate-500">
-                {w.totalFlips} decision{w.totalFlips === 1 ? '' : 's'}
-              </span>
-            </div>
-          ))}
+            );
+          })}
         </div>
-        {maxFlips === 0 && (
-          <p className="mt-3 text-xs text-slate-500">
-            No decision changes under a ±25% perturbation — on this dataset every sample sits well
-            clear of the escalation threshold.
-          </p>
-        )}
+        <p className="mt-3 rounded-lg bg-slate-50 px-3 py-2 text-xs text-slate-600">
+          <strong>Why this replaced a simpler statistic.</strong> We previously reported how many
+          decisions each weight flips under a fixed ±25% perturbation, and concluded the model was
+          over-parameterised because most weights flipped none. That conclusion was an arithmetic
+          artefact: a ±25% change to a weight of <em>w</em> moves any score by at most 0.25<em>w</em>,
+          and the closest sample here sits 4 points from the threshold — so every weight below 16
+          was incapable of flipping anything before the code ran. The breakdown point asks the
+          question that actually has an answer.
+        </p>
       </Card>
 
       <Card className="mt-6 p-5">

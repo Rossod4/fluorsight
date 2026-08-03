@@ -81,20 +81,55 @@ narrower.
 
 ---
 
-## Weight sensitivity (±25%, one at a time)
+## Weight sensitivity — corrected 4 August 2026
 
-| Weight | Decisions changed |
+> ### 🔴 The previous version of this section was wrong, and the error was mine.
+>
+> It reported that **nine of ten weights change no decision under ±25%** and read that as evidence
+> the model is over-parameterised. **That was an arithmetic artefact, not a finding.** A ±25%
+> change to a weight of *w* moves any score by at most 0.25·*w*. The closest sample to the
+> threshold sits **4 points** away (RM-RW-001, score 54). So every weight below 16 was
+> *arithmetically incapable* of flipping anything — the result was fixed before the code ran.
+>
+> The old implementation also **failed to renormalise**: it scaled one weight and left the rest, so
+> the achievable maximum drifted away from 100 and a flipped decision was ambiguous between "this
+> factor matters" and "the whole scale moved". Both are fixed in `src/lib/validation.ts`.
+
+The right statistic is the **breakdown point** — the smallest change to a weight that flips any
+escalate/hold decision, with the other weights renormalised so the total stays at 100.
+
+| Weight | Max points | Breakdown point |
+|---|---|---|
+| Screening evidence | 35 | **30%** |
+| Firefighting foam / airfield | 10 | **95%** |
+| Repeat positives, landfill, industrial, wastewater treatment, historical contamination, prior lab-confirmed nearby, receptor sensitivity, source type | 4–10 | **over 100%** |
+
+**The defensible sentence:** *"No site factor other than airfield history changes a decision until
+its weight moves by more than 95%. Screening evidence changes one at 30%."* That survives
+cross-examination; the old version does not.
+
+---
+
+## ⚠️ The back-test contains no information about the threshold
+
+The three lab-confirmed samples measured **34, 41 and 1,840 ng/L**, scoring 22, 22 and 72.
+There is nothing between 41 and 1,840 ng/L.
+
+Because of that gap, the confusion matrix is constant across a huge range of thresholds:
+
+| Threshold | TP / FP / FN / TN |
 |---|---|
-| Screening evidence | 1 |
-| Repeat positives, firefighting foam / airfield, landfill, industrial, wastewater, historical contamination, prior lab-confirmed nearby, receptor sensitivity, source type | **0** |
+| 1–22 | 1 / 2 / 0 / 0 |
+| **23–72** | **1 / 0 / 0 / 2** |
+| 73–100 | 0 / 0 / 1 / 2 |
 
-**Nine of the ten weights change no decision at all on this dataset.**
+**Every threshold from 23 to 72 gives an identical result.** The operating point of 50 is therefore
+not supported by the back-test in any way — and claiming it "sits inside the safe band, not at its
+edge" would be unsupportable if a judge checked.
 
-Do not hide this — it is a genuinely sophisticated point and a data-literate judge will respect it
-far more than a claim of precision. The honest reading: **the model is over-parameterised for the
-evidence available.** This analysis is exactly how you identify which weights earn their place, and
-it says calibration effort should go to screening evidence first. It is also an argument *for* the
-tool's design — the weights are user-editable precisely because we cannot yet justify them.
+**Say this instead:** *"No confirmed sample falls between 50 and 200 ng/L — the region triage
+actually decides. Our back-test cannot locate the threshold, and the pilot is stratified to fill
+that gap."* It converts the weakest part of the analysis into the clearest argument for the pilot.
 
 ---
 

@@ -172,15 +172,52 @@ export interface WeightSensitivity {
   flipsWhenIncreased: number;
   /** Total decisions affected — the headline "does this weight matter?" number. */
   totalFlips: number;
+  /**
+   * Smallest fractional change to this weight, in either direction, that flips
+   * at least one escalation decision. Undefined if nothing flips within
+   * `maxDelta`. See `breakdownPoints` for why this is the better statistic.
+   */
+  breakdownPoint?: number;
 }
 
 /**
- * One-at-a-time perturbation: vary each weight by ±`delta` (default 25%) and
- * count how many escalate/don't-escalate decisions change.
+ * Rescale one weight and renormalise the rest so the total is unchanged.
  *
- * A weight that flips nothing is not doing work, and a weight that flips a
- * large share of decisions is one the model is fragile to — both are things a
- * judge is entitled to ask about.
+ * Renormalising matters here and the naive version was wrong. Scores are
+ * compared against a FIXED threshold, so if you scale one weight and leave the
+ * others alone, the maximum achievable score moves too — and you can no longer
+ * tell whether a decision flipped because that factor matters or merely because
+ * the whole scale shifted underneath the threshold. Holding the total constant
+ * isolates the weight's *relative* contribution, which is the question being
+ * asked.
+ */
+function reweight(settings: Settings, key: keyof Settings['weights'], factor: number): Settings {
+  const w = settings.weights;
+  const keys = Object.keys(w) as Array<keyof Settings['weights']>;
+  const total = keys.reduce((sum, k) => sum + w[k], 0);
+  const target = w[key] * factor;
+  const restTotal = total - w[key];
+  const restTarget = total - target;
+  // If the perturbed weight would consume the entire budget there is nothing
+  // left to renormalise into; fall back to the unrenormalised form.
+  const scale = restTotal === 0 ? 1 : restTarget / restTotal;
+  const next = {} as Settings['weights'];
+  for (const k of keys) next[k] = k === key ? target : w[k] * scale;
+  return { ...settings, weights: next };
+}
+
+/**
+ * One-at-a-time perturbation: vary each weight by ±`delta` (default 25%),
+ * renormalising the others, and count how many escalate/don't-escalate
+ * decisions change.
+ *
+ * ⚠️ READ BEFORE QUOTING A FLIP COUNT. On a small dataset this statistic is
+ * close to meaningless, and saying so is more defensible than reporting it. A
+ * ±25% change to a weight of w moves any score by at most 0.25·w. If the
+ * closest sample sits 4 points from the threshold, then every weight below 16
+ * is arithmetically incapable of flipping anything — the "finding" that most
+ * weights change no decision is fixed before the code runs. Report
+ * `breakdownPoints` instead, which asks how far each weight would have to move.
  */
 export function weightSensitivity(
   samples: Sample[],
@@ -198,18 +235,34 @@ export function weightSensitivity(
   const keys = Object.keys(settings.weights) as Array<keyof Settings['weights']>;
   return keys
     .map((weight) => {
-      const scale = (factor: number): Settings => ({
-        ...settings,
-        weights: { ...settings.weights, [weight]: settings.weights[weight] * factor },
-      });
-      const flipsWhenReduced = countFlips(scale(1 - delta));
-      const flipsWhenIncreased = countFlips(scale(1 + delta));
+      const flipsWhenReduced = countFlips(reweight(settings, weight, 1 - delta));
+      const flipsWhenIncreased = countFlips(reweight(settings, weight, 1 + delta));
+
+      // How far does this weight actually have to move before anything changes?
+      let breakdownPoint: number | undefined;
+      for (let d = 0.05; d <= 1; d = Math.round((d + 0.05) * 100) / 100) {
+        if (
+          countFlips(reweight(settings, weight, 1 - d)) > 0 ||
+          countFlips(reweight(settings, weight, 1 + d)) > 0
+        ) {
+          breakdownPoint = d;
+          break;
+        }
+      }
+
       return {
         weight,
         flipsWhenReduced,
         flipsWhenIncreased,
         totalFlips: flipsWhenReduced + flipsWhenIncreased,
+        breakdownPoint,
       };
     })
-    .sort((a, b) => b.totalFlips - a.totalFlips);
+    .sort((a, b) => {
+      // Rank by how little it takes to matter; weights that never flip go last.
+      const ab = a.breakdownPoint ?? Infinity;
+      const bb = b.breakdownPoint ?? Infinity;
+      if (ab !== bb) return ab - bb;
+      return b.totalFlips - a.totalFlips;
+    });
 }

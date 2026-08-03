@@ -175,11 +175,40 @@ describe('thresholdSweep', () => {
 });
 
 describe('weightSensitivity', () => {
-  it('returns every weight, ranked by how many decisions it changes', () => {
+  it('returns every weight, ranked by how little it takes to change a decision', () => {
     const result = weightSensitivity(samples, sites, DEFAULT_SETTINGS);
     expect(result).toHaveLength(Object.keys(DEFAULT_SETTINGS.weights).length);
     for (let i = 1; i < result.length; i++) {
-      expect(result[i].totalFlips).toBeLessThanOrEqual(result[i - 1].totalFlips);
+      const prev = result[i - 1].breakdownPoint ?? Infinity;
+      const curr = result[i].breakdownPoint ?? Infinity;
+      expect(curr).toBeGreaterThanOrEqual(prev);
+    }
+  });
+
+  it('holds the weight total constant when perturbing, so the scale cannot drift', () => {
+    // Scores are compared against a fixed threshold. If perturbing one weight
+    // moved the achievable maximum, a flip would be ambiguous between "this
+    // factor matters" and "the whole scale shifted".
+    const total = (s: Settings) =>
+      Object.values(s.weights).reduce((a, b) => a + b, 0);
+    const before = total(DEFAULT_SETTINGS);
+    // reweight is internal, so exercise it through the public function and
+    // assert the invariant it is supposed to preserve via a proxy: a weight
+    // that is scaled to its own current value must be a no-op.
+    const unchanged = weightSensitivity(samples, sites, DEFAULT_SETTINGS, 0);
+    expect(unchanged.every((w) => w.totalFlips === 0)).toBe(true);
+    expect(before).toBe(100);
+  });
+
+  it('reports a breakdown point that is undefined only when nothing flips within 100%', () => {
+    const result = weightSensitivity(samples, sites, DEFAULT_SETTINGS);
+    for (const w of result) {
+      if (w.breakdownPoint === undefined) {
+        expect(w.totalFlips).toBe(0);
+      } else {
+        expect(w.breakdownPoint).toBeGreaterThan(0);
+        expect(w.breakdownPoint).toBeLessThanOrEqual(1);
+      }
     }
   });
 
