@@ -147,11 +147,33 @@ export default function Landing() {
         <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <p className="text-sm leading-relaxed text-slate-600">
-              Aegis&rsquo;s reference screening approach pairs a fluorescent probe (1,8-ANS, a
+              Aegis&rsquo;s reference screening approach pairs a fluorescent probe (2,6-ANS, a
               well-established hydrophobic-cavity dye used in biochemistry for 50+ years) with a
-              PFAS-selective cyclodextrin adsorbent in the style of Cyclopure&rsquo;s DEXSORB+
+              PFAS-selective &beta;-cyclodextrin adsorbent in the style of Cyclopure&rsquo;s DEXSORB+
               material. As PFAS bind the adsorbent, the fluorescence signal shifts in a way that can
-              be read out rapidly and cheaply, without shipping a sample to a lab.
+              be read out rapidly and cheaply, without shipping a sample to a lab. The isomer matters:
+              2,6-ANS binds &beta;-cyclodextrin far more strongly than the more familiar 1,8-ANS
+              (K = 80&ndash;11,700 M&#8315;&sup1; against 50&ndash;195 M&#8315;&sup1;
+              &mdash;{' '}
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/23786974/"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-teal-700 underline underline-offset-2 hover:text-teal-800"
+              >
+                Sueishi et al., 2013
+              </a>
+              ), and a 2026 study using both isomers found 2,6-ANS binds most strongly to
+              &beta;-cyclodextrin while 1,8-ANS prefers &gamma; (
+              <a
+                href="https://doi.org/10.1007/s10847-026-01361-0"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-teal-700 underline underline-offset-2 hover:text-teal-800"
+              >
+                J. Incl. Phenom. Macrocycl. Chem., 2026
+              </a>
+              ). Our probe and host are matched deliberately.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
               Aegis builds on the peer-reviewed principle of cyclodextrin host&ndash;dye displacement
@@ -165,7 +187,7 @@ export default function Landing() {
               >
                 ScienceDirect, 2025
               </a>
-              ). No published study has used 1,8-ANS specifically for PFAS, so Aegis is honest that
+              ). No published study has used 2,6-ANS specifically for PFAS, so Aegis is honest that
               it is extending a validated chemistry principle, not citing a pre-existing ANS-PFAS
               paper. The underlying sensor is a modular, swappable component: any equivalent
               screening method (fluorescence, electrochemical, colourimetric) can sit behind the same

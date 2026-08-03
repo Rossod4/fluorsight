@@ -1,8 +1,44 @@
-# Chemistry brief for Dom — the ANS/cyclodextrin problem
+# Chemistry brief for Dom — the ANS/cyclodextrin question
 
-*Prepared 2 August 2026, ahead of the mentor call on Wednesday 5 August 2026.*
+*Prepared 2 August 2026. **Substantially corrected 3 August 2026** after Dom confirmed the actual probe.*
 
-A paper landed two weeks ago that speaks directly to the core of your sensing design. This brief lays out what it says, what it means for the assay as currently specified, the realistic options, and what to do about it before September. Nothing here is a reason to abandon the concept — but the current pairing (1,8-ANS + DEXSORB+, a β-cyclodextrin polymer) needs to change or be defended with eyes open, and you should walk into Wednesday's call already knowing which.
+> # 🟢 CORRECTION — THE PROBLEM THIS BRIEF DESCRIBED DOES NOT EXIST
+>
+> **This brief was written on the assumption that the probe is 1,8-ANS. It is not. Dom confirmed
+> the team is using 2,6-ANS, and that changes the conclusion completely — in your favour.**
+>
+> The wrong isomer entered the project record in `research-factsheet.md` on 9 July and every
+> document downstream inherited it, including the message asking Dom to reconsider his design.
+> Nobody on the team got this wrong; the documentation did.
+>
+> **What the 17 July 2026 paper actually says**, verified against the published abstract:
+>
+> > "Fluorescence titrations indicated that **2,6-ANS binds most strongly to β-CD**, whereas
+> > 8,1-ANS binds most strongly to γ-CD, while ITC places the 8,1-ANS γ-CD interaction among the
+> > weakest of the complexes studied."
+>
+> So the paper that this brief presented as a threat is, for the probe you are actually using, an
+> **endorsement**. 2,6-ANS + β-cyclodextrin is the strongest native-host pairing the paper
+> identifies, and DEXSORB+ is a β-cyclodextrin polymer. Sueishi et al. (2013) agree: **2,6-ANS
+> K = 80–11,700 M⁻¹** against **1,8-ANS K = 50–195 M⁻¹**, roughly two orders of magnitude apart.
+>
+> **Consequences:**
+> - §1–§3 below describe a mismatch that does not apply to your design. Read them only to
+>   understand why 1,8-ANS would have been the wrong choice — which is now a point in your favour
+>   and worth one line on the poster.
+> - "Option A" was to switch to 2,6-ANS. You are already there. There is nothing to switch.
+> - The dynamic-range, reproducibility and LOD concerns in §2 were premised on
+>   Ka ≈ 50–195 M⁻¹. At up to 11,700 M⁻¹ they are materially reduced, though not zero — see the
+>   note on the width of that range below.
+> - **§4 (preconcentration), §5 (selectivity) and §6 (supply chain) are unaffected and still
+>   stand.** Those are the real open issues.
+>
+> **The one caveat worth keeping.** Sueishi's 2,6-ANS range spans 80–11,700 M⁻¹ — about 150-fold,
+> depending on which cyclodextrin and what conditions. The top of that range is for the modified
+> hosts (2,6-di-O-methyl-β-CD and CB[7]), not native β-CD. So "2,6-ANS binds β-CD well" is right,
+> but pin down the figure for *native* β-CD specifically before putting a number on a poster.
+>
+> **Dom's proposed improvement path is confirmed and stronger than he stated** — see the new §9.
 
 ---
 
@@ -143,6 +179,123 @@ DEXSORB/DEXSORB+ is a single-source product from **Cyclopure**, a US company. Th
 Separately, worth knowing for the mentor call: **Wilfred Dichtel**, the academic behind the underlying β-cyclodextrin polymer chemistry (Wang, Lin, Klemes, Ateia, Trang, Wang, Ching, Helbling, Dichtel, *ACS Cent. Sci.* 2022, 8(5), 663–669 — the peer-reviewed foundation, which is genuinely solid science), **holds disclosed equity in Cyclopure**. That's not a reason to distrust the underlying chemistry — the *ACS Cent. Sci.* paper stands on its own peer-reviewed merits — but it does mean "DEXSORB" as a brand is not itself a scientific claim, and it's worth being able to say so if asked.
 
 **The practical point: generic β-cyclodextrin polymers are commercially available from multiple suppliers, not just Cyclopure.** The underlying chemistry (porous β-CD polymer for anionic-surfactant/PFAS adsorption) is documented in the open literature independent of the DEXSORB brand. Worth naming a generic alternative supplier as a backup in any risk-register slide, so the answer to "what if you can't get DEXSORB in the UK" isn't a blank.
+
+---
+
+## 9. Added 4 August 2026 — answers to Dom's reply
+
+### 9.1 Your positioning call is right, and now better supported than when you made it
+
+You said: don't reposition wholesale to AFFF source-zone, keep the guideline-level goal, name AFFF
+as a fallback market that is feasible today, and propose specific improvements to reach lower
+detection limits. **Agreed, and the isomer correction strengthens that.** The sensitivity argument
+against you was built on Ka ≈ 50–195 M⁻¹, which was the wrong compound. It also fits the challenge
+brief, which asks teams to "demonstrate a tangible path toward real-world impact, even if not
+market-ready" — a credible improvement path is the deliverable, not a finished instrument.
+
+Structure it on the poster as: **where we are → the path to the guideline → the market that works
+even if we don't get there.** That reads as risk-managed rather than hedged.
+
+### 9.2 Your methylation claim is confirmed, and it's bigger than you said
+
+Verified against two primary sources:
+
+- **Methyl-β-CD enhances ANS fluorescence ~120-fold, against ~8.4-fold for unmodified β-CD**
+  ([Sci. Direct, modified β-CDs](https://www.sciencedirect.com/science/article/abs/pii/S101060309800210X)).
+  That is roughly a **14× improvement in enhancement factor**, not just 80–120× in absolute terms.
+- **Sueishi et al. 2013** ([PubMed 23786974](https://pubmed.ncbi.nlm.nih.gov/23786974/)):
+  *"The Φ values of 1,8- and 2,6-ANSs were largely enhanced by the inclusion of methylated β-CDs"*
+  — so it applies to your isomer — and *"the highest stability constants were observed for 2,6-ANS
+  with **CB[7]** and **2,6-di-O-methylated β-CD**"*. Your proposed modification is simultaneously
+  the best-binding and among the brightest options in that study.
+
+**One subtlety worth having ready, because it's the kind of thing a chemist tests you on.** The same
+paper notes the quantum-yield enhancement *"did not correlate with the degree of stability (K)"* —
+brightness and binding strength improve independently. So you cannot argue "tighter binding,
+therefore better signal"; they are two separate wins from the same modification. Saying that
+unprompted signals you read the paper properly.
+
+**Also worth a line:** cucurbit[7]uril (CB[7]) is the other high-affinity host in that study, and
+there is literature on β-CD *dimers* showing cooperative inclusion of 2,6-ANS specifically
+([Beilstein J. Org. Chem. 2015, 11, 58](https://www.beilstein-journals.org/bjoc/articles/11/58)).
+Three named modification routes is a stronger "next steps" panel than one.
+
+**Temperature** — your other suggestion — is real and doubly useful. Lower temperature raises
+fluorescence quantum yield (less non-radiative decay) *and* generally strengthens host–guest
+association. It also connects to Evan's note that temperature should be a recorded input: it is
+both a **correction factor** for field variability and a **controllable design parameter**. Worth
+saying explicitly, because it shows the software and the chemistry were designed together.
+
+### 9.3 The machine learning question — how those arrays actually work
+
+You asked. Here it is, and I think it is the strongest "next steps" material you have.
+
+**The principle is cross-reactive sensing.** You do not build one probe that is specific to PFOA.
+You build several probes that are each *non*-specific but respond *differently* — and identify the
+analyte from the **pattern** across the array rather than from any single reading. It is closer to
+how smell works than to how a titration works: no single receptor identifies coffee, but the
+combination across many receptors does.
+
+**What Zha et al. built** ([Anal. Chim. Acta 2025, 1377, 344680](https://doi.org/10.1016/j.aca.2025.344680)):
+
+- A **4 × 6 array** — four β-CD-polymer/dye complexes (β-CDP-NPN, β-CDP-CC, β-CDP-AFR, β-CDP-PR)
+  against six PFAS.
+- Mechanism is **static fluorescence quenching** on adsorption; each PFAS quenches the four dyes in
+  different proportions because of differing adsorption affinities. That ratio *is* the fingerprint.
+- **Linear discriminant analysis (LDA)** for discrimination and quantification — LDA finds the axes
+  that best separate known classes, so a 4-number response vector collapses onto a plot where each
+  PFAS forms its own cluster.
+- Plus a **modular deep-learning platform** for quantification, reported at **0.66% relative error
+  against LC-MS** in surface water.
+- **LOD 38 ng/L PFOA, 31 ng/L PFOS**; classifies binary to quaternary mixtures at µg/L.
+
+Note the modest ambition of the maths. **LDA is a classical statistical method, not a neural
+network** — it needs tens of training samples, not thousands. That matters: the credible version of
+this is reachable by a student team, and you should say so rather than gesturing at "AI".
+
+### 9.4 Why this fits Aegis specifically — and it does, unusually well
+
+Most teams proposing a sensor array have nowhere to put the classifier. **You already have the
+software layer**, with a working explainable scoring engine, a data model and an audit trail. The
+array is a natural extension of a thing you have already built and can demonstrate.
+
+The roadmap writes itself:
+
+| | Today | Next |
+|---|---|---|
+| Chemistry | One probe (2,6-ANS + β-CD) | 3–4 probes on modified β-CDs |
+| Output | Total hydrophobic-anion burden | Response pattern per sample |
+| Interpretation | Risk score | LDA classification → substance, then risk score |
+| Substance identity | Prior from public contamination maps | Measured from the array |
+| Selectivity | None claimed — that is why we escalate | Discrimination from pattern, cited precedent |
+
+This also resolves the tension in Evan's "type of PFAS" idea honestly. Today you infer likely
+substance from what public records show is *in the area*. With an array you would eventually
+*measure* it. Same destination, two credible stages, and you are explicit about which one you are
+at.
+
+**Keep the caveats visible.** Zha et al. used lab-prepared samples, four purpose-built probe
+complexes, and a trained model per analyte set; matrix effects in real groundwater are unaddressed;
+and their LOD is the single best result in the field, so do not adopt it as your expected
+performance. The claim to make is *"there is a published route from a single non-specific probe to
+substance discrimination, and our software architecture is already the half of it that most sensor
+projects lack"* — not that you will match 31 ng/L.
+
+### 9.5 Your answers to the six questions
+
+- **Q1, Q2 (binding strength, 2,6 substitution):** superseded — you are on 2,6-ANS and the 2026
+  paper endorses it with β-CD. Ask the mentor instead to pin the Ka for **native** β-CD
+  specifically, since Sueishi's 80–11,700 M⁻¹ range spans modified hosts too.
+- **Q3 (preconcentration):** was built on the wrong 500,000× figure. The real question is now:
+  *"is 250–2,000× preconcentration enough to bring a source-zone concentration into range for a
+  single-probe fluorescence readout?"*
+- **Q4 (cheap pretreatment for surfactant interference):** you said you'd look into this — agreed,
+  it is the most valuable of the six. A selective wash or pH adjustment that suppresses SDS/humic
+  response would be a real contribution and is cheap to propose.
+- **Q5 (methylated β-CD):** answered above, and confirmed. Now a "next steps" item, not a question.
+- **Q6 (bench experiment):** you said no, Evan needs to build first. Fine — but see
+  `highest-value-actions.md`. Getting five people outside the team to *use the prototype* is the
+  cheap substitute and closes a rubric criterion that currently scores zero.
 
 ---
 

@@ -150,7 +150,7 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
       'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA (Zha et al. 2025, Anal. Chim. Acta 1377, 344680)',
     realTime: 'Lab prototype',
     commercial: 'No',
-    note: 'Validates the general principle Aegis builds on — cyclodextrin host–dye competitive displacement at ng/L levels — but with a four-dye array (NPN, AFR, CC, PR), not our 1,8-ANS probe, which has not been published for PFAS. No product, workflow or UK market presence.',
+    note: 'Validates the general principle Aegis builds on — cyclodextrin host–dye competitive displacement at ng/L levels — but with a four-dye array (NPN, AFR, CC, PR) plus a trained classifier, not our single 2,6-ANS probe, which has not been published for PFAS. No product, workflow or UK market presence. Their array approach is the basis of our proposed selectivity roadmap.',
   },
   {
     name: 'ESdat / EQuIS / Locus EIM',
@@ -172,7 +172,7 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
 
 const RISKS: string[] = [
   'Screening sensitivity is roughly 1–2 orders of magnitude below accredited LC-MS/MS — published cyclodextrin fluorescence arrays report LODs of 31–38 ng/L against accredited reporting levels of about 0.5–20 ng/L — so screening estimates carry real uncertainty and are never used for regulatory compliance reporting.',
-  'The specific sensor chemistry (1,8-ANS with a cyclodextrin adsorbent, applied to PFAS) has not itself been peer-reviewed — Aegis treats the sensor as a modular, swappable component while validation of this exact combination matures.',
+  'The specific sensor chemistry (2,6-ANS with a β-cyclodextrin adsorbent, applied to PFAS) has not itself been peer-reviewed. The probe–host pairing is well characterised in the binding literature and a 2026 study confirms 2,6-ANS binds β-cyclodextrin most strongly of the native hosts, but no published work applies it to PFAS. Aegis treats the sensor as a modular, swappable component while validation of this exact combination matures.',
   'The UK statutory PFAS limit and the Environment Agency’s prioritisation map are both still pending (2026 consultation; map due end-2026) — the regulatory tailwind is real but not yet fully crystallised.',
   'Local-authority procurement is slow and fragmented across roughly 290 separate Part 2A enforcing authorities in England (district and unitary councils; county councils are not Part 2A authorities), and that number is falling as reorganisation creates larger unitaries; consultancies are the faster initial commercial path.',
   'UK GBP lab pricing is quote-only from major labs (ALS, SOCOTEC, Eurofins, RPS); the cost model below uses a published EU proxy figure, explicitly flagged as an assumption pending direct UK quotes.',
@@ -206,7 +206,8 @@ const SOURCES: { label: string; href: string }[] = [
   { label: 'Research and Markets — PFAS testing', href: 'https://www.researchandmarkets.com/reports/6170631/per-polyfluoroalkyl-substances-pfas-testing' },
   { label: 'House of Commons Library — local authorities briefing', href: 'https://commonslibrary.parliament.uk/research-briefings/cbp-10494/' },
   { label: 'Part 2A statutory guidance (Environmental Protection Act 1990)', href: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/223705/pb13735cont-land-guidance.pdf' },
-  { label: 'Wikipedia — 8-Anilinonaphthalene-1-sulfonic acid (1,8-ANS)', href: 'https://en.wikipedia.org/wiki/8-Anilinonaphthalene-1-sulfonic_acid' },
+  { label: 'Sueishi et al. 2013 — fluorescence quantum yields of anilinonaphthalene sulfonic acids with cyclodextrins and CB[7] (Spectrochim. Acta A 114, 344–349)', href: 'https://pubmed.ncbi.nlm.nih.gov/23786974/' },
+  { label: 'J. Incl. Phenom. Macrocycl. Chem. 2026 — weakly interacting cyclodextrin complexes: 2,6-ANS and 8,1-ANS across native cyclodextrins', href: 'https://doi.org/10.1007/s10847-026-01361-0' },
   { label: 'ScienceDirect — cyclodextrin-polymer fluorescent sensor array for PFAS', href: 'https://www.sciencedirect.com/science/article/abs/pii/S0003267025010748' },
   { label: 'Cyclopure — DEXSORB', href: 'https://cyclopure.com/dexsorb/' },
   { label: 'Kurita — investment in Cyclopure / DEXSORB', href: 'https://www.kuritaamerica.com/the-splash/kurita-invests-in-cyclopure-to-accelerate-pfas-business-expansion-utilizing-dexsorb-in-the-united-states' },
