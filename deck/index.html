@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Aegis — oral presentation (draft)</title>
+<link rel="stylesheet" href="deck.css">
+</head>
+<body>
+
+<!-- ============ 1 · THE DECISION ============ -->
+<section class="slide" data-tag="1 / 7 · approach · Alex · 0:00–1:00">
+  <p class="kicker">Aegis · PFAS field triage</p>
+  <h1>40 samples.<br>Budget for eight.<br><span class="dim">Which eight?</span></h1>
+  <div class="stats">
+    <div>
+      <div class="v">£350</div>
+      <div class="l">to confirm one sample by LC-MS/MS<br><span style="color:#94a3b8">EIA to the Commons EAC, 2025 — soil</span></div>
+    </div>
+    <div>
+      <div class="v">40,000+</div>
+      <div class="l">sites mapped in England<br><span style="color:#94a3b8">Jacobs for the Environment Agency, 2023</span></div>
+    </div>
+    <div>
+      <div class="v">£300k</div>
+      <div class="l">EA contaminated-land budget, against £1.8–2.7m to investigate four sites</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · HOW IT WORKS ============ -->
+<section class="slide" data-tag="2 / 7 · development · Dom → Alex · 1:00–2:15">
+  <h2>The measurement is one input, not the answer</h2>
+  <div class="pipeline">
+    <div class="step">
+      <span class="n">01</span>
+      <div class="t">Concentrate</div>
+      <div class="d">250 mL through a β-cyclodextrin cartridge — about 250×</div>
+    </div>
+    <div class="step">
+      <span class="n">02</span>
+      <div class="t">Read</div>
+      <div class="d">2,6-ANS fluoresces only inside the cavity. PFAS competes; signal falls</div>
+    </div>
+    <div class="step">
+      <span class="n">03</span>
+      <div class="t">Score</div>
+      <div class="d">Reading + eight site factors → 0–100, every point attributed</div>
+    </div>
+    <div class="step">
+      <span class="n">04</span>
+      <div class="t">Decide</div>
+      <div class="d">Escalate or hold, with the reasoning recorded</div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="rule-note">
+    Screening evidence caps at <strong>45 points</strong> against a threshold of <strong>50</strong>.
+    No single measurement can escalate a sample on its own — the site history has to agree.
+  </div>
+</section>
+
+<!-- ============ 3 · THE PROTOTYPE ============ -->
+<section class="slide" data-tag="3 / 7 · development · Evan · 2:15–3:15">
+  <div class="split split--wide">
+    <div>
+      <h2>It is built, and it is live</h2>
+      <p>Upload a batch. The queue reorders itself.</p>
+      <p>Open any sample and you get the reasoning, driver by driver — not a black box.</p>
+      <p>Disagree with our risk appetite? Change the weights and every score moves.</p>
+      <div class="qr" style="margin-top:6mm;">QR</div>
+      <p class="small" style="margin-top:3mm;">rossod4.github.io/AEGIS</p>
+    </div>
+    <div class="shot">
+      <span class="ph">
+        RECORDED CAPTURE — 20 s, no audio, loops.<br><br>
+        CSV import → queue reorders → open RM-FTG-001 → driver breakdown → change a weight in
+        Settings → scores move.<br><br>
+        <strong>Recorded, not live.</strong> Venue wifi is not worth 8 marks.
+        Keep the live URL in a second tab for Q&amp;A.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · DOES IT WORK ============ -->
+<section class="slide" data-tag="4 / 7 · feasibility · Alex · 3:15–4:15">
+  <div class="split">
+    <div>
+      <h2>What we can and cannot claim</h2>
+      <p><strong>No bench experiments have been run.</strong> The chemistry is specified from
+        literature. The demo data is synthetic — we wrote it.</p>
+      <p>So we have no detection limit to quote, and we are not going to invent one.</p>
+      <div class="callout">
+        Our three lab-confirmed samples came back at <strong>34, 41 and 1,840 ng/L</strong>. Nothing
+        in between — so <strong>every threshold from 23 to 72 gives an identical result.</strong>
+        Our own back-test cannot tell us where to put the line. That is why the pilot is stratified.
+      </div>
+    </div>
+    <div class="shot">
+      <span class="ph">
+        FIGURE — threshold sweep.<br><br>
+        X: escalation threshold 5–100.<br>
+        Left Y: escalation rate.<br>
+        Right Y: confirmed exceedances missed.<br><br>
+        Mark the single confirmed exceedance at score 72 and the operating point at 50.
+        Shade 23–72 as "identical result".
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5 · BUSINESS CASE ============ -->
+<section class="slide" data-tag="5 / 7 · feasibility · Alex · 4:15–5:15">
+  <h2>The saving, and the two things that could sink it</h2>
+  <div class="stats" style="margin-top:0; margin-bottom:8mm;">
+    <div><div class="v">£125,000</div><div class="l">test everything</div></div>
+    <div><div class="v">£50,000</div><div class="l">triaged with Aegis</div></div>
+    <div><div class="v" style="color:#0f766e">£75,000</div><div class="l">saved — about 60%</div></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="callout">
+    <strong>1 · We do not have a lab price.</strong> Seven UK laboratories, none publishes a rate.
+    Break-even is £62.50/sample — this model is four times more sensitive to that number than to
+    our escalation rate.<br><br>
+    <strong>2 · We do not know who banks it.</strong> Fixed-fee, the consultancy keeps it.
+    Cost-plus, we are shrinking our own customer's invoice.
+  </div>
+</section>
+
+<!-- ============ 6 · NEXT STEPS ============ -->
+<section class="slide" data-tag="6 / 7 · next steps · Evan → Dom → Evan · 5:15–6:15">
+  <h2>Next steps — every one with a kill criterion</h2>
+  <table class="steps">
+    <tr>
+      <th>Sept · Evan</th>
+      <td>Five discovery interviews across consultancies, a Part 2A officer and a lab.
+        <span class="kill">Kills it if</span> nobody confirms budget forces under-sampling.</td>
+    </tr>
+    <tr>
+      <th>Oct · Dom</th>
+      <td>First bench work: binding titration, then deliberate interference — detergent, humic acid,
+        short-chain PFAS. <span class="kill">Kills it if</span> a PFOA spike cannot be told from a
+        matched surfactant — then we move to the published four-probe array.</td>
+    </tr>
+    <tr>
+      <th>Nov · Alex</th>
+      <td>Thirty paired samples, screened by us and confirmed by an accredited lab, with a partner
+        consultancy. <span class="kill">Kills it if</span> we have no partner — we publish at
+        n = 1 and say so.</td>
+    </tr>
+    <tr>
+      <th>Jan · all</th>
+      <td>Report a 95% upper bound on the false-negative rate. Never a rate.</td>
+    </tr>
+  </table>
+</section>
+
+<!-- ============ 7 · CLOSE ============ -->
+<section class="slide" data-tag="7 / 7 · quality · Alex · 6:15–6:30">
+  <div class="split split--wide">
+    <div>
+      <p class="closing">
+        Every PFAS investigation in Britain is already triaged.<br><br>
+        <span style="color:#0f766e">Today it is triaged by budget.</span><br><br>
+        It should be triaged by risk — and written down.
+      </p>
+    </div>
+    <div>
+      <div class="qr" style="width:58mm;height:58mm;">QR</div>
+      <p class="small" style="margin-top:4mm;">
+        <strong>rossod4.github.io/AEGIS</strong><br>
+        Live now — no login.
+      </p>
+      <p class="small" style="margin-top:6mm;">
+        <strong>We are looking for</strong> one consultancy or laboratory with archived samples
+        already analysed by LC-MS/MS. That single partnership removes the largest cost from our
+        validation plan.
+      </p>
+      <p class="small" style="margin-top:6mm; color:#94a3b8;">
+        Dom · Chemistry &nbsp;|&nbsp; Evan · Aerospace Engineering &nbsp;|&nbsp; Alex · Mathematics<br>
+        University of Bristol
+      </p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

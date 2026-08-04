@@ -102,23 +102,30 @@ chemist will push back hard if you imply it does. Mention it as a base-rate shif
 
 ---
 
-### 🔴 C3. "Your dye barely binds β-cyclodextrin. Ka is what, a hundred? How can a displacement assay work when the dye isn't in the cavity to begin with?"
+### ⭐ C3. "Your dye barely binds β-cyclodextrin. How can a displacement assay work when the dye isn't in the cavity to begin with?"
 
-**Why they're asking.** They know the ANS–cyclodextrin literature. This is a specialist's
-question and only comes from someone who works in the area.
+> ### ✅ CORRECTED 4 August 2026 — this question is now a gift, not a threat.
+> The earlier answer here conceded the premise, because the project documents wrongly recorded the
+> probe as **1,8-ANS**. It is **2,6-ANS**, and that reverses the finding entirely. Do not concede.
 
-**Answer (40s).**
-> You're right and it's the finding that most threatens our specific chemistry. Sueishi puts
-> 1,8-ANS with β-CD at about 50 to 195 per molar. The 2,6 isomer gets to around 11,700. And a
-> paper published on 17 July this year found that 8,1-ANS binds gamma-cyclodextrin best,
-> because the β cavity can't fully accommodate the naphthalene. So we've changed the design.
-> The dye is a swappable parameter — the same paper points at 2,6-ANS with β-CD, or a γ-CD
-> host. The architecture is preconcentrate, report, score, and none of that depends on which
-> anilinonaphthalene we use.
+**Why they're asking.** They know the ANS–cyclodextrin literature and are testing whether you do.
+They may be assuming 1,8-ANS, which is the isomer most people know.
 
-**Trap.** Defending 1,8-ANS. You have no reason to. Reading a two-week-old paper and changing
-your design because of it is one of the strongest things you can demonstrate to an academic —
-do not throw it away by being loyal to a choice you made in June.
+**Answer (35s).**
+> That's true of 1,8-ANS, which is the isomer most people mean by "ANS" — Sueishi puts it with
+> β-cyclodextrin at about 50 to 195 per molar. We use the 2,6 isomer, which reaches around
+> 11,700 at the same host. And a paper published on 17 July this year, using both isomers,
+> found 2,6-ANS binds β-cyclodextrin most strongly of the native hosts while 8,1-ANS prefers
+> gamma. Our sorbent is a β-cyclodextrin polymer, so the probe and the host are matched
+> deliberately.
+
+**Follow-up you should expect: "so where does that 11,700 come from?"**
+> Honestly, the top of Sueishi's range is for the modified hosts — 2,6-di-O-methyl-β-CD and
+> cucurbit[7]uril — not native β-CD. We haven't pinned the native figure yet. That's one of the
+> first things we're taking to our mentor.
+
+**Trap.** Over-claiming the 11,700. It is the top of a 150-fold range measured across several
+hosts, and a specialist will know that. Concede the range and you keep the win.
 
 ---
 
@@ -272,16 +279,22 @@ question in this section is B5, and it is not in any of your research documents.
 suspect you made it up. They're right — but you have a good answer now.
 
 **Answer (35s).**
-> It started as our own placeholder, and then we went and found the real number. The only
-> published UK figure is £350 per PFAS soil sample, from the Environmental Industries
-> Association's written evidence to the Environmental Audit Committee in May 2025 — lead author
-> Paul Nathanail, who wrote the CIRIA guidance on PFAS in soil and water. We've kept the model
-> at £250, twenty-nine per cent below it, because water is usually cheaper than soil and we'd
-> rather understate the saving. No UK lab publishes a rate card — we checked seven and they're
-> all quote-only. We've emailed four for real quotes.
+> It's our assumption and we can't source it. No UK laboratory publishes a PFAS rate card — we
+> approached seven and every one quotes on request. The nearest published UK figure is £350 a
+> sample, from the Environmental Industries Association's evidence to the Environmental Audit
+> Committee last year, but that's a soil figure and it explicitly excludes water. Ours is a
+> water workflow, so it sets scale and nothing more. What we can tell you is where it stops
+> mattering: break-even is £62.50 a sample, and the model is four times more sensitive to that
+> number than to our escalation rate.
 
-**Trap.** Presenting £250 as sourced. It isn't. The £350 is sourced; £250 is your deliberately
-conservative choice against it. That distinction is the whole answer.
+> ### 🔴 CORRECTED 4 August 2026 — do not call £250 "conservative".
+> The previous answer said £250 was "29% below the only published UK figure, so we'd rather
+> understate the saving." **That was itself a scope error.** The £350 is for *soil*; we model
+> *water*, and we do not know which costs more. Claiming conservatism we cannot support, in the
+> answer about a number we invented, is the worst possible place to be caught.
+
+**Trap.** Any framing that implies £250 is validated. It is an assumption. Volunteering the
+break-even instead converts the weakest number on the sheet into a demonstration of rigour.
 
 ---
 
@@ -491,6 +504,57 @@ theatre.
 > the one that needs real lab results, and it's empty of meaning until we have them.
 
 **Trap.** Letting them discover the data is synthetic. Volunteer it in the first sentence.
+
+> ⚠️ **Amended 4 August 2026.** The line "the threshold sweep and the weight sensitivity are
+> structural properties" is only half right — see D3b and D3c, both added below after we found
+> problems with each. Do not use it unqualified.
+
+---
+
+### ⭐🔴 D3b. "Your operating threshold is 50. Why 50?"
+
+**Why they're asking.** It is the single number that determines every decision the tool makes, and
+they suspect it was chosen because it is round. **A statistician will ask this first.**
+
+**Answer (35s).**
+> Because we couldn't derive it, and I'd rather show you why than defend the number.
+>
+> We have three lab-confirmed samples. They came back at thirty-four, forty-one and eighteen
+> hundred nanograms per litre — nothing in between. So every threshold from twenty-three to
+> seventy-two produces an identical confusion matrix on our data. Our own back-test contains no
+> information about where the line belongs.
+>
+> Fifty is a placeholder. What it should be is a cost-sensitive decision — an explicit ratio
+> between a missed exceedance and a wasted test — and the pilot is stratified specifically to
+> sample the region between fifty and two hundred nanograms per litre, which is where triage
+> actually decides anything.
+
+**Trap.** Saying the operating point "sits inside the safe band, not at its edge." It is true of
+the arithmetic and meaningless as evidence, and a judge who works it out has caught you dressing a
+placeholder as a finding.
+
+---
+
+### D3c. "You say most of your weights don't matter. How did you establish that?"
+
+**Why they're asking.** It sounds like a sophisticated self-criticism, which makes them want to
+check it.
+
+**Answer (30s).**
+> We got that wrong at first and corrected it. We were reporting how many decisions each weight
+> flips under a ±25% perturbation, and most flipped none — which we read as over-parameterisation.
+>
+> It's an artefact. A twenty-five per cent change to a weight of *w* moves a score by at most a
+> quarter of *w*, and our closest sample sits four points from the threshold. So every weight
+> below sixteen was arithmetically incapable of flipping anything before the code ran.
+>
+> What we report now is the breakdown point — how far each weight has to move before any decision
+> changes. Screening evidence, thirty per cent. Airfield history, ninety-five. Everything else,
+> more than a hundred. The old version also failed to renormalise, so the total drifted off a
+> hundred while the threshold stayed fixed. Both are fixed.
+
+**Delivery note.** This is the strongest thing you can say to a statistician, because it is a
+methodological error you found and fixed yourselves. Do not rush it.
 
 ---
 
@@ -1012,37 +1076,45 @@ get for PFAS versus humic acid on that resin?"**
 
 ## Killer 5 — "Your dye barely binds β-cyclodextrin."
 
-### The scripted answer (40s)
+> ### ✅ REWRITTEN 4 August 2026. The old answer conceded a premise that is false for our probe.
 
-> That's correct, and it's the finding that most threatens our specific chemistry.
->
-> Sueishi puts 1,8-ANS with β-cyclodextrin at around 50 to 195 per molar. The 2,6 isomer gets
-> to about 11,700. And a paper published on 17 July this year — three weeks ago — found that
-> 8,1-ANS binds gamma-cyclodextrin best, because the β cavity can't fully accommodate the
-> naphthalene group.
->
-> If the dye barely occupies the cavity, displacement gives you poor dynamic range and noisy
-> reproducibility. So we changed the design. The dye is a swappable parameter, and the same
-> paper points us at 2,6-ANS with β-CD, or a γ-CD host.
->
-> What doesn't change is the architecture: preconcentrate, report, score.
+### The scripted answer (35s)
 
-**Delivery note.** Deliver this as *evidence of process*, not as a confession. You read a paper
-published three weeks ago and revised a design decision because of it. Very few undergraduate
-entries can say that. Let it land.
+> That's true of 1,8-ANS — which is what most people mean by "ANS", so it's a fair assumption.
+> Sueishi puts that isomer with β-cyclodextrin at around 50 to 195 per molar.
+>
+> We use 2,6-ANS. Same paper puts it up to about 11,700 at the same host. And a study published
+> on 17 July this year, which measured both isomers against all three native cyclodextrins,
+> found 2,6-ANS binds β most strongly while 8,1-ANS prefers gamma.
+>
+> Our sorbent is a β-cyclodextrin polymer. The probe and the host are matched on purpose.
+
+**Delivery note.** Say it evenly, not triumphantly. You are correcting a specialist on their own
+ground and the way to survive that is to grant why they assumed it before you correct it.
 
 ### The follow-up
 
-**"Have you tested 2,6-ANS?"**
+**"Where in that range does native β-CD actually sit?"** — expect this from anyone who knows the
+paper, because 80–11,700 M⁻¹ is a 150-fold spread.
 
-### The answer to the follow-up (25s)
+### The answer to the follow-up (20s)
 
-> No. We haven't tested anything.
->
-> What we did was read a paper published three weeks ago and change a design decision because
-> of it, rather than defend a choice we'd already committed to. The experiment is a binding
-> titration of both isomers against β and γ-cyclodextrin — a plate reader and about a day. It's
-> first on the list.
+> Honestly, the top of that range is the modified hosts — 2,6-di-O-methyl-β-CD and cucurbit[7]uril
+> — not native β-cyclodextrin. We haven't pinned the native number down yet, and it's one of the
+> first things we're asking our mentor. The October titration measures it directly.
+
+### The second follow-up
+
+**"Have you tested any of this?"**
+
+> No. We've run no experiments at all. What we did was find that our own written spec had recorded
+> the wrong isomer, and a paper published three weeks ago caught it. The titration is a plate
+> reader and about a day, and it's first on the October list.
+
+**Why this version is stronger.** The old answer offered "we read a paper and changed our design",
+which sounds good but was not true — the design was always 2,6-ANS; the *documentation* was wrong.
+The true story is less flattering and more defensible, and if a judge later reads the paper they
+will find it says exactly what you said it says.
 
 **Second likely follow-up: "Then isn't the preconcentration doing all the work? What's the dye
 even for?"**
@@ -1151,12 +1223,19 @@ Pick one and only one. Say it without qualification.
 - **"Get the mentor involved before the design was settled."** Ours was assigned in mid-July.
   We could have pushed for contact sooner, and some of the questions we're only answering now
   are ones an expert would have asked us in June.
-- **"Do the chemistry reading before choosing the chemistry."** We picked 1,8-ANS early
-  because it's a well-known probe, and then found out in July that it's a poor fit for the host
-  we'd chosen. The reading order was backwards.
+- **"Write things down properly the first time."** Our own project documents recorded the wrong
+  ANS isomer for weeks. Nobody on the team was confused — Dom always knew which probe we were
+  using — but everything written *around* the chemistry inherited the error, and we only caught it
+  when a new paper made us go back to the source. We now check technical claims against the person
+  who owns them before they go anywhere.
 
 **The third is the strongest** if it's true, because it's a technical self-criticism rather than
-an interpersonal one, and it connects directly to Killer 5.
+an interpersonal one, it is specific, and the fix is a process anyone can see you now follow.
+
+> ⚠️ **Corrected 4 August 2026.** This bullet previously said *"we picked 1,8-ANS early and found
+> out in July it was a poor fit."* That never happened — the probe was always 2,6-ANS and the
+> 17 July paper endorses it. Do not use the old version; it invents a mistake, and a judge who
+> reads the paper will find it says the opposite.
 
 ## How to make it sound like students, not a corporate answer
 
