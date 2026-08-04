@@ -1,0 +1,43 @@
+# Netlify build configuration.
+#
+# We moved here from GitHub Pages so the repository can be private — Pages only
+# serves public repos on the free plan, and flipping the repo to private would
+# have taken the site down silently.
+#
+# Note there is no SPA redirect rule below, and that is deliberate: the app uses
+# HashRouter, so every route is "/#/whatever" and the server only ever needs to
+# serve the index. If routing ever moves to BrowserRouter, a catch-all redirect
+# to /index.html becomes mandatory or every deep link 404s.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Matches the Node version the GitHub Actions workflow used, so a build that
+  # passed there behaves the same here.
+  NODE_VERSION = "22"
+
+# The poster and deck live in /poster and /deck as standalone HTML. They are
+# NOT part of the Vite build and are therefore not published — which is correct.
+# They contain internal working notes (rehearsal cues, critique responses) that
+# should not be on a public URL.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Hashed build assets are immutable — cache them hard. The index must not be
+# cached, or a deploy leaves people on the old bundle.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
