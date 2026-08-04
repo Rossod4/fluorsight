@@ -12,7 +12,7 @@
 // CIRIA C819).
 //
 // IMPORTANT SCOPE LIMIT: that £350 is a rough figure for PFAS analysis of SOIL,
-// and the evidence explicitly excludes water. Aegis's workflow is water. So
+// and the evidence explicitly excludes water. Fluorsight's workflow is water. So
 // £350 is NOT a benchmark our £250 can be called conservative against — we do
 // not know whether water analysis costs more or less. An earlier version of
 // this file claimed £250 was "29% below the published UK figure"; that was a
@@ -36,7 +36,7 @@ export const INDICATIVE_LAB_COST_GBP = 250;
 export const MODELLED_PORTFOLIO_SAMPLES = 500;
 
 /**
- * Share of screened samples Aegis escalates to the laboratory.
+ * Share of screened samples Fluorsight escalates to the laboratory.
  *
  * This is an assumption and it is the model's weakest joint, so it is presented
  * as a range rather than a point estimate. Note deliberately NOT justified by
@@ -76,8 +76,8 @@ export const CONSUMABLE_COST_PER_SAMPLE_GBP = 40;
 export const CONSUMABLES_ANNUAL_GBP =
   MODELLED_PORTFOLIO_SAMPLES * CONSUMABLE_COST_PER_SAMPLE_GBP;
 
-/** Total annual Aegis cost to the customer: subscription plus consumables. */
-export const AEGIS_ANNUAL_COST_GBP = SUBSCRIPTION_STANDARD_GBP + CONSUMABLES_ANNUAL_GBP;
+/** Total annual Fluorsight cost to the customer: subscription plus consumables. */
+export const FLUORSIGHT_ANNUAL_COST_GBP = SUBSCRIPTION_STANDARD_GBP + CONSUMABLES_ANNUAL_GBP;
 
 // ---------------------------------------------------------------------------
 // Derived cost model.
@@ -89,13 +89,13 @@ export const ALL_LAB_COST_GBP = MODELLED_PORTFOLIO_SAMPLES * INDICATIVE_LAB_COST
 /** Samples escalated to the lab under triage. */
 export const ESCALATED_SAMPLES = Math.round(MODELLED_PORTFOLIO_SAMPLES * MODELLED_ESCALATION_RATE);
 
-/** Lab spend under triage, before Aegis costs. */
+/** Lab spend under triage, before Fluorsight costs. */
 export const TRIAGED_LAB_COST_GBP = ESCALATED_SAMPLES * INDICATIVE_LAB_COST_GBP;
 
 /** Total cost under triage, including subscription and consumables. */
-export const TRIAGED_TOTAL_COST_GBP = TRIAGED_LAB_COST_GBP + AEGIS_ANNUAL_COST_GBP;
+export const TRIAGED_TOTAL_COST_GBP = TRIAGED_LAB_COST_GBP + FLUORSIGHT_ANNUAL_COST_GBP;
 
-/** Net annual saving on the modelled portfolio, after paying for Aegis. */
+/** Net annual saving on the modelled portfolio, after paying for Fluorsight. */
 export const MODELLED_ANNUAL_SAVING_GBP = ALL_LAB_COST_GBP - TRIAGED_TOTAL_COST_GBP;
 
 /** Net saving as a share of the all-lab cost. */
@@ -110,7 +110,7 @@ export const LAB_SAMPLES_AVOIDED = MODELLED_PORTFOLIO_SAMPLES - ESCALATED_SAMPLE
  */
 export function savingAtEscalationRate(rate: number): number {
   const escalated = Math.round(MODELLED_PORTFOLIO_SAMPLES * rate);
-  return ALL_LAB_COST_GBP - (escalated * INDICATIVE_LAB_COST_GBP + AEGIS_ANNUAL_COST_GBP);
+  return ALL_LAB_COST_GBP - (escalated * INDICATIVE_LAB_COST_GBP + FLUORSIGHT_ANNUAL_COST_GBP);
 }
 
 export const gbp = (n: number) => `£${n.toLocaleString('en-GB')}`;

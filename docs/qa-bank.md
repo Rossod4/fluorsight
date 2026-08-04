@@ -1,4 +1,4 @@
-# Aegis — Hostile Q&A Bank and Rehearsal Guide
+# Fluorsight — Hostile Q&A Bank and Rehearsal Guide
 
 **For:** Celebration Day, 23 September 2026 · 7-minute oral (hard cutoff) + **3-minute Q&A** · poster session
 **Compiled:** 2 August 2026 · Sources: `research-2026-08.md`, `research-factsheet.md`, `Why.tsx`, `riskEngine.ts`, `validation.ts`
@@ -619,7 +619,7 @@ single most credible thing you can say to a scientist.
 ### D7. "Can the user override the recommendation?"
 
 **Answer (25s).**
-> Yes, and the design assumes they will. Aegis never removes a sample from the workflow — it
+> Yes, and the design assumes they will. Fluorsight never removes a sample from the workflow — it
 > produces a priority ordering and a documented rationale. Escalation is the consultant's
 > professional judgement, and the audit trail exists precisely so that judgement is defensible
 > either way. A tool that took the decision away would be unsellable and, honestly, wrong.
@@ -679,7 +679,7 @@ Response of 6 July 2026; **prioritisation map to public bodies end 2026, public 
 ### ⭐🔴 R2. "You tell someone a sample isn't worth testing. It was contaminated. Who's liable?"
 
 **Answer (35s).**
-> The consultant, and we've designed it that way. Aegis never removes a sample — it produces a
+> The consultant, and we've designed it that way. Fluorsight never removes a sample — it produces a
 > priority ordering with a written rationale for every score, and the escalation call stays
 > with the professional making it. That's not us dodging: it's the only structure that works,
 > because a screening tool with no accreditation cannot carry regulatory liability and
@@ -736,7 +736,7 @@ submissions. This is a serious practical objection.
 > Not as a result, no — and we wouldn't want them to. The screening number never appears as a
 > reported concentration and never supports a compliance statement. It's an internal
 > prioritisation input. What goes in the report is the accredited LC-MS/MS result on the
-> samples we escalated. Where Aegis appears in the report, if at all, is as the documented
+> samples we escalated. Where Fluorsight appears in the report, if at all, is as the documented
 > rationale for the sampling and analysis strategy — which is exactly the part planning
 > authorities have been rejecting. So it strengthens the submission without entering the
 > compliance chain.
@@ -1107,14 +1107,20 @@ paper, because 80–11,700 M⁻¹ is a 150-fold spread.
 
 **"Have you tested any of this?"**
 
-> No. We've run no experiments at all. What we did was find that our own written spec had recorded
-> the wrong isomer, and a paper published three weeks ago caught it. The titration is a plate
-> reader and about a day, and it's first on the October list.
+> No — we have no laboratory access, and we're not going to pretend otherwise. Bench work sits in a
+> final-year project. What we did instead was make the call from the binding literature: we started
+> on 1,8-ANS because it's the probe everyone knows, switched to 2,6 in June once we'd read the
+> association constants, and then in July a paper measuring both isomers against all three native
+> cyclodextrins came to the same conclusion independently.
 
-**Why this version is stronger.** The old answer offered "we read a paper and changed our design",
-which sounds good but was not true — the design was always 2,6-ANS; the *documentation* was wrong.
-The true story is less flattering and more defensible, and if a judge later reads the paper they
-will find it says exactly what you said it says.
+**Why this is the strongest version of this answer.** You made a design decision from primary
+literature, and later literature confirmed it. That is a better sequence than reacting to a paper,
+and much better than defending a choice you never revisited. It is also *true*, which matters —
+a judge who looks up the July paper will find it says exactly what you said.
+
+> ⚠️ **Corrected 4 August 2026.** An earlier draft here claimed the design was always 2,6-ANS and
+> only the documentation was wrong. That was my error, not the team's: the switch from 1,8 to 2,6
+> was a real decision made in June on binding grounds. Use the version above.
 
 **Second likely follow-up: "Then isn't the preconcentration doing all the work? What's the dye
 even for?"**
@@ -1152,7 +1158,7 @@ question and takes your credibility on everything else with it.
 
 **For the disagreement, pick a real one.** Candidates that plausibly happened, but only use one
 if it did:
-- Whether Aegis is a chemistry project or a software product — and which one leads the pitch.
+- Whether Fluorsight is a chemistry project or a software product — and which one leads the pitch.
 - Whether to target councils first (bigger public need) or consultancies first (faster sale).
 - Whether to state the chemistry limitations openly on the site or keep them in the risk
   section where they'd be less prominent.

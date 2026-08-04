@@ -78,7 +78,7 @@ export default function Landing() {
             <span className="block text-teal-700">Reserve the lab for what matters.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
-            Aegis triages PFAS (&ldquo;forever chemical&rdquo;) screening so that expensive, accredited
+            Fluorsight triages PFAS (&ldquo;forever chemical&rdquo;) screening so that expensive, accredited
             lab tests are directed only at the samples and sites with the highest estimated risk
             &mdash; turning thousands of possible sites into a short, defensible, budget-fit priority
             list.
@@ -122,7 +122,7 @@ export default function Landing() {
       {/* How it works */}
       <section className="border-t border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">How Aegis works</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-slate-900">How Fluorsight works</h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
             A four-step workflow that puts an explainable risk score between raw field data and any
             decision to spend money on a lab.
@@ -147,7 +147,7 @@ export default function Landing() {
         <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <p className="text-sm leading-relaxed text-slate-600">
-              Aegis&rsquo;s reference screening approach pairs a fluorescent probe (2,6-ANS, a
+              Fluorsight&rsquo;s reference screening approach pairs a fluorescent probe (2,6-ANS, a
               well-established hydrophobic-cavity dye used in biochemistry for 50+ years) with a
               PFAS-selective &beta;-cyclodextrin adsorbent in the style of Cyclopure&rsquo;s DEXSORB+
               material. As PFAS bind the adsorbent, the fluorescence signal shifts in a way that can
@@ -176,7 +176,7 @@ export default function Landing() {
               ). Our probe and host are matched deliberately.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
-              Aegis builds on the peer-reviewed principle of cyclodextrin host&ndash;dye displacement
+              Fluorsight builds on the peer-reviewed principle of cyclodextrin host&ndash;dye displacement
               fluorescence sensing for PFAS &mdash; a validated academic sensor-array approach with a
               detection limit around 31&ndash;38 ng/L for PFOS/PFOA (
               <a
@@ -187,7 +187,7 @@ export default function Landing() {
               >
                 ScienceDirect, 2025
               </a>
-              ). No published study has used 2,6-ANS specifically for PFAS, so Aegis is honest that
+              ). No published study has used 2,6-ANS specifically for PFAS, so Fluorsight is honest that
               it is extending a validated chemistry principle, not citing a pre-existing ANS-PFAS
               paper. The underlying sensor is a modular, swappable component: any equivalent
               screening method (fluorescence, electrochemical, colourimetric) can sit behind the same
@@ -199,7 +199,7 @@ export default function Landing() {
             <p className="mt-2 text-sm leading-relaxed text-slate-700">
               Accredited LC-MS/MS lab methods (EPA 537.1 / 533) detect PFAS down to roughly
               0.7&ndash;16 parts per trillion &mdash; around <strong>1,000&times; more sensitive</strong>{' '}
-              than most fluorescence field screens. Aegis screening is a triage signal, not a
+              than most fluorescence field screens. Fluorsight screening is a triage signal, not a
               replacement for laboratory confirmation, and is never used for regulatory compliance
               reporting.
             </p>
@@ -226,10 +226,10 @@ export default function Landing() {
       {/* Closing CTA */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Card className="flex flex-col items-center gap-4 bg-gradient-to-br from-teal-700 to-teal-800 p-10 text-center !border-teal-800">
-          <h2 className="text-2xl font-semibold text-white">See Aegis triage a portfolio of sites</h2>
+          <h2 className="text-2xl font-semibold text-white">See Fluorsight triage a portfolio of sites</h2>
           <p className="max-w-xl text-sm text-teal-50">
             Explore the live decision-support dashboard, or read the full business case behind
-            Aegis.
+            Fluorsight.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

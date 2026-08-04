@@ -1,4 +1,4 @@
-# AEGIS Fact Sheet: PFAS Screening Market & Science Context
+# FLUORSIGHT Fact Sheet: PFAS Screening Market & Science Context
 
 *Compiled 9 July 2026 via live web research. Every claim sourced inline. Conflicting figures noted; unverifiable items flagged. Use this for the website /why page AND the competition PowerPoint.*
 
@@ -19,7 +19,7 @@
 - Government will **consult in 2026** on a **statutory** PFAS drinking-water limit for England (Action 3.6).
 - EA's **GIS-based PFAS Prioritisation Map** (ranking **>40,000 mapped potential-source sites**) to be made available to **all public sector bodies incl. local authorities by end of 2026**; public version Q3 2027 (Action 1.2). [Envirotec summary](https://envirotecmagazine.com/2026/02/12/what-the-uk-governments-pfas-plan-means-for-industry/)
 - Commits to **updated Part 2A guidance for local authorities** on legacy PFAS contamination + technical guidance spanning planning/remediation/Part 2A by 2027 (Actions 3.15–3.16).
-- **Direct, current, named demand signal for Aegis** — councils will imminently need to triage which of thousands of flagged sites justify costly lab-confirmed investigation.
+- **Direct, current, named demand signal for Fluorsight** — councils will imminently need to triage which of thousands of flagged sites justify costly lab-confirmed investigation.
 
 **Environment Agency / Part 2A scale**
 - EA contractor work identified **>10,000 potential PFAS "problem sites"** in England (GIS tool scoring >40,000 mapped sites — airfields, fire-training sites, industrial sites). [ENDS Report](https://www.endsreport.com/article/1888657/englands-multi-billion-pound-pfas-problem-7-insights-unpublished-ea-report) | [Int'l Fire & Safety Journal](https://internationalfireandsafetyjournal.com/rising-pfas-contamination-sites-in-england-strain-environment-agency-budget/)
@@ -56,17 +56,17 @@
 
 - Part 2A (Environmental Protection Act 1990): councils have the statutory **duty to identify and inspect** potentially contaminated land, but costs fall polluter-first (Class A), then owner/occupier (Class B), councils payer of last resort for orphan sites → strong incentive to triage cheaply before committing to full statutory investigation. [Part 2A statutory guidance](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/223705/pb13735cont-land-guidance.pdf)
 - Environmental consultants (commissioned by developers/landowners under planning/Part 2A) actually run investigations at volume and are commercially motivated to cut lab spend.
-- **Recommendation**: primary first customer = **environmental consultancies** (fast sales cycle, clear economic pain, normal procurement); **local authorities = strategic second wave** (government-reinforced 2026 mandate via PFAS Plan Actions 1.2/3.15–3.16, acute budget constraints, but slower procurement across ~300+ fragmented authorities). GTM: pilot with 1–2 consultancies → approach councils when the EA prioritisation map lands (end 2026), positioning Aegis as the tool that turns the map's site list into a fundable, defensible investigation priority order.
+- **Recommendation**: primary first customer = **environmental consultancies** (fast sales cycle, clear economic pain, normal procurement); **local authorities = strategic second wave** (government-reinforced 2026 mandate via PFAS Plan Actions 1.2/3.15–3.16, acute budget constraints, but slower procurement across ~300+ fragmented authorities). GTM: pilot with 1–2 consultancies → approach councils when the EA prioritisation map lands (end 2026), positioning Fluorsight as the tool that turns the map's site list into a fundable, defensible investigation priority order.
 
 ## 5. Science sanity check
 
 - **1,8-ANS**: well-established solvatochromic hydrophobic-cavity fluorescent probe (50+ years, protein biochemistry): weakly fluorescent in water, strong blue-shifted enhancement on binding hydrophobic sites. [Wikipedia](https://en.wikipedia.org/wiki/8-Anilinonaphthalene-1-sulfonic_acid) | [ScienceDirect](https://www.sciencedirect.com/topics/medicine-and-dentistry/8-anilino-1-naphthalenesulfonic-acid)
-- **No peer-reviewed paper found using ANS specifically for PFAS** — frame Aegis science as *building on the validated cyclodextrin host–dye displacement principle*, not replicating an existing ANS-PFAS paper.
+- **No peer-reviewed paper found using ANS specifically for PFAS** — frame Fluorsight science as *building on the validated cyclodextrin host–dye displacement principle*, not replicating an existing ANS-PFAS paper.
 - Closest validated precedent: **cyclodextrin-polymer + fluorescent-dye competitive-binding sensor array**, LOD **38 ng/L PFOA / 31 ng/L PFOS**. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0003267025010748)
 - Related: BSA-squaraine dye PFOS turn-on/PFOA turn-off (2026, Chemical Physics) [NJIT](https://researchwith.njit.edu/en/publications/pfos-and-pfoa-interaction-with-organic-chromophore-bound-serum-al/); amplifying fluorescent polymers LOD 0.08 ppb PFOA [JACS](https://pubs.acs.org/doi/10.1021/jacs.3c03125); guanidinocalix[5]arene displacement assay [Nat Commun](https://www.nature.com/articles/s41467-019-13775-1); critical review of PFAS sensors [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10398537/).
 - **DEXSORB/DEXSORB+**: Cyclopure's plant-derived β-cyclodextrin adsorbent; molecularly selective for PFAS, NSF/61 certified, regenerable (~500,000× concentration); commercialised in US (Kurita partnership Sept 2025). Cyclopure consumer test kit: DEXSORB extraction disc + mail-in LC-MS, 55 PFAS, LOQ 1.0 ppt, **$79/kit**. [Cyclopure](https://cyclopure.com/dexsorb/) | [Kurita](https://www.kuritaamerica.com/the-splash/kurita-invests-in-cyclopure-to-accelerate-pfas-business-expansion-utilizing-dexsorb-in-the-united-states)
 - **Honesty guardrails**: LC-MS/MS (EPA 537.1 LOD 0.71–2.8 ppt; EPA 533 MRL 1.4–16 ppt) is ~1,000× more sensitive than most fluorescence sensors. Fluorescence LODs cluster low-to-high ppb; best-in-class cyclodextrin systems reach 31–38 ng/L. Regulatory 0.1 µg/L (=100 ng/L) is within reach of best-in-class fluorescence but with real uncertainty; surfactant interference (SDS/SDBS) may require pre-treatment. **Position as triage/screening layer, never LC-MS/MS replacement.**
-- **Competitors**: Cyclopure ($79 mail-in kit, not real-time); FREDsense (electrochemical bacterial biosensor field kit, same-day); academic fluorescence sensors not yet commercial → Aegis = early mover in *decision-support + fluorescence screening* for UK market; competitors validate appetite for non-lab rapid screening.
+- **Competitors**: Cyclopure ($79 mail-in kit, not real-time); FREDsense (electrochemical bacterial biosensor field kit, same-day); academic fluorescence sensors not yet commercial → Fluorsight = early mover in *decision-support + fluorescence screening* for UK market; competitors validate appetite for non-lab rapid screening.
 
 ## Gaps to verify before the deck
 1. UK GBP per-sample lab pricing — get direct quotes (ALS/SOCOTEC/Eurofins/RPS).

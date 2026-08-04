@@ -268,7 +268,7 @@ export default function Validation() {
         <p className="mt-2 text-xs text-slate-500">
           The current escalation threshold is {settings.thresholds.high}. Lowering it catches more
           contamination and costs more in laboratory analysis; raising it saves money and starts
-          missing exceedances. Aegis makes that trade explicit rather than burying it.
+          missing exceedances. Fluorsight makes that trade explicit rather than burying it.
         </p>
       </Card>
 

@@ -62,6 +62,44 @@ that specific is worth more than the fact itself.
 
 ---
 
+## Part 1b — Idea generation and selection (REAL — captured 4 August 2026)
+
+**This is the strongest process evidence the team has, and almost no other entry will have it.**
+
+Fifteen candidate ideas were generated, then each member scored every idea independently on three
+axes — **how much you like it, how feasible it is, how well it will do** — each out of 5, so 15 per
+person and 45 across the team.
+
+| Rank | Idea | Dom | Evan | Alex | Total |
+|---|---|---|---|---|---|
+| 1 | PFAS: electrochemical filtration/degradation, detection kit and awareness app | 15 | 12 | 12 | **39** |
+| 2 | At-home sewage/PFAS testing kit for tap water, rivers and seawater | 12 | 11 | 15 | **38** |
+| 3 | Route adjustments to reduce aircraft contrail formation | 10 | 9 | 14 | 33 |
+| 4 | UAV delivery of nutrient aerosols/seeds for reforestation | 12 | 12 | 8 | 32 |
+| 5 | Wildfire detection and response network | 7 | 12 | 12 | 31 |
+| 6 | Pesticides that don't kill bees | 13 | 8 | 6 | 27 |
+
+Full list of fifteen and all scores are in the team's Notion document — keep it, it is the primary
+record.
+
+**What makes this worth marks, and how to say it:**
+
+1. **The top two ideas were both PFAS**, scored independently, and the product is a merge of them —
+   detection plus a decision layer. That is not a post-hoc rationalisation; the numbers show it.
+2. **The scoring resolved a genuine disagreement.** In the team's own words: *"We really wanted to
+   do different ideas at the start but came to a fair solution by doing our ranking thing."* Look
+   at the spread — Dom scored the bee idea 13 and the wildfire network 7; Alex scored them 6 and
+   12. Those are real differences, resolved by a rule agreed in advance rather than by whoever
+   argued hardest.
+3. **The stated goal was a project everyone was interested in**, not the highest-scoring idea for
+   any one person. That is a defensible team-working principle and it is worth saying out loud.
+
+⚠️ **Use the disagreement honestly.** The judges' team-working question wants a real example, and
+this is one — but the honest framing is *"we disagreed about what to build and used a scoring rule
+we'd agreed beforehand"*, not *"we had a big argument"*. Point at the score spread if pressed.
+
+---
+
 ## Part 2 — The decision log
 
 One row per meeting, or per decision if that is easier. **Reconstruct the ones you can remember;
@@ -109,7 +147,7 @@ evolution" means.** See `chemistry-brief-for-dom.md`. Dom should confirm the fin
 **2. The competitor claim (August 2026).**
 You claimed no one offered a decision-support layer. Research found ESdat, EQuIS and Locus already
 sell exceedance screening into UK consultancies. Rather than drop the claim, you sharpened it:
-those tools are **post-lab** — they screen results you have already paid for — whereas Aegis is
+those tools are **post-lab** — they screen results you have already paid for — whereas Fluorsight is
 **pre-lab** and decides which samples become lab results at all. A weaker claim replaced by a
 truer and more specific one.
 

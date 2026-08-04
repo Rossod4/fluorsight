@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<title>Aegis — A0 poster (draft 2)</title>
+<title>Fluorsight — A0 poster (draft 2)</title>
 <link rel="stylesheet" href="poster.css">
 </head>
 <body>
@@ -13,17 +13,17 @@
   <header class="band title-band">
     <div class="title-row">
       <div class="title-main">
-        <p class="brand">Aegis · PFAS field triage</p>
+        <p class="brand">Fluorsight · PFAS field triage</p>
         <h1>Which samples are worth a lab test?</h1>
         <p class="standfirst">
           An investigator arrives with 40 samples and budget for eight. Today that call comes from
-          experience. Aegis makes it from a measurement, before the lab bill exists.
+          experience. Fluorsight makes it from a measurement, before the lab bill exists.
           <strong>Goal: no PFAS investigation limited by not knowing which samples mattered.</strong>
         </p>
       </div>
       <div class="title-qr">
         <div class="qr"><span class="caption">QR</span></div>
-        <p class="caption">Try it — no login<br>rossod4.github.io/AEGIS</p>
+        <p class="caption">Try it — no login<br>fluorsight.co.uk</p>
       </div>
     </div>
     <p class="caption key">
@@ -81,7 +81,7 @@
       <p><strong>ESdat, EQuIS, Locus.</strong> Plan to a schedule, screen results after the lab.</p>
       <p><strong>Laboratories.</strong> Sell accredited reduced-analyte and TOF/EOF screens today —
         but only once you have paid to ship the sample.</p>
-      <p><strong>Aegis.</strong> The only one using a field measurement to choose which collected
+      <p><strong>Fluorsight.</strong> The only one using a field measurement to choose which collected
         sample is analysed.</p>
     </div>
   </section>
@@ -93,9 +93,11 @@
       <section class="panel">
         <h2>How the decision is made</h2>
         <p>
-          ◐ 250 mL through a β-cyclodextrin disc, eluted into 1 mL — 250× nominal, recovery not
-          measured. ○ Solvent-exchanged into buffer holding β-cyclodextrin and the dye 2,6-ANS,
-          which fluoresces only inside the cavity. PFAS competes for it, so the signal falls.
+          ◐ A β-cyclodextrin cartridge is preloaded with 2,6-ANS and read <em>in situ</em> — no
+          elution step. The dye fluoresces inside the cavity, giving a baseline. ○ 250 mL of sample
+          is drawn through; PFAS displaces the dye into the water above the frit, where it goes
+          dark. <strong>The signal falls.</strong> The cartridge is read wet: dry, unbound dye would
+          fluoresce and mask the change.
         </p>
         <p>
           ● That reading is one input. Eight site factors and the screening history complete a
@@ -149,15 +151,18 @@
       <section class="panel">
         <h2>Development and design evolution</h2>
         <p>
-          ● Weekly meetings since 1 June, decisions logged. Dom owns the method, Evan field use,
-          Alex the model and cost case. Registered as five; two never contributed, so three absorbed
-          a five-person scope.
+          ● Weekly meetings since 1 June, decisions logged. Five candidate concepts generated and
+          scored before this one was chosen. Dom owns the method, Evan field use, Alex the model and
+          cost case. Registered as five; two never contributed, so three absorbed a five-person
+          scope.
         </p>
         <p>
-          <strong>17 July.</strong> Our spec carried the wrong ANS isomer; a new binding study
-          caught it and endorsed the corrected pairing. <strong>August.</strong> The engine scored
-          signal and band separately when they are one reading — merged, so no single measurement
-          escalates alone.
+          <strong>June.</strong> Switched probe from 1,8-ANS to 2,6-ANS on binding-constant grounds
+          — 80–11,700 M⁻¹ against 50–195 at the same host. <strong>17 July.</strong> A study
+          measuring both isomers against all three native cyclodextrins independently confirmed the
+          choice: 2,6-ANS binds β most strongly, 1,8-ANS prefers γ. <strong>August.</strong> The
+          engine scored signal and band separately when they are one reading — merged, so no single
+          measurement escalates alone.
         </p>
         <p>○ Outreach to twelve organisations has returned nothing yet.</p>
       </section>
@@ -171,24 +176,26 @@
     <table class="steps">
       <tr>
         <th>Sept · Evan</th>
-        <td>Five discovery interviews. <em>Kill:</em> if none confirms budget-driven
-          under-sampling, the problem is wrong.</td>
+        <td>Five discovery interviews — consultancies, a Part 2A officer, a laboratory.
+          <em>Kill:</em> if none confirms that budget forces under-sampling, our problem is wrong.</td>
+      </tr>
+      <tr>
+        <th>Sept · Alex</th>
+        <td>Design the paired validation study properly with our mentor: power, stratification and
+          the cost ratio that sets the threshold. <em>Kill:</em> if the sample size needed to bound
+          the false-negative rate below 25% is unaffordable, the claim changes before the study does.</td>
       </tr>
       <tr>
         <th>Oct · Dom</th>
-        <td>First bench work: titration, then spiked interference against SDS, humic acid and
-          short-chain PFBS, with a generic β-CD control. <em>Kill:</em> if a 10 µg/L PFOA spike
-          cannot be told from matched surfactant, move to the four-probe array.</td>
+        <td>Cost the four-probe array route — probes, reader, and the discriminant analysis the
+          published work uses. <em>Kill:</em> if a single probe cannot separate PFAS from surfactant
+          interference on paper, we build for the array from the start.</td>
       </tr>
       <tr>
-        <th>Nov · Alex</th>
-        <td>30 paired screen and LC-MS/MS samples, enriched for high-prior sites, targeting ten
-          confirmed exceedances. <em>Kill:</em> no partner means we publish at n = 1 and say so.</td>
-      </tr>
-      <tr>
-        <th>Jan · all</th>
-        <td>Report a 95% upper bound on the false-negative rate, never a rate. Ten exceedances with
-          no misses bounds it at 26%.</td>
+        <th>Ongoing · all</th>
+        <td>Find one partner with archived samples already analysed by LC-MS/MS. <strong>We have no
+          laboratory access</strong> — bench work is scheduled for a final-year project, and until
+          then every performance figure stays a bound, not a rate.</td>
       </tr>
     </table>
   </section>
@@ -220,7 +227,7 @@
   <footer class="footer band">
     <div class="footer-main">
       <p class="caption">
-        <strong>Aegis is decision support.</strong> Screening estimates carry uncertainty, are never
+        <strong>Fluorsight is decision support.</strong> Screening estimates carry uncertainty, are never
         a substitute for accredited LC-MS/MS, and are not used for regulatory compliance reporting.
         A HOLD is a documented decision not to look: eluate is retained within holding time and every
         hold is re-screened next round. All demo data is synthetic.

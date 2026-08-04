@@ -116,7 +116,7 @@ export default function SettingsPage() {
     <div>
       <PageHeader
         title="Settings"
-        subtitle="Configure the risk-scoring model. Aegis is a transparent, editable weighted heuristic — not a black box."
+        subtitle="Configure the risk-scoring model. Fluorsight is a transparent, editable weighted heuristic — not a black box."
       />
 
       <div className="space-y-6">
@@ -226,7 +226,7 @@ export default function SettingsPage() {
         <Card className="space-y-3 p-5">
           <h2 className="text-sm font-semibold text-slate-900">Model assumptions</h2>
           <p className="text-sm text-slate-600">
-            Aegis uses a transparent, weighted scoring model: every point contributed to a sample's risk score is
+            Fluorsight uses a transparent, weighted scoring model: every point contributed to a sample's risk score is
             attributed to a named, explainable driver. Field screening results are treated as uncertain evidence
             — weighted down at lower confidence — rather than a definitive measurement. The model is deliberately
             modular so it can later be replaced or supplemented by a calibrated sensor model or a trained ML

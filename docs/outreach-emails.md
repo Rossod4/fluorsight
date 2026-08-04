@@ -1,6 +1,6 @@
-# Aegis Outreach Emails
+# Fluorsight Outreach Emails
 
-Send-ready templates for the University of Bristol Aegis team (chemistry,
+Send-ready templates for the University of Bristol Fluorsight team (chemistry,
 aerospace engineering, maths — Faculty of Science and Engineering), for the
 **Aegis Innovation Competition 2026**. Goal: replace the assumed **£250/sample**
 UK LC-MS/MS PFAS cost with a real figure, and get at least one real user
@@ -107,7 +107,7 @@ associate director".
 > Dear [Name],
 >
 > We're three University of Bristol undergraduates (chemistry, aerospace
-> engineering, maths) building "Aegis" — an explainable triage tool that
+> engineering, maths) building "Fluorsight" — an explainable triage tool that
 > helps decide which water samples justify expensive LC-MS/MS PFAS
 > confirmation — for a university innovation competition, not a commercial
 > pitch.

@@ -118,11 +118,11 @@ export default function Demo() {
           Guided demo · about 60 seconds
         </p>
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
-          See Aegis decide which samples are worth a lab test
+          See Fluorsight decide which samples are worth a lab test
         </h1>
         <p className="text-slate-600">
           PFAS laboratory confirmation is slow and expensive, so most water samples never get
-          tested. Aegis triages them: it scores every sample from cheap field screening plus site
+          tested. Fluorsight triages them: it scores every sample from cheap field screening plus site
           history, and shows its full reasoning so an engineer can overrule it. Work through the
           steps below — everything you touch is the real, working prototype.
         </p>

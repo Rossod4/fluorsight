@@ -73,7 +73,7 @@ is fair to describe it as one. It is not a performance claim.
 **The story this supports:** the threshold can be raised from 5 to 70 — cutting laboratory
 referrals from 21 samples to 2 — without missing a single confirmed exceedance. The operating
 point sits inside that safe band, not at its edge. This is the trade-off a consultancy actually
-has to make, and Aegis makes it explicit and adjustable rather than fixed and hidden.
+has to make, and Fluorsight makes it explicit and adjustable rather than fixed and hidden.
 
 **What it does not support:** any claim about accuracy. The curve describes the *structure* of the
 scoring model. On real data the shape would differ and the safe band would almost certainly be

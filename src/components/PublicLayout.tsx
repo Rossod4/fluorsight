@@ -29,7 +29,7 @@ export default function PublicLayout() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-2">
             <BrandMark />
-            <span className="text-lg font-semibold tracking-tight text-slate-900">Aegis</span>
+            <span className="text-lg font-semibold tracking-tight text-slate-900">Fluorsight</span>
           </Link>
           <nav className="flex items-center gap-4 sm:gap-6">
             <NavLink to="/" end className={navLinkClassWide}>
@@ -39,7 +39,7 @@ export default function PublicLayout() {
               Live demo
             </NavLink>
             <NavLink to="/why" className={navLinkClass}>
-              Why Aegis
+              Why Fluorsight
             </NavLink>
             <Link
               to="/app"
@@ -56,7 +56,7 @@ export default function PublicLayout() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl space-y-3 px-4 py-8 sm:px-6">
           <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-            <BrandMark className="h-5 w-5" /> Aegis — PFAS screening decision support
+            <BrandMark className="h-5 w-5" /> Fluorsight — PFAS screening decision support
           </div>
           <Disclaimer />
           <p className="text-xs text-slate-400">

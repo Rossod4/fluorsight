@@ -1,4 +1,4 @@
-// Core domain model for Aegis.
+// Core domain model for Fluorsight.
 // All concentration language refers to the sum-of-PFAS estimate in ng/L,
 // anchored to the UK DWI / EU DWD guideline of 0.1 µg/L (= 100 ng/L).
 

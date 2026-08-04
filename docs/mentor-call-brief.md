@@ -1,6 +1,6 @@
 # Mentor call #1 — brief
 
-**Wednesday 5 August 2026 · Aegis Innovation Competition · Team Aegis (PFAS screening triage)**
+**Wednesday 5 August 2026 · Aegis Innovation Competition · Team Fluorsight (PFAS screening triage)**
 
 > ## ⚠️ REWRITTEN 4 August 2026 — the mentor is a statistician
 >
@@ -10,7 +10,7 @@
 > non-answer and a mentor who feels they weren't much use — which matters, because their feedback
 > is worth a large share of 20 marks.
 >
-> **This is better news than it looks.** The chemistry belongs to Dom. What Aegis actually
+> **This is better news than it looks.** The chemistry belongs to Dom. What Fluorsight actually
 > *contributes* is a decision model — and every serious open question about it is a statistics
 > question:
 >
@@ -51,7 +51,7 @@ feedback than one who was shown a finished thing and asked to approve it.
 
 Short email, three things only:
 
-1. **One paragraph** on what Aegis is — PFAS screening triage, not a lab replacement.
+1. **One paragraph** on what Fluorsight is — PFAS screening triage, not a lab replacement.
 2. **The live link** to the prototype, pointing at the guided demo (`/#/demo`) so they can
    form a view before the call rather than watching you drive.
 3. **Three questions you want their help on** (below), stated up front. This is the single

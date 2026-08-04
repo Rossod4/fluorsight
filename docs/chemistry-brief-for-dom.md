@@ -253,7 +253,7 @@ Note the modest ambition of the maths. **LDA is a classical statistical method, 
 network** — it needs tens of training samples, not thousands. That matters: the credible version of
 this is reachable by a student team, and you should say so rather than gesturing at "AI".
 
-### 9.4 Why this fits Aegis specifically — and it does, unusually well
+### 9.4 Why this fits Fluorsight specifically — and it does, unusually well
 
 Most teams proposing a sensor array have nowhere to put the classifier. **You already have the
 software layer**, with a working explainable scoring engine, a data model and an audit trail. The
@@ -325,12 +325,12 @@ Ordered by value, given no lab access and no bench data currently exists. This i
 
 2. **Rewrite the "science" section/slide to lead with preconcentration (§4), not dye affinity.** This is the actual novel engineering claim and it survives scrutiny of the dye chemistry entirely. Right now (per the factsheet and research pack) the framing under-emphasises this.
 
-3. **Reframe every mention of assay output from "PFAS concentration" to "risk score" / "screening priority."** This is a documentation and framing change, costs nothing, and closes the selectivity objection (§5) before anyone raises it. Check this is consistent across the site copy and any pitch deck language — Aegis's own `Why.tsx` page apparently already does this correctly in places (per the research pack), so make sure the chemistry pages match.
+3. **Reframe every mention of assay output from "PFAS concentration" to "risk score" / "screening priority."** This is a documentation and framing change, costs nothing, and closes the selectivity objection (§5) before anyone raises it. Check this is consistent across the site copy and any pitch deck language — Fluorsight's own `Why.tsx` page apparently already does this correctly in places (per the research pack), so make sure the chemistry pages match.
 
 4. **Ask if there's a same-department fluorimeter and five minutes of instrument time.** You don't need a full validation study — even one qualitative measurement (does 2,6-ANS + β-CD show a visible fluorescence shift on adding a PFAS surrogate like PFOA, versus 1,8-ANS under the same conditions) would be actual primary data, and "we ran one comparative measurement" beats "we read two papers" in a judged setting. This is Q6 above — ask the mentor if this is remotely feasible on their kit. If genuinely not possible, don't force it; the literature-based redesign in point 1 is a legitimate and creditable answer on its own.
 
 5. **Add a one-paragraph risk-register entry for the DEXSORB supply chain (§6)**, including the generic-β-CD-polymer fallback. Cheap, closes an obvious gap, shows you've thought about productionisation beyond the chemistry.
 
-6. **Do not attempt to build or claim a multi-dye array before September.** Zha et al.'s four-dye/deep-learning system is the state of the art and is out of scope for a solo undergraduate chemist with no lab time. The correct move is to *name* it as the field's answer to selectivity (§5) and explain why Aegis's single-dye risk-score framing is the appropriate simplification for a triage tool rather than a compliance instrument — not to attempt to replicate it.
+6. **Do not attempt to build or claim a multi-dye array before September.** Zha et al.'s four-dye/deep-learning system is the state of the art and is out of scope for a solo undergraduate chemist with no lab time. The correct move is to *name* it as the field's answer to selectivity (§5) and explain why Fluorsight's single-dye risk-score framing is the appropriate simplification for a triage tool rather than a compliance instrument — not to attempt to replicate it.
 
 **The strongest outcome for Wednesday and for the competition is the same thing: walk in already having changed the dye, already reframed the sensitivity story around preconcentration, and already reframed the output as a risk score.** That's a design that visibly responded to a paper published two weeks ago — which is a better story than a design that happened to be right, and much better than one defended without having read the literature.

@@ -105,7 +105,7 @@ being asked — without it the repositioning sounds arbitrary.
 >
 > **The one thing I actually need an answer on:**
 >
-> Do we stop positioning Aegis as a guideline-level screen, and position it as an **AFFF
+> Do we stop positioning Fluorsight as a guideline-level screen, and position it as an **AFFF
 > source-zone screen operating at 10 µg/L to mg/L** instead?
 >
 > My view is yes. It's the only claim I think we can defend on the numbers, and it's genuinely

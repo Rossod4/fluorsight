@@ -1,4 +1,4 @@
-// Aegis risk engine — transparent weighted scoring.
+// Fluorsight risk engine — transparent weighted scoring.
 //
 // Deliberately a pure module with no UI or storage dependencies so the model
 // can later be swapped for a calibrated sensor model or ML model without

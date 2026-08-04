@@ -1,12 +1,12 @@
-# Aegis — PFAS Screening Decision Support
+# Fluorsight — PFAS Screening Decision Support
 
-Aegis is a decision-support platform for **scalable PFAS screening**. It helps
+Fluorsight is a decision-support platform for **scalable PFAS screening**. It helps
 environmental teams triage which water sources, sites, and samples are most
 likely to require expensive confirmatory laboratory analysis (LC-MS/MS) — so
 organisations can **screen broadly, prioritise intelligently, and reserve the
 lab for the samples that matter**.
 
-Aegis is a **screening and triage tool, not a laboratory replacement**.
+Fluorsight is a **screening and triage tool, not a laboratory replacement**.
 Screening estimates are treated as uncertain, and every risk recommendation is
 fully explainable.
 
@@ -15,7 +15,7 @@ sites, and data in the demo are fictional.
 
 ## What's inside
 
-- **Landing + "Why Aegis" pages** — the product story and a sourced business
+- **Landing + "Why Fluorsight" pages** — the product story and a sourced business
   case (UK/EU regulation, lab costs, market sizing, go-to-market, projections).
   Research and citations live in [`docs/research-factsheet.md`](docs/research-factsheet.md).
 - **Interactive dashboard** (`/app`) — projects → sites → samples workflow,

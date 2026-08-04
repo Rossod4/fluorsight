@@ -43,7 +43,7 @@ at 150 you will hit 5:40 and sound rushed; if you drop to 115 you will overrun. 
 > So the constraint is not the science. It is the lab bill. Most samples are never analysed, and
 > nobody records why those ones and not the others.
 >
-> We are Aegis. We do not replace the laboratory — we decide what reaches it.
+> We are Fluorsight. We do not replace the laboratory — we decide what reaches it.
 
 *(135 words · ~62s)*
 
@@ -56,17 +56,25 @@ it costs you eight seconds you need later.
 **Criterion: development of the solution**
 
 **DOM:**
-> The screen is a displacement assay. You draw a quarter of a litre of water through a
-> cyclodextrin cartridge, which concentrates any PFAS present about two hundred and fifty-fold.
-> Then you read it with a fluorescent dye — 2,6-ANS — which only glows when it is sitting inside
-> the cyclodextrin cavity. PFAS competes for that cavity. The dye is pushed out, and the signal
-> falls.
+> The screen is a displacement assay, and it is read in the cartridge — there is no extraction
+> step at all.
 >
-> What that gives you is not a concentration. A single dye responds to any hydrophobic anion —
-> detergents, humic acids. So we are explicit: this measures a response, not a PFAS number.
+> The cartridge holds a cyclodextrin resin preloaded with a dye, 2,6-ANS. The dye sits inside the
+> cyclodextrin cavity, and that is the only place it fluoresces — in water it is essentially dark.
+> So you read the cartridge first and you have a bright baseline.
+>
+> Then you draw a quarter of a litre of sample through. PFAS binds the cyclodextrin harder than the
+> dye does, so it pushes the dye out into the water, where it goes dark. The signal falls, and how
+> far it falls is your reading.
+>
+> One design detail: we read it wet. If the cartridge dries out, the displaced dye fluoresces again
+> and you lose the signal you just created.
+>
+> What it gives you is not a concentration. A single dye responds to any hydrophobic anion. So we
+> are explicit: this measures a response, not a PFAS number.
 
 **ALEX:**
-> Which is exactly why the measurement is only one input. Aegis scores it alongside eight site
+> Which is exactly why the measurement is only one input. Fluorsight scores it alongside eight site
 > factors — firefighting foam history, landfill proximity, who drinks the water — into a score out
 > of a hundred, with every point attributed to a named driver.
 >
@@ -136,7 +144,7 @@ not a confession.
 **Criterion: feasibility and value proposition**
 
 > On a five-hundred-sample annual programme, testing everything costs a hundred and twenty-five
-> thousand pounds. Triaging with Aegis, on our modelling, costs fifty. So seventy-five thousand
+> thousand pounds. Triaging with Fluorsight, on our modelling, costs fifty. So seventy-five thousand
 > saved, about sixty percent.
 >
 > Two caveats we would rather say than be asked.
@@ -157,22 +165,29 @@ not a confession.
 **Criterion: next steps — 8 marks, and the reason this slide is not last**
 
 **EVAN:**
+> First, the thing we should say plainly: we have no laboratory access. Bench work is a final-year
+> project, not something we can promise you for October. So these are the things we can actually
+> do.
+>
 > September: five discovery interviews. If nobody confirms that budget forces under-sampling, our
-> problem is wrong and we would rather find that out in September than next year.
+> problem is wrong, and we would rather find that out in September than next year.
+
+**ALEX:**
+> Also September: design the validation study properly with our mentor, who is a statistician. How
+> many paired samples we need, how to stratify them, and what cost ratio should actually set the
+> threshold. If the sample size we need turns out to be unaffordable, then the claim changes — not
+> the study.
 
 **DOM:**
-> October: first bench work. A binding titration, then deliberate interference — detergent, humic
-> acid, short-chain PFAS. If we cannot tell a PFOA spike from a matched surfactant, we move to the
-> four-probe array that the published work uses, and we have costed that.
+> October: cost the four-probe route. The published work that distinguishes PFAS from interference
+> uses four probes and discriminant analysis, not one probe. If one probe cannot do it even on
+> paper, we build for the array from the start.
 
-**EVAN:**
-> November: thirty paired samples, screened by us and confirmed by an accredited lab, with a
-> partner consultancy. If we have no partner, we publish at n equals one and say so.
->
-> Every one of those has a kill criterion. We would rather show you where this stops than pretend
-> it does not.
+*(160 words · ~74s)*
 
-*(140 words · ~65s)*
+**Delivery note.** Opening with the limitation is deliberate. A judge who has been waiting to ask
+"but you have no lab" gets the answer before they can ask it, and everything after lands as a plan
+rather than a promise.
 
 ---
 
@@ -203,10 +218,10 @@ not a confession.
 | 3 · The prototype | Evan | 135 | 62s | 3:22 |
 | 4 · Does it work | Alex | 165 | 76s | 4:38 |
 | 5 · Business case | Alex | 150 | 69s | 5:47 |
-| 6 · Next steps | Evan → Dom → Evan | 140 | 65s | 6:52 |
-| 7 · Close | Alex | 60 | 28s | **7:20** |
+| 6 · Next steps | Evan → Alex → Dom | 160 | 74s | 7:01 |
+| 7 · Close | Alex | 60 | 28s | **7:29** |
 
-> ### 🔴 That totals 7:20 — over the cutoff. Cut ~110 words before rehearsing.
+> ### 🔴 That totals 7:29 — over the cutoff. Cut ~130 words before rehearsing.
 >
 > This is deliberate: it is easier to see what to cut with the whole thing written than to write to
 > a budget from nothing. Recommended cuts, in order:

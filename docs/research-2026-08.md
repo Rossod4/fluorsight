@@ -1,4 +1,4 @@
-# Aegis Research Refresh — August 2026
+# Fluorsight Research Refresh — August 2026
 
 *Compiled 2 August 2026. Supersedes nothing; supplements `research-factsheet.md` (9 July 2026). Every claim tagged:*
 
@@ -24,8 +24,8 @@ https://committees.parliament.uk/writtenevidence/142255/html/
 
 Why this is the best available source:
 - It is **UK**, in **GBP**, **dated**, and **publicly citable** with a parliamentary evidence reference.
-- It comes from the **trade body for the remediation and environmental-testing sector** — i.e. the exact buyers Aegis is targeting — not from a lab's marketing page.
-- It is a **soil** figure. Water is typically cheaper than soil, so £350 is an upper bound for the Aegis use case, not a lower one.
+- It comes from the **trade body for the remediation and environmental-testing sector** — i.e. the exact buyers Fluorsight is targeting — not from a lab's marketing page.
+- It is a **soil** figure. Water is typically cheaper than soil, so £350 is an upper bound for the Fluorsight use case, not a lower one.
 
 Caveats to state openly: the author calls it a "rough cost"; it is a planning-level figure used to make a policy argument about laboratory capacity, not a rate card; and it is a single trade-body estimate, not a market survey.
 
@@ -92,7 +92,7 @@ This is the single most useful artefact in this document. Build it into the post
 **Chatzigiannis et al. (?)*, "Weakly interacting cyclodextrin complexes: an experimental and theoretical methodological assessment using two fluorescent anilinonaphthalenes", *Journal of Inclusion Phenomena and Macrocyclic Chemistry*, **published 17 July 2026, open access**, DOI [10.1007/s10847-026-01361-0](https://doi.org/10.1007/s10847-026-01361-0). **[P]**
 *(Author list not rendered in the fetched HTML — retrieve before citing formally.)*
 
-Findings that bear directly on the Aegis design:
+Findings that bear directly on the Fluorsight design:
 
 1. **8,1-ANS binds most strongly to γ-cyclodextrin, not β.** "γ-CD [is] the only host, among those examined, that can fully accommodate the naphthalene group within its cavity." 8,1-ANS's extended geometry makes full inclusion in the smaller cavities unlikely.
 2. **The binding is weak in absolute terms** — Ka on the order of 10²–10³ M⁻¹, in a regime the paper explicitly calls hard to measure. Corroborated by Sueishi et al., *Spectrochim. Acta A* **2013**, DOI [10.1016/j.saa.2013.05.052](https://doi.org/10.1016/j.saa.2013.05.052), which reports **1,8-ANS with β-CD at only ~50–195 M⁻¹**, versus 2,6-ANS at ~80–11,700 M⁻¹. **[P]**
@@ -110,12 +110,12 @@ Findings that bear directly on the Aegis design:
 
 - Peer-reviewed foundation is solid: Wang R, Lin Z-W, Klemes MJ, Ateia M, Trang B, Wang J, Ching C, Helbling DE, **Dichtel WR**. "A Tunable Porous β-Cyclodextrin Polymer Platform to Understand and Improve Anionic PFAS Removal." *ACS Cent. Sci.* **2022**, 8(5), 663–669. **[P]** Also Ching et al., *Environ. Sci. Technol.* **2020**. Dichtel holds equity in Cyclopure (disclosed) — note this if a judge asks about independence.
 - **Cyclopure Water Test Kit Pro is now $85, not $79** — 55 PFAS analytes incl. all 40 EPA Method 1633 compounds, LOQ 1.0 ppt, **10–14 business days** turnaround, DEXSORB extraction disc. **[P]** https://cyclopure.com/product/wtk/
-- **No UK or international availability is stated anywhere on Cyclopure's product pages.** **[P — verified absent]** **This is a live supply-chain risk for Aegis** and nobody has flagged it: the adsorbent at the centre of the method is a single-source US product with no evidenced UK distribution. Have an answer ready, and ideally a named alternative (generic β-CD polymers are commercially available; the *Cyclopure* branding is not the science).
+- **No UK or international availability is stated anywhere on Cyclopure's product pages.** **[P — verified absent]** **This is a live supply-chain risk for Fluorsight** and nobody has flagged it: the adsorbent at the centre of the method is a single-source US product with no evidenced UK distribution. Have an answer ready, and ideally a named alternative (generic β-CD polymers are commercially available; the *Cyclopure* branding is not the science).
 
 ### 2.5 Sharpest questions a chemistry academic will ask
 
 1. *"Your dye barely binds β-cyclodextrin — Ka around 50–195 M⁻¹. What is your dynamic range?"* → §2.3. Concede, cite the July 2026 paper, name 2,6-ANS/γ-CD as the design response.
-2. *"PFAS are surfactants. So is your dye an anion. What stops any other anionic surfactant — SDS, SDBS, humic acids, detergent residues — producing the same displacement?"* → **This is the hardest question and there is no clean answer.** Selectivity in every published system comes from the array (multiple dyes + pattern recognition), not from one dye. A single-dye assay is a *non-specific hydrophobic-anion* sensor. Correct answer: Aegis is explicitly a **non-specific screen**, and its output is a *risk score*, not a concentration — which is exactly why the escalation decision goes to LC-MS/MS.
+2. *"PFAS are surfactants. So is your dye an anion. What stops any other anionic surfactant — SDS, SDBS, humic acids, detergent residues — producing the same displacement?"* → **This is the hardest question and there is no clean answer.** Selectivity in every published system comes from the array (multiple dyes + pattern recognition), not from one dye. A single-dye assay is a *non-specific hydrophobic-anion* sensor. Correct answer: Fluorsight is explicitly a **non-specific screen**, and its output is a *risk score*, not a concentration — which is exactly why the escalation decision goes to LC-MS/MS.
 3. *"Zha et al. needed four dyes and deep learning to get selectivity. Why do you think one dye is enough?"* → It probably is not, for speciation. It may be enough for a total-hydrophobic-anion burden proxy. Say that.
 4. *"What are you scoring against? There are no UK soil screening values for PFAS."* → Confirmed by the EIA itself: *"The absence of regulatory thresholds for PFAS (beyond the EQS for PFOS) in surface water impedes risk assessment and screening of PFAS."* **[P]** This is a real gap and it cuts both ways — it is a weakness in the scoring model *and* the clearest statement of why decision-support tooling is needed.
 5. *"Your matrix is soil and groundwater at contaminated sites — high organic carbon, high ionic strength. Every LOD you quoted is from clean or spiked water."* → Concede. Matrix effects are the standard failure mode; this is what a pilot must test.
@@ -149,9 +149,9 @@ The factsheet's 403 is resolved. **[S]** — Grand View Research press release, 
 - **PFAS Treatment Market: $2.8bn (2025) → $4.8bn (2033), CAGR 7.1%.** Separation & concentration = 75.1% of 2025 revenue; municipal segment 59.8%; North America 41.9%.
 https://www.grandviewresearch.com/industry-analysis/pfas-treatment-market-report
 
-**[C] Conflict flagged:** the same publisher's press release states **$3,859.4m by 2033 at 7.2% CAGR** — inconsistent with the $4.8bn figure on the report page. Cite the range and note the publisher disagrees with itself, or avoid this number; it is not load-bearing for Aegis.
+**[C] Conflict flagged:** the same publisher's press release states **$3,859.4m by 2033 at 7.2% CAGR** — inconsistent with the $4.8bn figure on the report page. Cite the range and note the publisher disagrees with itself, or avoid this number; it is not load-bearing for Fluorsight.
 
-### 3.3 The market numbers that actually matter for Aegis
+### 3.3 The market numbers that actually matter for Fluorsight
 
 Consultancy-relevant UK figures beat global testing-market figures for this pitch:
 
@@ -192,7 +192,7 @@ https://publications.parliament.uk/pa/cm5902/cmselect/cmenvaud/519/report.html
 **(d) ⚠ MISSING and important — the EA already runs a PFAS risk-screening and site-prioritisation programme.** From the Government Response:
 > "The **PFAS Risk Screening Programme** has provided a structured mechanism for combining monitoring data with information on potential source sites and sensitive environmental receptors. This has enabled the development of a national picture … alongside **a prioritised ranking of facilities requiring further assessment**. The overarching aim is to support the **targeted allocation of regulatory resources** towards those sites where intervention is most likely to effectively address contamination risks." **[P]**
 
-This is close enough to Aegis's stated value proposition that it must be addressed head-on. See §6.3.
+This is close enough to Fluorsight's stated value proposition that it must be addressed head-on. See §6.3.
 
 **(e) New/updated funding and liability facts [P]:**
 - **£80 million fund** available to local government where no liable party can be identified (Minister, oral evidence Q280) — set against the **£31bn–£121bn** remediation estimate.
@@ -232,7 +232,7 @@ A statutory duty that is unenforced, with no PFAS trigger threshold, is a weak f
 - **County councils are not Part 2A regulators.** The duty sits with district, borough, city and unitary councils (and London boroughs). **[S]**
 - **⇒ ~287 English authorities hold Part 2A duties** (153 + 134).
 - The widely-quoted **326** comes from Defra's *State of contaminated land* report and predates reorganisation. **The site's current "~300–370" range is too wide and too vague. Say "~287 English authorities, following the May 2026 reorganisation (307 councils, of which 20 are county councils without Part 2A duties)."** Precision here is cheap and reads as competence.
-- Reorganisation is live: 134 councils are being replaced by 38 unitaries; East and West Surrey already elected in May 2026. Fewer, larger buyers — arguably *better* for Aegis procurement. Make that point rather than treating reorganisation as a caveat.
+- Reorganisation is live: 134 councils are being replaced by 38 unitaries; East and West Surrey already elected in May 2026. Fewer, larger buyers — arguably *better* for Fluorsight procurement. Make that point rather than treating reorganisation as a caveat.
 
 ### 5.3 Local authority budgets
 
@@ -250,7 +250,7 @@ A statutory duty that is unenforced, with no PFAS trigger threshold, is a weak f
 |---|---|---|---|
 | **Cyclopure** (US) | DEXSORB extraction disc + mail-in LC-MS | **$85**/kit (was $79), 55 PFAS, LOQ 1.0 ppt, **10–14 business days** | Commercial US; **no stated UK availability** **[P]** |
 | **FREDsense** (Calgary) | Electrochemical biosensor field kit | **LOD 1,000 ppt (1 µg/L)**, same-day | Commercial **[P]** |
-| **Verralize / BioLargo** (US) | "Lab-on-a-sensor" — multiplexed nanocarbon array with PFAS-selective ligands | Not disclosed | **Alpha testing** — new entrant, closest to Aegis's screening concept **[S]** |
+| **Verralize / BioLargo** (US) | "Lab-on-a-sensor" — multiplexed nanocarbon array with PFAS-selective ligands | Not disclosed | **Alpha testing** — new entrant, closest to Fluorsight's screening concept **[S]** |
 | Academic arrays (Han/Zhou et al.) | β-CD polymer + 4 dyes + deep learning | 31–38 ng/L, <10 min | Lab prototype **[P]** |
 | Oxyle, Enspired Solutions | PFAS **destruction** | — | Not competitors — different problem **[S]** |
 
@@ -266,13 +266,13 @@ Established environmental data management systems already do risk-based screenin
 - **EarthSoft EQuIS** — enterprise platform for sampling, lab data, QA/QC and regulatory reporting across large monitoring programmes. **[S]**
 - **Locus EIM** — since 1999; Fortune 500, water utilities, US DoE. **[S]**
 
-**How to fix the differentiation claim (this is a strengthening, not a retreat):** those tools are **post-lab** — they ingest results you have already paid for and check them against guideline values. Aegis is **pre-lab** — it uses a cheap screening measurement to decide *which samples get sent to the lab at all*. The savings come from samples never analysed. Reframed that way the differentiation is real, specific, and survives contact with someone who uses ESdat daily. Left as "nobody does decision support", it does not.
+**How to fix the differentiation claim (this is a strengthening, not a retreat):** those tools are **post-lab** — they ingest results you have already paid for and check them against guideline values. Fluorsight is **pre-lab** — it uses a cheap screening measurement to decide *which samples get sent to the lab at all*. The savings come from samples never analysed. Reframed that way the differentiation is real, specific, and survives contact with someone who uses ESdat daily. Left as "nobody does decision support", it does not.
 
 ### 6.3 ⚠ The Environment Agency is, in a sense, a competitor
 
 Per §4.2(d), the EA's **PFAS Risk Screening Programme** already produces "a prioritised ranking of facilities requiring further assessment" to "support the targeted allocation of regulatory resources", and the EA **publishes its PFAS data openly**. A judge may reasonably ask: *"The regulator has built a national site-prioritisation system and is giving it to councils for free at the end of this year. What are you selling?"*
 
-**The answer — and it is a good one, but it must be rehearsed:** the EA map ranks **sites** using existing desk data and historical monitoring, to allocate *regulatory* attention. It tells a council *where to look*. It does not tell an investigator, standing on a site with 60 samples in front of them and a fixed budget, *which of those samples to send to the lab*. Aegis operates one layer down, at sample level, during the investigation, using a new measurement. **The EA map is a lead generator for Aegis, not a substitute** — it produces exactly the queue of sites that then need sample-level triage. Say this proactively in the GTM section rather than waiting to be asked.
+**The answer — and it is a good one, but it must be rehearsed:** the EA map ranks **sites** using existing desk data and historical monitoring, to allocate *regulatory* attention. It tells a council *where to look*. It does not tell an investigator, standing on a site with 60 samples in front of them and a fixed budget, *which of those samples to send to the lab*. Fluorsight operates one layer down, at sample level, during the investigation, using a new measurement. **The EA map is a lead generator for Fluorsight, not a substitute** — it produces exactly the queue of sites that then need sample-level triage. Say this proactively in the GTM section rather than waiting to be asked.
 
 ---
 
@@ -280,10 +280,10 @@ Per §4.2(d), the EA's **PFAS Risk Screening Programme** already produces "a pri
 
 ### 7.1 🔴 The internal contradiction to fix before anything else
 
-`src/pages/Why.tsx:314` — cost model: *"Aegis platform & consumables assumed at **£25,000/year**"* (for a 500-sample portfolio).
+`src/pages/Why.tsx:314` — cost model: *"Fluorsight platform & consumables assumed at **£25,000/year**"* (for a 500-sample portfolio).
 `src/pages/Why.tsx:478-481` — revenue model: *"~**£5,000/year** per consultancy customer … ~**£15,000/year** per local-authority customer."*
 
-**Aegis charges the customer £25,000 in the savings chart and £5,000–£15,000 in the revenue chart.** Both cannot be true. A judge who reads both captions has an immediate, unanswerable question, and it undermines every other number on the page.
+**Fluorsight charges the customer £25,000 in the savings chart and £5,000–£15,000 in the revenue chart.** Both cannot be true. A judge who reads both captions has an immediate, unanswerable question, and it undermines every other number on the page.
 
 Pick one and propagate. If the real price is £5,000, the savings chart *improves* (£125,000 → £30,000; saving £95,000, 76%) — so this is likely a free win, not a painful correction. But the revenue projection then needs to justify why councils pay 3× consultancies for the same platform.
 
@@ -350,7 +350,7 @@ Nothing, at the level of a single dye. A one-dye assay measures hydrophobic-anio
 Mostly it cannot — the 2025 Nature Communications on-site sensor has an LOD of ~45 µg/L, 455× above the limit; the leading commercial field kit (FREDsense) is 10× above it. The best cyclodextrin array reaches 31–38 ng/L, below the limit, but it is a ~300× outlier and we do not assume we will match it. What bridges the gap is not the dye but **preconcentration**: DEXSORB concentrates PFAS by up to ~500,000×, a step none of those academic sensors include. And fundamentally we do not need to *measure* the limit — we need to **rank** samples well enough to decide which go to the lab.
 
 **Q5. "What's your false-negative rate, and who's liable if you tell someone not to test and there was contamination?"**
-We do not know the false-negative rate; establishing it against paired LC-MS/MS results is the entire purpose of a pilot, and until we have it the number should not be on a poster. On liability: Aegis **never** removes a sample from the workflow — it produces a priority ordering and a documented, auditable rationale. Final escalation is the consultant's professional judgement, and the audit trail exists precisely so that judgement is defensible.
+We do not know the false-negative rate; establishing it against paired LC-MS/MS results is the entire purpose of a pilot, and until we have it the number should not be on a poster. On liability: Fluorsight **never** removes a sample from the workflow — it produces a priority ordering and a documented, auditable rationale. Final escalation is the consultant's professional judgement, and the audit trail exists precisely so that judgement is defensible.
 
 **Q6. "The EAC found no evidence Part 2A is being enforced, and there's no PFAS threshold for determining a site. Why would a council buy this?"**
 Correct, and it is why **consultancies are our first customer, not councils**. Consultancies have a commercial incentive today, driven by a real bottleneck the EIA described to Parliament: planning authorities are refusing to accept PFAS risk assessments at named developments including Cambridge East, Dunsfold Park and RAF Abingdon. The council market depends on the statutory limit consultation and the updated Part 2A guidance landing — which is why it is our second wave, not our first.

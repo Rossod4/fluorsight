@@ -12,7 +12,7 @@ import {
 } from 'recharts';
 import { Card, PageHeader, StatCard } from '../components/ui';
 import {
-  AEGIS_ANNUAL_COST_GBP,
+  FLUORSIGHT_ANNUAL_COST_GBP,
   ALL_LAB_COST_GBP,
   CONSUMABLES_ANNUAL_GBP,
   CONSUMABLE_COST_PER_SAMPLE_GBP,
@@ -107,7 +107,7 @@ const MILESTONES: Milestone[] = [
 
 const COST_DATA = [
   { scenario: 'Test everything in the lab', labCost: ALL_LAB_COST_GBP, platformCost: 0 },
-  { scenario: 'Aegis-triaged', labCost: TRIAGED_LAB_COST_GBP, platformCost: AEGIS_ANNUAL_COST_GBP },
+  { scenario: 'Fluorsight-triaged', labCost: TRIAGED_LAB_COST_GBP, platformCost: FLUORSIGHT_ANNUAL_COST_GBP },
 ];
 
 const MARKET_DATA = [
@@ -142,7 +142,7 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
     approach: 'Portable electrochemical biosensor field kit for PFAS, result in ~3–4 hours',
     realTime: 'Same-day, on-site',
     commercial: 'Yes — sold via contact-sales',
-    note: 'A detection company, not a workflow one: they pair the field kit with their own LC-MS/MS confirmation lab, but publish no risk-scoring, site-prioritisation or case-management layer. Aegis is method-agnostic and can sit behind any screening chemistry, including theirs.',
+    note: 'A detection company, not a workflow one: they pair the field kit with their own LC-MS/MS confirmation lab, but publish no risk-scoring, site-prioritisation or case-management layer. Fluorsight is method-agnostic and can sit behind any screening chemistry, including theirs.',
   },
   {
     name: 'Academic fluorescence sensor arrays',
@@ -150,7 +150,7 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
       'Cyclodextrin host–dye displacement, LOD 31–38 ng/L for PFOS/PFOA (Zha et al. 2025, Anal. Chim. Acta 1377, 344680)',
     realTime: 'Lab prototype',
     commercial: 'No',
-    note: 'Validates the general principle Aegis builds on — cyclodextrin host–dye competitive displacement at ng/L levels — but with a four-dye array (NPN, AFR, CC, PR) plus a trained classifier, not our single 2,6-ANS probe, which has not been published for PFAS. No product, workflow or UK market presence. Their array approach is the basis of our proposed selectivity roadmap.',
+    note: 'Validates the general principle Fluorsight builds on — cyclodextrin host–dye competitive displacement at ng/L levels — but with a four-dye array (NPN, AFR, CC, PR) plus a trained classifier, not our single 2,6-ANS probe, which has not been published for PFAS. No product, workflow or UK market presence. Their array approach is the basis of our proposed selectivity roadmap.',
   },
   {
     name: 'ESdat / EQuIS / Locus EIM',
@@ -172,7 +172,7 @@ const COMPETITORS: { name: string; approach: string; realTime: string; commercia
 
 const RISKS: string[] = [
   'Screening sensitivity is roughly 1–2 orders of magnitude below accredited LC-MS/MS — published cyclodextrin fluorescence arrays report LODs of 31–38 ng/L against accredited reporting levels of about 0.5–20 ng/L — so screening estimates carry real uncertainty and are never used for regulatory compliance reporting.',
-  'The specific sensor chemistry (2,6-ANS with a β-cyclodextrin adsorbent, applied to PFAS) has not itself been peer-reviewed. The probe–host pairing is well characterised in the binding literature and a 2026 study confirms 2,6-ANS binds β-cyclodextrin most strongly of the native hosts, but no published work applies it to PFAS. Aegis treats the sensor as a modular, swappable component while validation of this exact combination matures.',
+  'The specific sensor chemistry (2,6-ANS with a β-cyclodextrin adsorbent, applied to PFAS) has not itself been peer-reviewed. The probe–host pairing is well characterised in the binding literature and a 2026 study confirms 2,6-ANS binds β-cyclodextrin most strongly of the native hosts, but no published work applies it to PFAS. Fluorsight treats the sensor as a modular, swappable component while validation of this exact combination matures.',
   'The UK statutory PFAS limit and the Environment Agency’s prioritisation map are both still pending (2026 consultation; map due end-2026) — the regulatory tailwind is real but not yet fully crystallised.',
   'Local-authority procurement is slow and fragmented across roughly 290 separate Part 2A enforcing authorities in England (district and unitary councils; county councils are not Part 2A authorities), and that number is falling as reorganisation creates larger unitaries; consultancies are the faster initial commercial path.',
   'UK GBP lab pricing is quote-only from major labs (ALS, SOCOTEC, Eurofins, RPS); the cost model below uses a published EU proxy figure, explicitly flagged as an assumption pending direct UK quotes.',
@@ -246,8 +246,8 @@ export default function Why() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
       <PageHeader
-        title="Why Aegis"
-        subtitle="The regulatory driver, the pain point, the cost model, and the market opportunity behind Aegis — every figure sourced, every projection labelled."
+        title="Why Fluorsight"
+        subtitle="The regulatory driver, the pain point, the cost model, and the market opportunity behind Fluorsight — every figure sourced, every projection labelled."
       />
 
       {/* 1. Regulatory driver */}
@@ -309,7 +309,7 @@ export default function Why() {
         <SectionHeading eyebrow="3 · Value proposition" title="An illustrative cost model" />
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-slate-600">
           For a council or consultancy running a portfolio of 500 samples a year, triaging with
-          Aegis before committing to lab confirmation materially cuts monitoring spend.
+          Fluorsight before committing to lab confirmation materially cuts monitoring spend.
         </p>
         <Card className="p-5">
           <div className="h-72 w-full">
@@ -337,7 +337,7 @@ export default function Why() {
                 <Bar
                   dataKey="platformCost"
                   stackId="a"
-                  name="Aegis platform & consumables"
+                  name="Fluorsight platform & consumables"
                   fill="#0d9488"
                   stroke="#fff"
                   strokeWidth={2}
@@ -356,11 +356,11 @@ export default function Why() {
             May 2025) — but that is a rough figure for <strong>soil</strong> analysis and explicitly
             excludes water, so it sets scale rather than validating our number. We do not know
             whether water analysis costs more or less, and we are not claiming our figure is
-            conservative. Aegis cost is split into a {gbp(SUBSCRIPTION_STANDARD_GBP)}/year software
+            conservative. Fluorsight cost is split into a {gbp(SUBSCRIPTION_STANDARD_GBP)}/year software
             subscription plus screening consumables at{' '}
             {gbp(CONSUMABLE_COST_PER_SAMPLE_GBP)}/sample ({gbp(CONSUMABLES_ANNUAL_GBP)}/year at this
             volume — a founder estimate, not a supplier quote), giving{' '}
-            {gbp(AEGIS_ANNUAL_COST_GBP)} total. Escalation rate of{' '}
+            {gbp(FLUORSIGHT_ANNUAL_COST_GBP)} total. Escalation rate of{' '}
             {Math.round(MODELLED_ESCALATION_RATE * 100)}% is an assumption, not an observation — see
             the sensitivity range below.
           </p>
@@ -369,7 +369,7 @@ export default function Why() {
           <StatCard
             label="Modelled cost reduction"
             value={`${Math.round(MODELLED_COST_REDUCTION * 100)}%`}
-            detail={`${gbp(ALL_LAB_COST_GBP)} (all-lab) vs ${gbp(TRIAGED_TOTAL_COST_GBP)} (Aegis-triaged), illustrative ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio.`}
+            detail={`${gbp(ALL_LAB_COST_GBP)} (all-lab) vs ${gbp(TRIAGED_TOTAL_COST_GBP)} (Fluorsight-triaged), illustrative ${MODELLED_PORTFOLIO_SAMPLES}-sample portfolio.`}
           />
           <StatCard
             label="Modelled annual saving"
@@ -529,7 +529,7 @@ export default function Why() {
             Pilot with 1–2 environmental consultancies first, proving cost savings and workflow fit
             with a fast-moving commercial buyer. Expand toward local authorities once the
             Environment Agency's GIS prioritisation map reaches councils (end of 2026), positioning
-            Aegis as the tool that turns that map's raw site list into a fundable, defensible
+            Fluorsight as the tool that turns that map's raw site list into a fundable, defensible
             investigation priority order.
           </p>
           <p className="mt-2 text-xs text-slate-400">
@@ -544,7 +544,7 @@ export default function Why() {
       <section className="mb-16" aria-labelledby="business-model">
         <SectionHeading eyebrow="6 · Business model" title="Revenue model and illustrative projection" />
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-slate-600">
-          Aegis combines a SaaS platform subscription with screening-kit consumables (dye and
+          Fluorsight combines a SaaS platform subscription with screening-kit consumables (dye and
           adsorbent cartridges) and an optional per-sample decision-support fee. The chart below is
           an illustrative founder projection, not a committed pipeline or guaranteed outcome.
         </p>
@@ -603,7 +603,7 @@ export default function Why() {
 
       {/* 7. Competitive landscape */}
       <section className="mb-16" aria-labelledby="competition">
-        <SectionHeading eyebrow="7 · Competitive landscape" title="How Aegis differs" />
+        <SectionHeading eyebrow="7 · Competitive landscape" title="How Fluorsight differs" />
         <p className="mb-4 max-w-3xl text-sm leading-relaxed text-slate-600">
           The honest framing is <strong>pre-lab versus post-lab</strong>. Established environmental
           data platforms already do exceedance screening well — ESdat, for instance, ships UK
@@ -612,7 +612,7 @@ export default function Why() {
           it would be wrong to say they never touch the pre-lab workflow. But that planning is
           schedule- and template-driven, and their screening and reporting are built around
           accredited laboratory chemistry. None of them uses a field measurement to decide whether a
-          collected sample is worth analysing at all. Aegis targets that specific decision, and the
+          collected sample is worth analysing at all. Fluorsight targets that specific decision, and the
           saving comes from analyses never ordered. It is also not tied to one sensor — it is the
           risk-scoring, prioritisation, workflow and audit-trail layer, and it can sit behind any
           screening chemistry.
@@ -625,7 +625,7 @@ export default function Why() {
                 <th className="px-4 py-3">Approach</th>
                 <th className="px-4 py-3">Real-time</th>
                 <th className="px-4 py-3">Commercial</th>
-                <th className="px-4 py-3">Aegis differentiation</th>
+                <th className="px-4 py-3">Fluorsight differentiation</th>
               </tr>
             </thead>
             <tbody>

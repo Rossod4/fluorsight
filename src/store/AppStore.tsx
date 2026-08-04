@@ -25,7 +25,7 @@ import type { ScreeningImportRow } from '../lib/csv';
 // single screeningEvidence weight. A persisted v1 settings object would leave
 // the new weight undefined and produce NaN scores, so old state is discarded
 // rather than migrated — this is demo data.
-const STORAGE_KEY = 'aegis:v2';
+const STORAGE_KEY = 'fluorsight:v2';
 
 export function uid(prefix: string): string {
   return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;

@@ -113,7 +113,7 @@ export function Field({ label, children, hint }: { label: string; children: Reac
 export function Disclaimer() {
   return (
     <p className="text-xs leading-relaxed text-slate-400">
-      Aegis is a screening and triage decision-support tool. Screening estimates are indicative
+      Fluorsight is a screening and triage decision-support tool. Screening estimates are indicative
       and carry uncertainty; they are not a substitute for accredited laboratory analysis
       (LC-MS/MS) and must not be used for regulatory compliance reporting.
     </p>

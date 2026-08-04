@@ -56,7 +56,7 @@ export default function AppLayout() {
         </button>
         <Link to="/" className="flex items-center gap-2">
           <BrandMark className="h-6 w-6" />
-          <span className="font-semibold tracking-tight text-slate-900">Aegis</span>
+          <span className="font-semibold tracking-tight text-slate-900">Fluorsight</span>
         </Link>
       </header>
 
@@ -76,7 +76,7 @@ export default function AppLayout() {
         <div className="flex h-16 items-center justify-between border-b border-slate-200 pr-2 pl-4">
           <Link to="/" className="flex items-center gap-2">
             <BrandMark />
-            <span className="text-lg font-semibold tracking-tight text-slate-900">Aegis</span>
+            <span className="text-lg font-semibold tracking-tight text-slate-900">Fluorsight</span>
           </Link>
           <button
             type="button"
