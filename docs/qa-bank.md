@@ -114,7 +114,7 @@ They may be assuming 1,8-ANS, which is the isomer most people know.
 **Answer (35s).**
 > That's true of 1,8-ANS, which is the isomer most people mean by "ANS" — Sueishi puts it with
 > β-cyclodextrin at about 50 to 195 per molar. We use the 2,6 isomer, which reaches around
-> 11,700 at the same host. And a paper published on 17 July this year, using both isomers,
+> 11,700 across the hosts he tested. And a paper published on 17 July this year, using both isomers,
 > found 2,6-ANS binds β-cyclodextrin most strongly of the native hosts while 8,1-ANS prefers
 > gamma. Our sorbent is a β-cyclodextrin polymer, so the probe and the host are matched
 > deliberately.
@@ -280,7 +280,7 @@ suspect you made it up. They're right — but you have a good answer now.
 
 **Answer (35s).**
 > It's our assumption and we can't source it. No UK laboratory publishes a PFAS rate card — we
-> approached seven and every one quotes on request. The nearest published UK figure is £350 a
+> checked seven providers' published pricing and every one quotes on request. The nearest published UK figure is £350 a
 > sample, from the Environmental Industries Association's evidence to the Environmental Audit
 > Committee last year, but that's a soil figure and it explicitly excludes water. Ours is a
 > water workflow, so it sets scale and nothing more. What we can tell you is where it stops
@@ -407,8 +407,9 @@ own risk list.
 
 **Answer (30s).**
 > Not yet, in the sense you mean — we've had no customer conversation that has changed the
-> product. We've written to four labs for pricing and to consultancies for a discovery call,
-> and our mentor call is on 5 August with an introduction as one of our three asks. What we
+> product. Dom has approached two environmental contacts and we're waiting on replies; our
+> emails to laboratories and consultancies are written and going out this month. Our mentor
+> call is on 5 August, with an introduction as one of our three asks. What we
 > haven't done is claim validation we don't have. The one thing we most want before September
 > is what a consultancy actually pays for PFAS analysis and how they price it on, because
 > there's no public data on it at all.
@@ -1006,11 +1007,14 @@ get for PFAS versus humic acid on that resin?"**
 > lead author Paul Nathanail, who wrote the CIRIA good-practice guidance on PFAS in soil and
 > water.
 >
-> We've kept the model at £250 — twenty-nine per cent below it — because water is generally
-> cheaper than soil, and because we'd rather understate the saving than overstate it.
+> We've kept the model at £250, but I want to be straight that it's an assumption — that £350
+> is a *soil* figure and the evidence explicitly excludes water, so it doesn't validate our
+> number and we're not claiming ours is conservative.
 >
-> No UK lab publishes a rate card. We checked seven and they're all quote-only. We've written
-> to four for real quotes, and that's the number we actually want.
+> No UK lab publishes a rate card. We checked seven providers' published pricing and they're
+> all quote-only. Getting one real quote is the single thing that would most improve this
+> model — break-even is £62.50, so we're four times more sensitive to that number than to our
+> escalation rate.
 
 ### The follow-up
 
@@ -1083,7 +1087,7 @@ get for PFAS versus humic acid on that resin?"**
 > That's true of 1,8-ANS — which is what most people mean by "ANS", so it's a fair assumption.
 > Sueishi puts that isomer with β-cyclodextrin at around 50 to 195 per molar.
 >
-> We use 2,6-ANS. Same paper puts it up to about 11,700 at the same host. And a study published
+> We use 2,6-ANS. Same paper puts it up to about 11,700 across the hosts tested. And a study published
 > on 17 July this year, which measured both isomers against all three native cyclodextrins,
 > found 2,6-ANS binds β most strongly while 8,1-ANS prefers gamma.
 >
@@ -1229,19 +1233,28 @@ Pick one and only one. Say it without qualification.
 - **"Get the mentor involved before the design was settled."** Ours was assigned in mid-July.
   We could have pushed for contact sooner, and some of the questions we're only answering now
   are ones an expert would have asked us in June.
-- **"Write things down properly the first time."** Our own project documents recorded the wrong
-  ANS isomer for weeks. Nobody on the team was confused — Dom always knew which probe we were
-  using — but everything written *around* the chemistry inherited the error, and we only caught it
-  when a new paper made us go back to the source. We now check technical claims against the person
-  who owns them before they go anywhere.
+- **"Write things down properly the first time."** We changed the probe from 1,8-ANS to 2,6-ANS in
+  June, on binding grounds. But our written record kept saying 1,8-ANS for weeks afterwards, and
+  every document downstream inherited it — so a decision we had actually made well looked, on
+  paper, like one we had not made at all. We now check a technical claim against the person who
+  owns it before it goes anywhere.
 
-**The third is the strongest** if it's true, because it's a technical self-criticism rather than
-an interpersonal one, it is specific, and the fix is a process anyone can see you now follow.
+**The third is the strongest**: it is a technical self-criticism rather than an interpersonal one,
+it is specific, and the fix is a process anyone can see you now follow. It also lets you land the
+underlying decision without boasting about it.
 
-> ⚠️ **Corrected 4 August 2026.** This bullet previously said *"we picked 1,8-ANS early and found
-> out in July it was a poor fit."* That never happened — the probe was always 2,6-ANS and the
-> 17 July paper endorses it. Do not use the old version; it invents a mistake, and a judge who
-> reads the paper will find it says the opposite.
+> ⚠️ **Corrected twice. Read this before using the bullet.**
+>
+> - **3 Aug** — an earlier version said *"we picked 1,8-ANS early and found out in July it was a
+>   poor fit."* Wrong on the timing and the reason.
+> - **4 Aug** — the replacement said the probe *"was always 2,6-ANS"* and that no switch happened.
+>   **Also wrong**, and worse: it deleted a real design decision. Alex confirmed the team did
+>   switch, in June, on binding grounds.
+>
+> **The true sequence, and the one to say:** we switched in **June** because 2,6-ANS binds an order
+> of magnitude harder (80–11,700 M⁻¹ against 50–195 across the hosts Sueishi tested); a paper on
+> **17 July** comparing both isomers across all three native cyclodextrins then confirmed it
+> independently. Decision first, literature second. Do not say the switch never happened.
 
 ## How to make it sound like students, not a corporate answer
 

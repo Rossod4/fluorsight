@@ -14,8 +14,10 @@
 > *contributes* is a decision model — and every serious open question about it is a statistics
 > question:
 >
-> - The eleven scoring weights are **asserted, not calibrated**. Nobody has fitted them to anything.
-> - Nine of ten weights **change no decision at all** under a ±25% perturbation.
+> - The **ten** scoring weights are **asserted, not calibrated**. Nobody has fitted them to anything.
+> - Only **two** weights can change a decision at all on this dataset: screening evidence has to
+>   move about **30%**, and the airfield factor about **95%**. Every other weight would have to
+>   move more than **100%** before any sample crossed the threshold.
 > - The escalation threshold is a **cost-sensitive classification problem with asymmetric errors**
 >   (a missed exceedance is far worse than a wasted test) and it was set to a round number.
 > - The back-test runs at **n = 3, on synthetic data we wrote ourselves**.

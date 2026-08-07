@@ -130,6 +130,11 @@ strong { font-weight: 700; }
   min-height: 90mm;
 }
 .shot .ph { font-size: 17pt; color: var(--faint); line-height: 1.4; }
+/* Screenshots are captured wide-and-short so `contain` shows the whole figure
+   without letterboxing much. `contain`, not `cover` — on a slide read from the
+   back of a room, a cropped axis is worse than a small margin. */
+.shot { padding: 0; overflow: hidden; }
+.shot img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 .steps { width: 100%; border-collapse: collapse; }
 .steps th, .steps td { text-align: left; vertical-align: top; padding: 4.5mm 6mm 4.5mm 0; border-top: 0.4mm solid var(--rule); }
@@ -138,6 +143,7 @@ strong { font-weight: 700; }
 .steps .kill { color: var(--red); font-weight: 700; }
 
 .qr { width: 44mm; height: 44mm; border: 0.6mm solid var(--ink); display: grid; place-items: center; font-size: 14pt; color: var(--faint); }
+.qr img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 .closing { font-size: 40pt; line-height: 1.2; font-weight: 700; max-width: 24ch; }
 

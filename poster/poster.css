@@ -195,19 +195,29 @@ strong { font-weight: 700; }
 /* 32pt floor applies here too — headings may go smaller, body copy may not. */
 .swot li { font-size: var(--body); line-height: 1.24; }
 
+/* Figures are FIXED height, not min-height. The sheet sits at ~100% fill, so a
+   figure that grows to its image's natural aspect ratio would push the poster
+   over the edge silently. Height is locked here and the image is cropped to
+   fit; both source images are captured wide-and-short so the crop lands on the
+   content that matters (the table rows, the curve) rather than on whitespace. */
 .figure {
   border: 0.5mm solid var(--rule);
   background: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 6mm;
+  padding: 0;
+  overflow: hidden;
   min-height: 90mm;
+}
+.figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
 }
 .figure .placeholder { font-size: var(--caption); color: var(--faint); max-width: 70ch; }
 
 .qr { width: 70mm; height: 70mm; border: 0.5mm solid var(--ink); display: grid; place-items: center; }
+.qr img { display: block; width: 100%; height: 100%; object-fit: contain; }
 
 .footer {
   border-top: 1.2mm solid var(--ink);
@@ -230,8 +240,8 @@ strong { font-weight: 700; }
 .standfirst, .hero-copy p, .footer p { max-width: 520mm; }
 
 .hero-row { display: grid; grid-template-columns: 1.25fr 1fr; gap: var(--gutter); }
-.figure--queue { min-height: 96mm; }
-.figure--sweep { min-height: 96mm; }
+.figure--queue { height: 96mm; min-height: 0; }
+.figure--sweep { height: 96mm; min-height: 0; }
 .brand { font-size: var(--brand); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin: 0 0 3mm; }
 .hero-copy { margin-top: 5mm; }
 

@@ -58,7 +58,10 @@ npm run build      # production build to dist/
 
 ## Deployment
 
-Pushing to `main` builds and deploys to GitHub Pages via
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). The app uses a
-relative base and hash routing, so it works from any Pages subpath with no
-server configuration.
+The live site is **https://fluorsight.co.uk**, built and hosted by **Netlify** from
+this repository — see [`netlify.toml`](netlify.toml). We moved off GitHub Pages so
+the repository could be private; Pages only serves public repos on the free plan.
+
+The app uses a relative base and hash routing, so every route is `/#/…` and the
+server only ever needs to serve the index. If routing ever moves to
+`BrowserRouter`, a catch-all redirect to `/index.html` becomes mandatory.

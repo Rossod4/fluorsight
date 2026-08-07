@@ -2,6 +2,10 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useApp, uid } from '../../store/AppStore';
 import { assessRisk, BAND_LABELS } from '../../lib/riskEngine';
+// Aliased rather than redeclared. This file used to carry its own `const
+// GUIDELINE_NGL = 100`, so the guideline existed as two independent literals
+// and could drift; Validation.tsx already imported the canonical one.
+import { GUIDELINE_NG_L as GUIDELINE_NGL } from '../../lib/validation';
 import { STATUS_LABELS, STATUS_ORDER, fmtDate, fmtDateTime } from '../../lib/labels';
 import { Button, Card, EmptyState, Field, PageHeader, RiskBadge, StatusBadge, inputClass } from '../../components/ui';
 import type { ConcentrationBand, Confidence, LabResult, SampleStatus, ScreeningResult } from '../../types';
@@ -9,7 +13,6 @@ import type { ConcentrationBand, Confidence, LabResult, SampleStatus, ScreeningR
 const CONFIDENCE_LABELS: Record<Confidence, string> = { low: 'Low', medium: 'Medium', high: 'High' };
 const CONCENTRATION_BANDS = Object.keys(BAND_LABELS) as ConcentrationBand[];
 const CONFIDENCES: Confidence[] = ['low', 'medium', 'high'];
-const GUIDELINE_NGL = 100;
 
 // Statuses that can be manually advanced one step via a workflow button.
 // `sent_to_lab -> lab_received` is handled by the Lab result form instead,

@@ -28,7 +28,9 @@ export const UK_PUBLISHED_SOIL_LAB_COST_GBP = 350;
 
 /**
  * The rate we model at, for water. An assumption. No UK laboratory publishes a
- * PFAS rate card — seven providers were approached and all quote on request.
+ * PFAS rate card — the published pricing of seven providers was checked and all
+ * quote on request. Note "checked", not "approached": as of 4 Aug 2026 no lab has
+ * been contacted directly. Do not upgrade this wording without sending the emails.
  */
 export const INDICATIVE_LAB_COST_GBP = 250;
 

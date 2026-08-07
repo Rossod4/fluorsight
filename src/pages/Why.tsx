@@ -207,7 +207,7 @@ const SOURCES: { label: string; href: string }[] = [
   { label: 'House of Commons Library — local authorities briefing', href: 'https://commonslibrary.parliament.uk/research-briefings/cbp-10494/' },
   { label: 'Part 2A statutory guidance (Environmental Protection Act 1990)', href: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/223705/pb13735cont-land-guidance.pdf' },
   { label: 'Sueishi et al. 2013 — fluorescence quantum yields of anilinonaphthalene sulfonic acids with cyclodextrins and CB[7] (Spectrochim. Acta A 114, 344–349)', href: 'https://pubmed.ncbi.nlm.nih.gov/23786974/' },
-  { label: 'J. Incl. Phenom. Macrocycl. Chem. 2026 — weakly interacting cyclodextrin complexes: 2,6-ANS and 8,1-ANS across native cyclodextrins', href: 'https://doi.org/10.1007/s10847-026-01361-0' },
+  { label: 'Fereidounpour, Larsen & Steinmann 2026 — weakly interacting cyclodextrin complexes: an experimental and theoretical methodological assessment using two fluorescent anilinonaphthalenes (J. Incl. Phenom. Macrocycl. Chem., 17 July 2026)', href: 'https://doi.org/10.1007/s10847-026-01361-0' },
   { label: 'ScienceDirect — cyclodextrin-polymer fluorescent sensor array for PFAS', href: 'https://www.sciencedirect.com/science/article/abs/pii/S0003267025010748' },
   { label: 'Cyclopure — DEXSORB', href: 'https://cyclopure.com/dexsorb/' },
   { label: 'Kurita — investment in Cyclopure / DEXSORB', href: 'https://www.kuritaamerica.com/the-splash/kurita-invests-in-cyclopure-to-accelerate-pfas-business-expansion-utilizing-dexsorb-in-the-united-states' },
@@ -349,8 +349,8 @@ export default function Why() {
           <p className="mt-3 text-xs leading-relaxed text-slate-500">
             Illustrative model, not a vendor quote. Portfolio of {MODELLED_PORTFOLIO_SAMPLES}{' '}
             samples/year. Lab cost modelled at {gbp(INDICATIVE_LAB_COST_GBP)}/sample —{' '}
-            <strong>an assumption, not a quote.</strong> No UK laboratory we approached publishes a
-            PFAS rate card; we checked seven providers and all quote on request. The nearest
+            <strong>an assumption, not a quote.</strong> No UK laboratory publishes a public PFAS
+            rate card; we checked seven providers&rsquo; published pricing and all quote on request. The nearest
             published UK figure is {gbp(UK_PUBLISHED_SOIL_LAB_COST_GBP)}/sample (Environmental
             Industries Association, written evidence PFAS0121 to the Environmental Audit Committee,
             May 2025) — but that is a rough figure for <strong>soil</strong> analysis and explicitly

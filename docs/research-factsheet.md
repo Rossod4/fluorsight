@@ -1,6 +1,21 @@
 # FLUORSIGHT Fact Sheet: PFAS Screening Market & Science Context
 
-*Compiled 9 July 2026 via live web research. Every claim sourced inline. Conflicting figures noted; unverifiable items flagged. Use this for the website /why page AND the competition PowerPoint.*
+> # 🔴 SUPERSEDED — do not quote from this file
+>
+> **Compiled 9 July 2026. Superseded by `research-2026-08.md`.** It is kept as a record of what
+> we believed in July, because the design-evolution narrative depends on being able to show what
+> changed and when. It is **not** a source. Several claims below were later verified false:
+>
+> | Below it says | Actually |
+> |---|---|
+> | `~500,000×` preconcentration (§ science) | **~250×** (250 mL through the disc, ~1 mL elution), up to ~2,000× at 1 L. The 500,000× figure describes waste-volume reduction in Cyclopure's water-*treatment* line — a category error. |
+> | **1,8-ANS** as the probe | We use **2,6-ANS**, switched in June 2026 on binding grounds (Ka 80–11,700 M⁻¹ vs 50–195, **across the hosts Sueishi et al. tested** — the ranges span several cyclodextrins plus cucurbit[7]uril, so do **not** attribute either range to β-CD alone). |
+> | Cyclopure kit **$79** | **$85**, 55 analytes, LOQ 1.0 ppt, 10–14 business days. |
+> | **1.8m+** analyses since 2012 | **1.7m+** — corrected on the live site 3 Aug. |
+> | **€2 trillion / 20 yr** EU cost | Advocacy figure. The European Commission's own figure is **€440bn by 2050**. |
+>
+> Anything you need from here, take from `research-2026-08.md` instead. If a figure appears only
+> in this file and nowhere newer, treat it as **unverified**, not as sourced.
 
 ## 1. Regulation (the demand driver)
 
@@ -64,7 +79,7 @@
 - **No peer-reviewed paper found using ANS specifically for PFAS** — frame Fluorsight science as *building on the validated cyclodextrin host–dye displacement principle*, not replicating an existing ANS-PFAS paper.
 - Closest validated precedent: **cyclodextrin-polymer + fluorescent-dye competitive-binding sensor array**, LOD **38 ng/L PFOA / 31 ng/L PFOS**. [ScienceDirect](https://www.sciencedirect.com/science/article/abs/pii/S0003267025010748)
 - Related: BSA-squaraine dye PFOS turn-on/PFOA turn-off (2026, Chemical Physics) [NJIT](https://researchwith.njit.edu/en/publications/pfos-and-pfoa-interaction-with-organic-chromophore-bound-serum-al/); amplifying fluorescent polymers LOD 0.08 ppb PFOA [JACS](https://pubs.acs.org/doi/10.1021/jacs.3c03125); guanidinocalix[5]arene displacement assay [Nat Commun](https://www.nature.com/articles/s41467-019-13775-1); critical review of PFAS sensors [PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC10398537/).
-- **DEXSORB/DEXSORB+**: Cyclopure's plant-derived β-cyclodextrin adsorbent; molecularly selective for PFAS, NSF/61 certified, regenerable (~500,000× concentration); commercialised in US (Kurita partnership Sept 2025). Cyclopure consumer test kit: DEXSORB extraction disc + mail-in LC-MS, 55 PFAS, LOQ 1.0 ppt, **$79/kit**. [Cyclopure](https://cyclopure.com/dexsorb/) | [Kurita](https://www.kuritaamerica.com/the-splash/kurita-invests-in-cyclopure-to-accelerate-pfas-business-expansion-utilizing-dexsorb-in-the-united-states)
+- **DEXSORB/DEXSORB+**: Cyclopure's plant-derived β-cyclodextrin adsorbent; molecularly selective for PFAS, NSF/61 certified, regenerable (~~500,000× concentration~~ 🔴 **false — that is waste-volume reduction in the *treatment* line; analytical preconcentration is ~250×**); commercialised in US (Kurita partnership Sept 2025). Cyclopure consumer test kit: DEXSORB extraction disc + mail-in LC-MS, 55 PFAS, LOQ 1.0 ppt, ~~$79/kit~~ 🔴 **now $85**. [Cyclopure](https://cyclopure.com/dexsorb/) | [Kurita](https://www.kuritaamerica.com/the-splash/kurita-invests-in-cyclopure-to-accelerate-pfas-business-expansion-utilizing-dexsorb-in-the-united-states)
 - **Honesty guardrails**: LC-MS/MS (EPA 537.1 LOD 0.71–2.8 ppt; EPA 533 MRL 1.4–16 ppt) is ~1,000× more sensitive than most fluorescence sensors. Fluorescence LODs cluster low-to-high ppb; best-in-class cyclodextrin systems reach 31–38 ng/L. Regulatory 0.1 µg/L (=100 ng/L) is within reach of best-in-class fluorescence but with real uncertainty; surfactant interference (SDS/SDBS) may require pre-treatment. **Position as triage/screening layer, never LC-MS/MS replacement.**
 - **Competitors**: Cyclopure ($79 mail-in kit, not real-time); FREDsense (electrochemical bacterial biosensor field kit, same-day); academic fluorescence sensors not yet commercial → Fluorsight = early mover in *decision-support + fluorescence screening* for UK market; competitors validate appetite for non-lab rapid screening.
 

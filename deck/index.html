@@ -13,8 +13,8 @@
   <h1>40 samples.<br>Budget for eight.<br><span class="dim">Which eight?</span></h1>
   <div class="stats">
     <div>
-      <div class="v">£350</div>
-      <div class="l">to confirm one sample by LC-MS/MS<br><span style="color:#94a3b8">EIA to the Commons EAC, 2025 — soil</span></div>
+      <div class="v">€175–300</div>
+      <div class="l">published list price to analyse one water sample<br><span style="color:#94a3b8">Measurlabs, 2025 · no UK laboratory publishes a rate</span></div>
     </div>
     <div>
       <div class="v">40,000+</div>
@@ -56,7 +56,7 @@
   </div>
   <div class="spacer"></div>
   <div class="rule-note">
-    Screening evidence caps at <strong>45 points</strong> against a threshold of <strong>50</strong>.
+    One screening reading caps at <strong>35 points</strong> against a threshold of <strong>50</strong>.
     No single measurement can escalate a sample on its own — the site history has to agree.
   </div>
 </section>
@@ -69,17 +69,15 @@
       <p>Upload a batch. The queue reorders itself.</p>
       <p>Open any sample and you get the reasoning, driver by driver — not a black box.</p>
       <p>Disagree with our risk appetite? Change the weights and every score moves.</p>
-      <div class="qr" style="margin-top:6mm;">QR</div>
+      <div class="qr" style="margin-top:6mm;"><img src="figures/qr-app.png" alt="QR code to the live demo"></div>
       <p class="small" style="margin-top:3mm;">fluorsight.co.uk</p>
     </div>
+    <!-- Still of the real queue. If the 20 s screen recording gets made, swap the
+         <img> for a looping <video muted autoplay loop> — the still is the fallback,
+         and it is a far better fallback than a grey box. Do not go live: venue wifi
+         is not worth 8 marks. Keep the live URL in a second tab for Q&A. -->
     <div class="shot">
-      <span class="ph">
-        RECORDED CAPTURE — 20 s, no audio, loops.<br><br>
-        CSV import → queue reorders → open RM-FTG-001 → driver breakdown → change a weight in
-        Settings → scores move.<br><br>
-        <strong>Recorded, not live.</strong> Venue wifi is not worth 8 marks.
-        Keep the live URL in a second tab for Q&amp;A.
-      </span>
+      <img src="figures/queue.png" alt="The live escalation queue: samples ranked by risk score, the two Critical samples at 72 and 71 flagged for urgent lab escalation.">
     </div>
   </div>
 </section>
@@ -99,14 +97,7 @@
       </div>
     </div>
     <div class="shot">
-      <span class="ph">
-        FIGURE — threshold sweep.<br><br>
-        X: escalation threshold 5–100.<br>
-        Left Y: escalation rate.<br>
-        Right Y: confirmed exceedances missed.<br><br>
-        Mark the single confirmed exceedance at score 72 and the operating point at 50.
-        Shade 23–72 as "identical result".
-      </span>
+      <img src="figures/sweep.png" alt="Threshold sweep: escalation rate falls as the threshold rises, while missed confirmed exceedances stay at zero until a threshold of 72.">
     </div>
   </div>
 </section>

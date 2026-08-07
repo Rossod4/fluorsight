@@ -22,7 +22,7 @@
         </p>
       </div>
       <div class="title-qr">
-        <div class="qr"><span class="caption">QR</span></div>
+        <div class="qr"><img src="figures/qr-app.png" alt="QR code to the live Fluorsight demo at fluorsight.co.uk"></div>
         <p class="caption">Try it — no login<br>fluorsight.co.uk</p>
       </div>
     </div>
@@ -41,18 +41,12 @@
     <h2>The output: an escalation queue</h2>
     <div class="hero-row">
       <div class="figure figure--queue">
-        <span class="placeholder">
-          FIGURE 1 — escalation queue. Five escalated rows above a heavy rule at threshold 50, five
-          held below, then one summary band: “11 more below, all Low”. Columns: sample, site, score,
-          band. Tabs: ESCALATE — 5 samples / HOLD — 16 deferred.
-        </span>
+        <img src="figures/queue.png"
+             alt="The Fluorsight escalation queue: samples ranked by risk score — RM-FTG-001 Critical 72 and RV-MC-001 Critical 71 flagged for urgent escalation, three High between 54 and 69 sent for confirmatory analysis, Medium 45 held for monitoring. Each row carries a recommended action and a lab status.">
       </div>
       <div class="figure figure--sweep">
-        <span class="placeholder">
-          FIGURE 2 — threshold sweep. X: threshold 5–100. Left Y: escalation rate. Right Y:
-          confirmed exceedances missed. Mark the single confirmed exceedance at score 72. Mark the
-          operating point at 50.
-        </span>
+        <img src="figures/sweep.png"
+             alt="Threshold sweep: escalation rate falls from 100 per cent at a threshold of 5 to near zero at 100, while missed confirmed exceedances stay at zero until a threshold of 72, where the first is missed.">
       </div>
     </div>
     <div class="hero-copy">
@@ -100,8 +94,8 @@
         </p>
         <p>
           ● That reading is one input. Eight site factors and the screening history complete a
-          0–100 score, every point attributed. Screening evidence caps at 45 against a threshold of
-          50, so site context must agree. 25 unit tests. ○ No bench experiment has been run.
+          0–100 score, every point attributed. One reading caps at 35 points against a threshold of
+          50, so site context must agree. 27 unit tests. ○ No bench experiment has been run.
         </p>
       </section>
 
@@ -160,7 +154,7 @@
         </p>
         <p>
           <strong>June.</strong> Switched probe 1,8-ANS → 2,6-ANS on binding grounds: 80–11,700 M⁻¹
-          against 50–195 at the same host. <strong>17 July.</strong> A study of both isomers across
+          against 50–195 across hosts. <strong>17 July.</strong> A study of both isomers across
           all three native cyclodextrins independently confirmed it. <strong>August.</strong> The
           engine scored signal and band separately when they are one reading — merged, so no single
           measurement escalates alone.
@@ -193,8 +187,8 @@
       </tr>
       <tr>
         <th>Ongoing · all</th>
-        <td>Find one partner with archived samples already analysed by LC-MS/MS — outreach to
-          twelve organisations has returned nothing yet. <strong>We have no laboratory access</strong>
+        <td>Find one partner with archived samples already analysed by LC-MS/MS — two contacts
+          approached, no reply yet. <strong>We have no laboratory access</strong>
           — bench work is a final-year project, and until then every performance figure stays a
           bound, not a rate.</td>
       </tr>
@@ -236,8 +230,8 @@
       <p class="caption">
         Sources: Jacobs U.K. Ltd for the Environment Agency, Phase 4 WP4, 2023 · Environmental
         Industries Association, evidence PFAS0121 to the Commons EAC, May 2025 (£350/sample is a
-        <em>soil</em> figure; no UK water rate is published, and no laboratory we approached
-        publishes a rate card — seven were asked) · Guardian / Watershed Investigations, Oct 2024
+        <em>soil</em> figure; no UK water rate is published, and none of the seven UK providers
+        whose pricing we checked publishes one) · Guardian / Watershed Investigations, Oct 2024
         (contaminated-land programme line; the EA's total annual spend is ~£2.1bn) · Zha et al.,
         <em>Anal. Chim. Acta</em> 2025, 1377, 344680 · Sueishi et al., <em>Spectrochim. Acta A</em>
         2013, 114, 344 · UK PFAS testing market $11.5m (~£9m), Fortune Business Insights 2025.
@@ -245,7 +239,7 @@
       </p>
     </div>
     <div class="footer-qr">
-      <div class="qr qr--small"><span class="caption">QR</span></div>
+      <div class="qr qr--small"><img src="figures/qr-sources.png" alt="QR code to the full source list and decision log"></div>
       <p class="caption">Full sources<br>&amp; decision log</p>
     </div>
   </footer>

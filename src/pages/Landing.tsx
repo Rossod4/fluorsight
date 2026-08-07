@@ -6,7 +6,7 @@ const PROBLEM_STATS: { label: string; value: string; detail: string }[] = [
     label: 'Cost per lab sample',
     value: '€175–300',
     detail:
-      'Accredited LC-MS/MS analysis. EU published list prices, excl. VAT, plus a €97 per-order service fee (drinking/natural water €175, wastewater €300). No UK laboratory we approached publishes a rate card. Source: Measurlabs product pages, 2025.',
+      'Accredited LC-MS/MS analysis. EU published list prices, excl. VAT, plus a €97 per-order service fee (drinking/natural water €175, wastewater €300). No UK laboratory whose published pricing we checked offers a rate card. Source: Measurlabs product pages, 2025.',
   },
   {
     label: 'Typical turnaround',
@@ -153,8 +153,8 @@ export default function Landing() {
               material. As PFAS bind the adsorbent, the fluorescence signal shifts in a way that can
               be read out rapidly and cheaply, without shipping a sample to a lab. The isomer matters:
               2,6-ANS binds &beta;-cyclodextrin far more strongly than the more familiar 1,8-ANS
-              (K = 80&ndash;11,700 M&#8315;&sup1; against 50&ndash;195 M&#8315;&sup1;
-              &mdash;{' '}
+              (across the hosts tested, K = 80&ndash;11,700 M&#8315;&sup1; against
+              50&ndash;195 M&#8315;&sup1; &mdash;{' '}
               <a
                 href="https://pubmed.ncbi.nlm.nih.gov/23786974/"
                 target="_blank"

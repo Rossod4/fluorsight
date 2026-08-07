@@ -2,14 +2,27 @@
 
 *Prepared 2 August 2026. **Substantially corrected 3 August 2026** after Dom confirmed the actual probe.*
 
-> # 🟢 CORRECTION — THE PROBLEM THIS BRIEF DESCRIBED DOES NOT EXIST
+> # 🟢 CORRECTION — THIS BRIEF ARGUES FOR A CHANGE YOU HAD ALREADY MADE
 >
-> **This brief was written on the assumption that the probe is 1,8-ANS. It is not. Dom confirmed
-> the team is using 2,6-ANS, and that changes the conclusion completely — in your favour.**
+> **This brief was written on the assumption that the probe is 1,8-ANS. It is not — the team uses
+> 2,6-ANS, and that changes the conclusion completely, in your favour.**
 >
-> The wrong isomer entered the project record in `research-factsheet.md` on 9 July and every
-> document downstream inherited it, including the message asking Dom to reconsider his design.
-> Nobody on the team got this wrong; the documentation did.
+> ### ⚠️ Second correction, 4 August: the switch was real. Do not say it never happened.
+>
+> An earlier version of this box said the probe "was always 2,6-ANS" and that there was "nothing
+> to switch". **That is wrong, and Alex corrected it.** What actually happened:
+>
+> - **June 2026** — the team switched the probe from 1,8-ANS to 2,6-ANS, on binding grounds
+>   (80–11,700 M⁻¹ against 50–195 M⁻¹ across the hosts Sueishi et al. tested).
+> - **17 July 2026** — a paper comparing both isomers across all three native cyclodextrins
+>   independently confirmed the choice.
+>
+> So the sequence is **decision first, literature second** — which is a much stronger story than
+> either "we were always right" or "a paper made us change". It is a real, dated, externally
+> corroborated design evolution, and the rubric names *design evolution* explicitly. It belongs on
+> the poster (it is there) and in the talk. `research-factsheet.md` carried 1,8-ANS because it was
+> compiled on 9 July, **before** the switch was written up — that is a documentation lag, not a
+> team error.
 >
 > **What the 17 July 2026 paper actually says**, verified against the published abstract:
 >
@@ -54,7 +67,7 @@ Three findings matter to us:
    - **1,8-ANS + β-CD: Ka ≈ 50–195 M⁻¹**
    - **2,6-ANS + β-CD: Ka ≈ 80–11,700 M⁻¹**
 
-   That's roughly a **60–100× difference in binding strength between the two ANS isomers at the same host**, purely from where the sulfonate and anilino substituents sit on the ring system. You picked the weaker isomer for the host you're using.
+   That's roughly a **60× difference at the top of the two ranges** (11,700 / 195), purely from where the sulfonate and anilino substituents sit on the ring system. ⚠️ Note the ranges span **several hosts** — cyclodextrins plus cucurbit[7]uril — so do not present either as a single-host figure, and do not quote "100×": it is not derivable from the numbers above.
 
 3. **Weak, poorly-fitted binding distorts the fluorescence signal itself.** Partial solvent exposure of a badly-fitting guest "can lead to … distorted fluorescence readouts," and the paper warns fluorescence-based Ka determinations "may over- or underestimate Ka if experiments are not carefully controlled." This isn't just a sensitivity problem — it's a measurement-reliability problem.
 
@@ -299,15 +312,25 @@ projects lack"* — not that you will match 31 ng/L.
 
 ---
 
-## 7. Six questions for the mentor on Wednesday
+## 7. Six open chemistry questions — NOT for Wednesday's mentor call
 
-Phrased so a chemistry academic can answer usefully in the time available:
+> **Our mentor is a statistics lecturer in the School of Mathematics, not a chemist.** The six
+> questions below are written for a chemistry academic. They belong with Dom's supervisor or a
+> departmental contact, not in Wednesday's thirty minutes.
+>
+> **For the mentor call itself, use `mentor-call-brief.md`** — written for a statistician, and
+> asking about the validation design, which is what they can answer well and what their
+> feedback is actually marked on.
+>
+> Q1, Q2 and Q5 below are also now **closed**: we switched to 2,6-ANS in June on binding
+> grounds, before the 17 July paper independently confirmed it. Questions premised on 1,8-ANS
+> being the current probe no longer apply. They are kept as a record of what was asked and when.
 
 1. **"Given Ka ≈ 50–195 M⁻¹ for 1,8-ANS/β-CD (Sueishi et al. 2013), is that binding strength usable at all for a displacement assay, or does it put us below a threshold where the signal-to-noise is simply not workable in an aqueous environmental matrix?"** — you want a gut-check on whether this is "harder but doable" or "not viable as specified," from someone who's run binding assays.
 
 2. **"If we switch to 2,6-ANS with β-CD/DEXSORB+, is there anything about the 2,6 substitution pattern that would make it behave differently toward PFAS specifically, versus just binding the cavity more tightly in general?"** — i.e., does tighter baseline binding to the *cavity* actually guarantee better PFAS-driven *displacement*, or could a too-tight complex be harder to displace and therefore less sensitive in the other direction?
 
-3. **"Is there a rough way to estimate, even to an order of magnitude, whether DEXSORB's preconcentration factor (claimed ~500,000×) is plausibly enough to offset a weak Ka at the sensing step, or is that comparing two things that don't actually trade off against each other the way we're assuming?"** — this tests the load-bearing assumption in §4 before you put it on a poster.
+3. **"Is there a rough way to estimate, even to an order of magnitude, whether a ~250× preconcentration step is plausibly enough to offset a weak Ka at the sensing step, or is that comparing two things that don't actually trade off against each other the way we're assuming?"** — this tests the load-bearing assumption in §4 before it goes on a poster. **Use ~250×** (250 mL drawn through, ~1 mL elution), or ~2,000× on a 1 L protocol. The ~500,000× figure that appeared in early drafts is wrong — see §3: it describes waste-volume reduction in Cyclopure's water-*treatment* line, not analytical preconcentration. Never quote it.
 
 4. **"For an anionic-surfactant interference problem (SDS, SDBS, humic acids) in a single-dye assay, is there a cheap sample-pretreatment step (e.g. a selective wash, pH adjustment, or a simple counter-adsorbent) that could reduce cross-reactivity without needing a full multi-dye array?"** — looking for a low-cost partial mitigation short of Zha et al.'s four-dye/ML approach.
 
@@ -327,7 +350,7 @@ Ordered by value, given no lab access and no bench data currently exists. This i
 
 3. **Reframe every mention of assay output from "PFAS concentration" to "risk score" / "screening priority."** This is a documentation and framing change, costs nothing, and closes the selectivity objection (§5) before anyone raises it. Check this is consistent across the site copy and any pitch deck language — Fluorsight's own `Why.tsx` page apparently already does this correctly in places (per the research pack), so make sure the chemistry pages match.
 
-4. **Ask if there's a same-department fluorimeter and five minutes of instrument time.** You don't need a full validation study — even one qualitative measurement (does 2,6-ANS + β-CD show a visible fluorescence shift on adding a PFAS surrogate like PFOA, versus 1,8-ANS under the same conditions) would be actual primary data, and "we ran one comparative measurement" beats "we read two papers" in a judged setting. This is Q6 above — ask the mentor if this is remotely feasible on their kit. If genuinely not possible, don't force it; the literature-based redesign in point 1 is a legitimate and creditable answer on its own.
+4. **Ask whether there is a same-department fluorimeter and five minutes of instrument time.** You don't need a full validation study — even one qualitative measurement (does 2,6-ANS + β-CD show a visible fluorescence shift on adding a PFAS surrogate like PFOA, versus 1,8-ANS under the same conditions) would be actual primary data, and "we ran one comparative measurement" beats "we read two papers" in a judged setting. **Ask a chemistry academic, not the mentor** — the mentor is a statistician and has no kit. If genuinely not possible, don't force it: the literature-based redesign in point 1 is a legitimate and creditable answer on its own, and the poster and deck currently state plainly that we have no laboratory access. Do not promise bench work anywhere until someone has actually said yes.
 
 5. **Add a one-paragraph risk-register entry for the DEXSORB supply chain (§6)**, including the generic-β-CD-polymer fallback. Cheap, closes an obvious gap, shows you've thought about productionisation beyond the chemistry.
 

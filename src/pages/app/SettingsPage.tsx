@@ -197,7 +197,11 @@ export default function SettingsPage() {
           </div>
           {thresholdError && <p className="mt-2 text-sm text-red-600">{thresholdError}</p>}
 
-          <ThresholdBar thresholds={parsedThresholds ?? { medium: 30, high: 55, critical: 75 }} />
+          {/* Fall back to the engine's own defaults, never to a literal. This line
+              used to hard-code { medium: 30, high: 55, critical: 75 } — the values
+              from before the weights were re-derived to total 100 — so an invalid
+              draft rendered a bar that disagreed with the actual model. */}
+          <ThresholdBar thresholds={parsedThresholds ?? DEFAULT_SETTINGS.thresholds} />
 
           <div className="mt-6 flex items-center gap-3">
             <Button onClick={save} disabled={!valid || !dirty}>
