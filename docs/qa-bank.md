@@ -559,6 +559,35 @@ methodological error you found and fixed yourselves. Do not rush it.
 
 ---
 
+### D3d. "You say one reading can't escalate a sample alone — but you also let operators edit the weights. So which is it?"
+
+**Expect this from anyone who opens Settings on the live app during Q&A.** It is a fair catch and
+the honest answer is better than a defensive one.
+
+**Answer (25s).**
+> Both, and the distinction matters. In the configuration we ship, a single reading caps at
+> thirty-five points against a threshold of fifty, so the site history has to agree before anything
+> escalates. That is a property of our defaults, not a lock in the code — if you raise the
+> screening weight above fifty, one reading will escalate a sample on its own.
+>
+> We left that possible deliberately. The operator owns their risk appetite, and a tool that
+> silently overrides it is one they stop trusting. What we guarantee is not that the dial cannot
+> move — it is that the number is on screen and every point is attributed, so if someone does move
+> it, they can see exactly what they have done.
+
+**Trap.** Claiming it is enforced. It is not: `assessRisk` computes screening points as
+`fraction × screeningEvidence × confidence` with no normalisation against the threshold, so the
+guarantee holds for the shipped weights only. If you claim an invariant and a judge changes a
+weight on their phone, you have lost far more than the point you were defending.
+
+**If pushed — "shouldn't you clamp it?"**
+> We considered it. A hard clamp would make the guarantee real, but it would also mean the tool
+> quietly refusing a configuration a professional asked for. For a decision-support tool that seems
+> like the wrong trade. A warning in the interface when the screening weight crosses the threshold
+> is the version we would build.
+
+---
+
 ### D4. "Why a linear weighted sum? Why not machine learning?"
 
 **Answer (30s).**
