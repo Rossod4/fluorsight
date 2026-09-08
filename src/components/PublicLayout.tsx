@@ -35,7 +35,10 @@ export default function PublicLayout() {
             <NavLink to="/" end className={navLinkClassWide}>
               Product
             </NavLink>
-            <NavLink to="/demo" className={navLinkClass}>
+            <NavLink to="/screen" className={navLinkClass}>
+              Quick screen
+            </NavLink>
+            <NavLink to="/demo" className={navLinkClassWide}>
               Live demo
             </NavLink>
             <NavLink to="/why" className={navLinkClass}>

@@ -4,7 +4,8 @@ Send-ready templates for the University of Bristol Fluorsight team (chemistry,
 aerospace engineering, maths — Faculty of Science and Engineering), for the
 **Aegis Innovation Competition 2026**. Goal: replace the assumed **£250/sample**
 UK LC-MS/MS PFAS cost with a real figure, and get at least one real user
-conversation, before the **4 September 2026** deadline.
+conversation, in time for the poster content freeze (~**1 September**) and the
+poster submission deadline of **11 September 2026**.
 
 Every email is a genuine student research enquiry — not a sales pitch, not a
 company. Copy-paste, fill in the `[SQUARE BRACKETS]`, personalise the
@@ -20,9 +21,10 @@ recipient's name and one specific detail about their organisation, and send.
   quote requests). To get **2–4 useful replies**, send to roughly **12–20**
   targets spread across all three categories — don't rely on one email to one
   contact.
-- **Send now, not later.** Send the first batch **this week (by 8 August)**.
-  That leaves a week for a first reply, a 7-day follow-up (~15 August), and
-  still 2+ weeks of buffer before 4 September to write up whatever you get.
+- **Send now, not later.** Send the first batch **today (w/c 17 August)**.
+  That leaves a week for a first reply, a 7-day follow-up (~24 August), and
+  the week of 25 August to write up whatever you get before the ~1 September
+  poster content freeze.
 - **Order of sending:** Send **B (consultancies)** and **C (local authority)**
   first — a 20-minute call needs more lead time to schedule than a price
   quote. Send **A (labs)** a day or two after; lab sales/technical teams

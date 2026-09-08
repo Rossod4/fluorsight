@@ -4,6 +4,7 @@ import PublicLayout from './components/PublicLayout';
 import AppLayout from './components/AppLayout';
 import Landing from './pages/Landing';
 import Demo from './pages/Demo';
+import QuickScreen from './pages/QuickScreen';
 import NotFound from './pages/NotFound';
 import Projects from './pages/app/Projects';
 import ProjectDetail from './pages/app/ProjectDetail';
@@ -31,6 +32,7 @@ export default function App() {
         <Route element={<PublicLayout />}>
           <Route index element={<Landing />} />
           <Route path="demo" element={<Demo />} />
+          <Route path="screen" element={<QuickScreen />} />
           <Route path="why" element={<Why />} />
           <Route path="*" element={<NotFound />} />
         </Route>
