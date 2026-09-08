@@ -17,32 +17,49 @@ const base: QuickScreenInput = {
   riskFactors: { ...EMPTY_RISK_FACTORS },
 };
 
+const ALL_CLEAN = {
+  turbidity: 'clear',
+  colour: 'clear',
+  stayedWet: 'yes',
+  baselineSameCartridge: 'yes',
+  volumeDrawn: 'full',
+  duplicates: 'agree',
+} as const;
+
 describe('confidenceFromChecklist', () => {
-  it('is high when every condition is clean', () => {
-    expect(confidenceFromChecklist(DEFAULT_CHECKLIST)).toBe('high');
+  it('does not assume a good read from an empty checklist', () => {
+    // Every field starts unrecorded. Silence is not evidence of a clean read,
+    // so this must not resolve to high.
+    expect(confidenceFromChecklist(DEFAULT_CHECKLIST)).toBe('medium');
+  });
+
+  it('is high only when every condition was affirmatively observed clean', () => {
+    expect(confidenceFromChecklist(ALL_CLEAN)).toBe('high');
+    // one field left blank is enough to withhold high
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, volumeDrawn: 'unrecorded' })).toBe('medium');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, duplicates: 'unrecorded' })).toBe('medium');
   });
 
   it('drops to medium on any amber condition', () => {
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, turbidity: 'cloudy' })).toBe('medium');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, colour: 'tinted' })).toBe('medium');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, volumeDrawn: 'partial' })).toBe('medium');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, duplicates: 'differ_moderate' })).toBe('medium');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, turbidity: 'cloudy' })).toBe('medium');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, colour: 'tinted' })).toBe('medium');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, volumeDrawn: 'partial' })).toBe('medium');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, duplicates: 'differ_moderate' })).toBe('medium');
   });
 
   it('drops to low on any red condition', () => {
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, turbidity: 'opaque' })).toBe('low');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, colour: 'brown' })).toBe('low');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, stayedWet: false })).toBe('low');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, baselineSameCartridge: false })).toBe('low');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, volumeDrawn: 'low' })).toBe('low');
-    expect(confidenceFromChecklist({ ...DEFAULT_CHECKLIST, duplicates: 'differ_wide' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, turbidity: 'opaque' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, colour: 'brown' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, stayedWet: 'no' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, baselineSameCartridge: 'no' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, volumeDrawn: 'low' })).toBe('low');
+    expect(confidenceFromChecklist({ ...ALL_CLEAN, duplicates: 'differ_wide' })).toBe('low');
   });
 
   it('lets the worst condition govern, not the count of them', () => {
-    // one red among otherwise-amber conditions still resolves to low
     expect(
       confidenceFromChecklist({
-        ...DEFAULT_CHECKLIST,
+        ...ALL_CLEAN,
         turbidity: 'cloudy',
         colour: 'tinted',
         volumeDrawn: 'low',
@@ -51,8 +68,10 @@ describe('confidenceFromChecklist', () => {
   });
 
   it('explains itself', () => {
-    expect(checklistReasons(DEFAULT_CHECKLIST)).toEqual([]);
-    expect(checklistReasons({ ...DEFAULT_CHECKLIST, stayedWet: false })).toHaveLength(1);
+    expect(checklistReasons(ALL_CLEAN)).toEqual([]);
+    expect(checklistReasons({ ...ALL_CLEAN, stayedWet: 'no' })).toHaveLength(1);
+    // an incomplete record says so rather than passing silently
+    expect(checklistReasons(DEFAULT_CHECKLIST)[0]).toMatch(/not every condition was recorded/i);
   });
 });
 
@@ -113,7 +132,7 @@ describe('buildQuickAssessment', () => {
     const { sample, site } = buildQuickAssessment({
       ...base,
       signal: 40,
-      confidence: confidenceFromChecklist({ ...DEFAULT_CHECKLIST, stayedWet: false }),
+      confidence: confidenceFromChecklist({ ...ALL_CLEAN, stayedWet: 'no' }),
       sourceType: 'leachate',
       sensitivity: 'low',
     });

@@ -15,37 +15,46 @@ import type {
   SourceType,
 } from '../types';
 
-/** The six observable conditions that degrade a wet in-cartridge read. */
+/** The six observable conditions that degrade a wet in-cartridge read.
+ *
+ * Every field starts UNRECORDED. Nothing is assumed clean: an operator who
+ * opens the checklist and answers nothing has told us nothing, and inferring a
+ * good read from silence would manufacture confidence we have not earned.
+ */
+export type Observed<T extends string> = 'unrecorded' | T;
+
 export interface QualityChecklist {
   /** Visibly cloudy (amber) or opaque (red) — scatters light, attenuates signal. */
-  turbidity: 'clear' | 'cloudy' | 'opaque';
+  turbidity: Observed<'clear' | 'cloudy' | 'opaque'>;
   /** Humics both absorb light and compete for the cyclodextrin cavity. */
-  colour: 'clear' | 'tinted' | 'brown';
+  colour: Observed<'clear' | 'tinted' | 'brown'>;
   /** Dry unbound dye fluoresces and masks the change. */
-  stayedWet: boolean;
+  stayedWet: Observed<'yes' | 'no'>;
   /** The reading is a change from baseline, so the baseline must be this cartridge. */
-  baselineSameCartridge: boolean;
+  baselineSameCartridge: Observed<'yes' | 'no'>;
   /** Preconcentration is load-bearing; less volume means a lower factor. */
-  volumeDrawn: 'full' | 'partial' | 'low';
+  volumeDrawn: Observed<'full' | 'partial' | 'low'>;
   /** Only meaningful if duplicates were actually run. */
-  duplicates: 'not_run' | 'agree' | 'differ_moderate' | 'differ_wide';
+  duplicates: Observed<'not_run' | 'agree' | 'differ_moderate' | 'differ_wide'>;
 }
 
 export const DEFAULT_CHECKLIST: QualityChecklist = {
-  turbidity: 'clear',
-  colour: 'clear',
-  stayedWet: true,
-  baselineSameCartridge: true,
-  volumeDrawn: 'full',
-  duplicates: 'not_run',
+  turbidity: 'unrecorded',
+  colour: 'unrecorded',
+  stayedWet: 'unrecorded',
+  baselineSameCartridge: 'unrecorded',
+  volumeDrawn: 'unrecorded',
+  duplicates: 'unrecorded',
 };
 
 /**
  * Derive the confidence flag from observed conditions rather than from the
  * operator's opinion of their own performance.
  *
- * Worst case governs: any red condition gives low confidence, any amber gives
- * medium. That is precautionary, and consistent with the engine's rule that
+ * Worst case governs: any red condition gives low, any amber gives medium.
+ * High is granted only when every condition has been affirmatively observed
+ * clean — an unrecorded checklist resolves to medium, the same as not opening
+ * it at all. That is precautionary, and consistent with the engine's rule that
  * uncertainty never relaxes a recommendation.
  *
  * NOTE: these cut-offs are a designed starting protocol, not calibrated from
@@ -56,8 +65,8 @@ export function confidenceFromChecklist(c: QualityChecklist): Confidence {
   const red =
     c.turbidity === 'opaque' ||
     c.colour === 'brown' ||
-    !c.stayedWet ||
-    !c.baselineSameCartridge ||
+    c.stayedWet === 'no' ||
+    c.baselineSameCartridge === 'no' ||
     c.volumeDrawn === 'low' ||
     c.duplicates === 'differ_wide';
   if (red) return 'low';
@@ -67,7 +76,17 @@ export function confidenceFromChecklist(c: QualityChecklist): Confidence {
     c.colour === 'tinted' ||
     c.volumeDrawn === 'partial' ||
     c.duplicates === 'differ_moderate';
-  return amber ? 'medium' : 'high';
+  if (amber) return 'medium';
+
+  // High only on a complete, affirmatively clean record.
+  const complete =
+    c.turbidity === 'clear' &&
+    c.colour === 'clear' &&
+    c.stayedWet === 'yes' &&
+    c.baselineSameCartridge === 'yes' &&
+    c.volumeDrawn === 'full' &&
+    c.duplicates !== 'unrecorded';
+  return complete ? 'high' : 'medium';
 }
 
 /** Plain-language reasons the flag came out as it did, for display under the result. */
@@ -77,12 +96,15 @@ export function checklistReasons(c: QualityChecklist): string[] {
   else if (c.turbidity === 'cloudy') out.push('Sample is cloudy — some light scatter expected.');
   if (c.colour === 'brown') out.push('Strong colour — organic matter both absorbs light and competes for the cavity.');
   else if (c.colour === 'tinted') out.push('Slight colour — some interference expected.');
-  if (!c.stayedWet) out.push('Cartridge ran dry — unbound dye fluoresces and masks the change.');
-  if (!c.baselineSameCartridge) out.push('Baseline not taken on this cartridge — the change is not comparable.');
+  if (c.stayedWet === 'no') out.push('Cartridge ran dry — unbound dye fluoresces and masks the change.');
+  if (c.baselineSameCartridge === 'no') out.push('Baseline not taken on this cartridge — the change is not comparable.');
   if (c.volumeDrawn === 'low') out.push('Under 150 mL drawn — preconcentration factor is well below design.');
   else if (c.volumeDrawn === 'partial') out.push('150–250 mL drawn — preconcentration slightly below design.');
   if (c.duplicates === 'differ_wide') out.push('Duplicates disagree by more than 25%.');
   else if (c.duplicates === 'differ_moderate') out.push('Duplicates disagree by 10–25%.');
+  if (out.length === 0 && confidenceFromChecklist(c) === 'medium') {
+    out.push('Not every condition was recorded — confidence held at medium rather than assumed good.');
+  }
   return out;
 }
 

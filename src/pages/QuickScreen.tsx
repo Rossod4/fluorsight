@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Button, Card, Disclaimer, RiskBadge } from '../components/ui';
 import { useApp, uid } from '../store/AppStore';
 import { assessRisk } from '../lib/riskEngine';
-import { SENSITIVITY_LABELS, SOURCE_TYPE_LABELS } from '../lib/labels';
+import { SOURCE_TYPE_LABELS } from '../lib/labels';
 import {
   DEFAULT_CHECKLIST,
   EMPTY_RISK_FACTORS,
@@ -33,6 +33,19 @@ const FACTOR_CHIPS: Array<{ key: keyof SiteRiskFactors; label: string }> = [
 
 const SOURCE_TYPES = Object.keys(SOURCE_TYPE_LABELS) as SourceType[];
 const SENSITIVITIES: Sensitivity[] = ['low', 'medium', 'high'];
+
+// Plain-English wording for the receptor-sensitivity factor. Same 10-point
+// weight the engine has always used — only the label changes, so no published
+// figure moves.
+const RECEPTOR_LABELS: Record<Sensitivity, string> = {
+  high: 'A drinking water supply',
+  medium: 'Some human or ecological contact',
+  low: 'No direct contact',
+};
+
+const UNRECORDED: [string, string] = ['unrecorded', 'Not recorded'];
+
+const clamp = (n: number) => (Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 0);
 
 const chipClass = (on: boolean) =>
   `rounded-full px-3 py-1.5 text-sm font-medium ring-1 ring-inset transition-colors ${
@@ -100,6 +113,18 @@ export default function QuickScreen() {
     );
   }
 
+  // One tap to a realistic escalating scenario: AFFF near a private supply.
+  // Fills the form rather than shortcutting the engine, so the score is derived
+  // the same way any other reading is.
+  function workedExample() {
+    setSignal(78);
+    setSourceType('private_supply');
+    setSensitivity('high');
+    setRiskFactors({ ...EMPTY_RISK_FACTORS, fireTrainingOrAirport: true, priorLabConfirmedNearby: true });
+    setLabel('Example — private supply near a former fire-training ground');
+    setSaved(null);
+  }
+
   function save() {
     let project = state.projects.find((p) => p.name === 'Field screens');
     const now = new Date().toISOString();
@@ -136,14 +161,25 @@ export default function QuickScreen() {
       <div className="mt-8 grid gap-6">
         {/* ---- 1. The reading ---- */}
         <Card className="p-5">
-          <div className="flex items-baseline justify-between">
-            <label htmlFor="signal" className="text-sm font-medium text-slate-700">
-              1 · Fluorescence change from baseline
-            </label>
-            <span className="text-2xl font-semibold tabular-nums text-slate-900">{signal}%</span>
+          <label htmlFor="signal" className="text-sm font-medium text-slate-700">
+            1 · Fluorescence change from baseline
+          </label>
+          <div className="mt-2 flex items-center gap-2">
+            <input
+              id="signal"
+              type="number"
+              min={0}
+              max={100}
+              step="any"
+              inputMode="decimal"
+              value={signal}
+              onChange={(e) => setSignal(clamp(Number(e.target.value)))}
+              className="w-28 rounded-lg border-0 bg-white px-3 py-2 text-2xl font-semibold tabular-nums text-slate-900 ring-1 ring-inset ring-slate-300 focus:ring-2 focus:ring-inset focus:ring-teal-600"
+            />
+            <span className="text-2xl font-semibold text-slate-400">%</span>
           </div>
           <input
-            id="signal"
+            aria-label="Fluorescence change slider"
             type="range"
             min={0}
             max={100}
@@ -168,30 +204,28 @@ export default function QuickScreen() {
           {checklistOpen && (
             <div className="mt-4 grid gap-3 rounded-lg bg-slate-50 p-4">
               <p className="text-xs text-slate-500">
-                We don't ask how well you think you did — we ask what you saw. Worst case governs.
+                We don't ask how well you think you did — we ask what you saw. Worst case governs,
+                and anything left unrecorded holds confidence at medium rather than assuming a
+                good read.
               </p>
               <Choice label="Turbidity" value={checklist.turbidity}
                 onChange={(v) => setChecklist({ ...checklist, turbidity: v as QualityChecklist['turbidity'] })}
-                options={[['clear', 'Clear'], ['cloudy', 'Cloudy'], ['opaque', 'Opaque']]} />
+                options={[UNRECORDED, ['clear', 'Clear'], ['cloudy', 'Cloudy'], ['opaque', 'Opaque']]} />
               <Choice label="Colour" value={checklist.colour}
                 onChange={(v) => setChecklist({ ...checklist, colour: v as QualityChecklist['colour'] })}
-                options={[['clear', 'Clear'], ['tinted', 'Tinted'], ['brown', 'Brown / peaty']]} />
+                options={[UNRECORDED, ['clear', 'Clear'], ['tinted', 'Tinted'], ['brown', 'Brown / peaty']]} />
               <Choice label="Volume drawn" value={checklist.volumeDrawn}
                 onChange={(v) => setChecklist({ ...checklist, volumeDrawn: v as QualityChecklist['volumeDrawn'] })}
-                options={[['full', 'Full 250 mL'], ['partial', '150–250 mL'], ['low', 'Under 150 mL']]} />
+                options={[UNRECORDED, ['full', 'Full 250 mL'], ['partial', '150–250 mL'], ['low', 'Under 150 mL']]} />
               <Choice label="Duplicates" value={checklist.duplicates}
                 onChange={(v) => setChecklist({ ...checklist, duplicates: v as QualityChecklist['duplicates'] })}
-                options={[['not_run', 'Not run'], ['agree', 'Agree'], ['differ_moderate', '10–25% apart'], ['differ_wide', '>25% apart']]} />
-              <label className="flex items-center gap-2 text-sm text-slate-700">
-                <input type="checkbox" checked={checklist.stayedWet} className="accent-teal-600"
-                  onChange={(e) => setChecklist({ ...checklist, stayedWet: e.target.checked })} />
-                Cartridge stayed wet throughout
-              </label>
-              <label className="flex items-center gap-2 text-sm text-slate-700">
-                <input type="checkbox" checked={checklist.baselineSameCartridge} className="accent-teal-600"
-                  onChange={(e) => setChecklist({ ...checklist, baselineSameCartridge: e.target.checked })} />
-                Baseline taken on this same cartridge
-              </label>
+                options={[UNRECORDED, ['not_run', 'Not run'], ['agree', 'Agree'], ['differ_moderate', '10–25% apart'], ['differ_wide', '>25% apart']]} />
+              <Choice label="Cartridge stayed wet throughout" value={checklist.stayedWet}
+                onChange={(v) => setChecklist({ ...checklist, stayedWet: v as QualityChecklist['stayedWet'] })}
+                options={[UNRECORDED, ['yes', 'Yes'], ['no', 'No']]} />
+              <Choice label="Baseline taken on this same cartridge" value={checklist.baselineSameCartridge}
+                onChange={(v) => setChecklist({ ...checklist, baselineSameCartridge: v as QualityChecklist['baselineSameCartridge'] })}
+                options={[UNRECORDED, ['yes', 'Yes'], ['no', 'No']]} />
               <p className="rounded-md bg-amber-50 p-2 text-xs text-amber-800">
                 These thresholds are our designed starting protocol, <strong>not calibrated from
                 data</strong> — no bench experiment has been run yet. Setting them properly is the
@@ -242,9 +276,9 @@ export default function QuickScreen() {
               </select>
             </label>
             <label className="block">
-              <span className="text-xs text-slate-500">Receptor sensitivity</span>
+              <span className="text-xs text-slate-500">Who or what does it reach?</span>
               <select className={fieldClass} value={sensitivity} onChange={(e) => setSensitivity(e.target.value as Sensitivity)}>
-                {SENSITIVITIES.map((s) => <option key={s} value={s}>{SENSITIVITY_LABELS[s]}</option>)}
+                {SENSITIVITIES.map((s) => <option key={s} value={s}>{RECEPTOR_LABELS[s]}</option>)}
               </select>
             </label>
           </div>
@@ -292,13 +326,23 @@ export default function QuickScreen() {
             ))}
           </ul>
 
-          <p className="mt-4 text-xs text-slate-500">
+          <p className="mt-4 rounded-md bg-white/70 p-3 text-xs text-slate-600">
+            <strong>The reading alone caps at 35 of 100, and the lab threshold is 50 — by design.</strong>{' '}
+            A single uncalibrated read from a probe that also responds to surfactants and humic
+            acids should not commit a lab budget on its own, so site context has to agree. The
+            score is 35 screening evidence + 55 site context + 10 repeat positives; repeat
+            positives need more than one screen, so this page tops out at 90.
+          </p>
+          <p className="mt-2 text-xs text-slate-500">
             No concentration is estimated. There is no calibration from fluorescence change to
             ng/L — the output is a rank that decides whether accredited LC-MS/MS is worth paying
             for.
           </p>
 
           <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Button type="button" variant="secondary" onClick={workedExample}>
+              Try a worked example
+            </Button>
             <Button type="button" variant="secondary" onClick={save} disabled={!!saved}>
               {saved ? 'Saved' : 'Save to a project'}
             </Button>
