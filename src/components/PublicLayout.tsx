@@ -41,14 +41,15 @@ export default function PublicLayout() {
             <NavLink to="/demo" className={navLinkClassWide}>
               Live demo
             </NavLink>
-            <NavLink to="/why" className={navLinkClass}>
+            <NavLink to="/why" className={navLinkClassWide}>
               Why Fluorsight
             </NavLink>
             <Link
               to="/app"
               className="rounded-lg bg-teal-700 px-3.5 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-800"
             >
-              Open dashboard
+              <span className="sm:hidden">Dashboard</span>
+              <span className="hidden sm:inline">Open dashboard</span>
             </Link>
           </nav>
         </div>

@@ -269,21 +269,30 @@ export default function QuickScreen() {
         {/* ---- 3. Site context ---- */}
         <Card className="p-5">
           <p className="text-sm font-medium text-slate-700">3 · About the site</p>
-          <div className="mt-3 grid gap-3 sm:grid-cols-2">
-            <label className="block">
-              <span className="text-xs text-slate-500">What is the water?</span>
-              <select className={fieldClass} value={sourceType} onChange={(e) => setSourceType(e.target.value as SourceType)}>
-                {SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_TYPE_LABELS[s]}</option>)}
-              </select>
-            </label>
-            <label className="block">
-              <span className="text-xs text-slate-500">Who or what does it reach?</span>
-              <select className={fieldClass} value={sensitivity} onChange={(e) => setSensitivity(e.target.value as Sensitivity)}>
-                {SENSITIVITIES.map((s) => <option key={s} value={s}>{RECEPTOR_LABELS[s]}</option>)}
-              </select>
-            </label>
+          {/* These two carry 16 of the 55 site-context points, but as bare labels
+              above selects they read as less important than the chips below. Boxed
+              so the two question groups are visually parallel. */}
+          <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50/70 p-3">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="block">
+                <span className="text-sm font-medium text-slate-700">What is the water?</span>
+                <select className={fieldClass} value={sourceType} onChange={(e) => setSourceType(e.target.value as SourceType)}>
+                  {SOURCE_TYPES.map((s) => <option key={s} value={s}>{SOURCE_TYPE_LABELS[s]}</option>)}
+                </select>
+              </label>
+              <label className="block">
+                <span className="text-sm font-medium text-slate-700">Who or what does it reach?</span>
+                <select className={fieldClass} value={sensitivity} onChange={(e) => setSensitivity(e.target.value as Sensitivity)}>
+                  {SENSITIVITIES.map((s) => <option key={s} value={s}>{RECEPTOR_LABELS[s]}</option>)}
+                </select>
+              </label>
+            </div>
           </div>
-          <p className="mt-4 text-xs text-slate-500">Anything nearby? Tap all that apply.</p>
+
+          <div className="mt-3 rounded-lg border border-slate-200 bg-slate-50/70 p-3">
+          <p className="text-sm font-medium text-slate-700">
+            Anything nearby? <span className="font-normal text-slate-500">Tap all that apply.</span>
+          </p>
           <div className="mt-2 flex flex-wrap gap-2">
             {FACTOR_CHIPS.map((f) => (
               <button key={f.key} type="button" className={chipClass(riskFactors[f.key])}
@@ -292,6 +301,7 @@ export default function QuickScreen() {
                 {f.label}
               </button>
             ))}
+          </div>
           </div>
         </Card>
 
