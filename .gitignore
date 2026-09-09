@@ -11,3 +11,6 @@ dist
 /*.html
 !/index.html
 /soc2.txt
+
+# Excel lock files
+~$*.xlsx
