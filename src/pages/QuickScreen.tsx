@@ -48,7 +48,7 @@ const UNRECORDED: [string, string] = ['unrecorded', 'Not recorded'];
 const clamp = (n: number) => (Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 0);
 
 const chipClass = (on: boolean) =>
-  `rounded-full px-3 py-1.5 text-sm font-medium ring-1 ring-inset transition-colors ${
+  `rounded-full px-4 py-2.5 text-sm font-medium ring-1 ring-inset transition-colors ${
     on
       ? 'bg-teal-600 text-white ring-teal-600'
       : 'bg-white text-slate-600 ring-slate-300 hover:bg-slate-50'
@@ -151,14 +151,15 @@ export default function QuickScreen() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
+    <div className="mx-auto max-w-6xl px-4 pb-40 lg:pb-12 py-8 sm:py-12">
       <h1 className="text-2xl font-semibold text-slate-900 sm:text-3xl">Quick screen</h1>
       <p className="mt-2 text-sm text-slate-600">
         One cartridge reading, a few facts about where it came from, and you get a recommendation —
         with every point in the score attributed. Nothing is saved unless you choose to save it.
       </p>
 
-      <div className="mt-8 grid gap-6">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_390px] lg:items-start">
+        <div className="grid gap-6">
         {/* ---- 1. The reading ---- */}
         <Card className="p-5">
           <label htmlFor="signal" className="text-sm font-medium text-slate-700">
@@ -196,7 +197,7 @@ export default function QuickScreen() {
           <button
             type="button"
             onClick={() => { setChecklistOpen(!checklistOpen); setUseChecklist(true); }}
-            className="mt-3 text-sm font-medium text-teal-700 hover:text-teal-800"
+            className="mt-3 inline-block py-2 text-sm font-medium text-teal-700 hover:text-teal-800"
           >
             {checklistOpen ? 'Hide' : 'How reliable was this reading?'}
           </button>
@@ -294,6 +295,9 @@ export default function QuickScreen() {
           </div>
         </Card>
 
+        </div>
+
+        <div className="grid gap-4 lg:sticky lg:top-20">
         {/* ---- Result ---- */}
         <Card className="border-teal-200 bg-teal-50/40 p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
@@ -355,13 +359,27 @@ export default function QuickScreen() {
         </Card>
 
         <Disclaimer />
+        </div>
+      </div>
+
+      {/* Always-visible summary on phones, where the result card is otherwise a
+          screen and a half below the inputs — you type a number and see nothing
+          change, which is exactly wrong for a live demo. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur lg:hidden">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-[11px] font-medium tracking-wide text-slate-500 uppercase">Recommendation</p>
+            <p className="truncate text-sm font-semibold text-slate-900">{assessment.actionLabel}</p>
+          </div>
+          <RiskBadge band={assessment.band} score={assessment.score} />
+        </div>
       </div>
     </div>
   );
 }
 
 const fieldClass =
-  'mt-1 block w-full rounded-lg border-0 bg-white px-3 py-2 text-sm text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-teal-600';
+  'mt-1 block w-full rounded-lg border-0 bg-white px-3 py-2.5 text-sm text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:ring-2 focus:ring-inset focus:ring-teal-600';
 
 function Choice({
   label, value, onChange, options,
@@ -377,7 +395,7 @@ function Choice({
       <div className="mt-1 flex flex-wrap gap-1.5">
         {options.map(([v, l]) => (
           <button key={v} type="button" onClick={() => onChange(v)} aria-pressed={value === v}
-            className={`rounded-md px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition-colors ${
+            className={`rounded-md px-3 py-2 text-xs font-medium ring-1 ring-inset transition-colors ${
               value === v ? 'bg-slate-800 text-white ring-slate-800' : 'bg-white text-slate-600 ring-slate-300 hover:bg-slate-50'
             }`}>
             {l}

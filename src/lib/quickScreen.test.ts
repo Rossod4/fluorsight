@@ -141,3 +141,56 @@ describe('buildQuickAssessment', () => {
     expect(result.uncertaintyNote).toBeTruthy();
   });
 });
+
+describe('the point budget the quick screen claims on screen', () => {
+  // The result card tells the user "35 screening evidence + 55 site context +
+  // 10 repeat positives", and that this page tops out at 90. Those are claims
+  // shown to judges, so they are asserted here rather than trusted.
+  const maxed = buildQuickAssessment({
+    signal: 100,
+    confidence: 'high',
+    sourceType: 'private_supply', // exposure factor 1.0 -> full 6
+    sensitivity: 'high', // factor 1.0 -> full 10
+    riskFactors: {
+      fireTrainingOrAirport: true,
+      landfill: true,
+      industrial: true,
+      wastewaterTreatment: true,
+      historicalContamination: true,
+      priorLabConfirmedNearby: true,
+    },
+  });
+  const result = assessRisk(maxed.sample, maxed.site, DEFAULT_SETTINGS);
+  const points = (key: string) => result.drivers.find((d) => d.key === key)?.points ?? 0;
+
+  it('gives screening evidence a ceiling of 35', () => {
+    expect(points('screeningEvidence')).toBe(35);
+  });
+
+  it('gives site context a ceiling of exactly 55', () => {
+    const siteContext = result.drivers
+      .filter((d) => d.key !== 'screeningEvidence' && d.key !== 'repeatPositives')
+      .reduce((sum, d) => sum + d.points, 0);
+    expect(siteContext).toBe(55);
+  });
+
+  it('cannot award repeat positives, because no band is inferred', () => {
+    expect(points('repeatPositives')).toBe(0);
+  });
+
+  it('tops out at 90, not 100', () => {
+    expect(result.score).toBe(90);
+    expect(result.action).toBe('urgent');
+  });
+
+  it('the three parts total the full 100 the engine distributes', () => {
+    const w = DEFAULT_SETTINGS.weights;
+    const siteContextWeights =
+      w.fireTrainingOrAirport + w.landfill + w.industrial + w.wastewaterTreatment +
+      w.historicalContamination + w.priorLabConfirmedNearby + w.sensitivity + w.sourceType;
+    expect(w.screeningEvidence).toBe(35);
+    expect(siteContextWeights).toBe(55);
+    expect(w.repeatPositives).toBe(10);
+    expect(w.screeningEvidence + siteContextWeights + w.repeatPositives).toBe(100);
+  });
+});
