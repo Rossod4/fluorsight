@@ -12,8 +12,8 @@ and triage tool, not a laboratory replacement.
 Built for a university innovation competition. All organisations, sites, and people in the
 demo data are fictional. No backend — state lives in `localStorage`.
 
-Note the repository directory is `AEGIS` (a former name); the product is Fluorsight
-everywhere in the code and copy.
+The local checkout may still sit in a folder named `AEGIS` (a former name); the product is
+Fluorsight everywhere in the code, copy and on GitHub.
 
 ## Commands
 
@@ -89,31 +89,30 @@ re-scores instantly. Changing defaults changes figures quoted elsewhere — see 
 
 ## Factual accuracy
 
-This project has been audited for fabricated or unsourced claims (`docs/audit-2026-08.md`),
-and the correction discipline matters more here than in a typical prototype:
+This project was audited for fabricated or unsourced claims in August 2026 (the audit lives in
+the private `fluorsight-internal` repository), and the correction discipline matters more here
+than in a typical prototype:
 
 - Cost and market figures belong in `src/lib/economics.ts`, defined once so the app and
   the pitch cannot drift apart. Read the comments before changing a constant — several
   record the scope limits of their source (e.g. the published £350 UK benchmark is for
   **soil**, not water, and cannot be used to call the £250 water assumption conservative).
-- Anything quoted on the poster or in the deck must match `docs/verified-demo-figures.md`,
-  which is computed from the seed data and the engine. **Recompute it if the seed data or
-  the default weights change.**
+- Anything quoted from the demo, on the site or in competition materials, must match
+  `docs/verified-demo-figures.md`, which is computed from the seed data and the engine.
+  **Recompute it if the seed data or the default weights change.**
 - Do not introduce a claim you cannot source, and do not describe a modelled figure as
   measured.
 
-## Poster and deck
+## Competition materials
 
-`poster/` and `deck/` are standalone HTML/CSS, **not part of the Vite build**, and are
-therefore never published — they contain internal working notes (rehearsal cues, critique
-responses). `poster/measure.js` is an on-screen overflow guard for the A0 sheet: it counts
-body words, measures content height against the printable area, and flags any element
-breaching the competition's 32pt body / 18pt caption floors. It does not affect the
-printed PDF.
+The A0 poster, the oral deck and its script, outreach drafts, team briefs and the Q&A
+rehearsal bank are **not in this repository**. They live in the private
+`Rossod4/fluorsight-internal` repository, moved there when this one went public. Keep it
+that way: nothing that is not part of the product or its sourced evidence belongs here.
 
 ## Deployment
 
 The live site is **https://fluorsight.co.uk**, built and hosted by Netlify from this
-repository (`netlify.toml`: `npm run build` → `dist`). The GitHub Actions workflow in
-`.github/workflows/deploy.yml` is legacy GitHub Pages deployment, now
-`workflow_dispatch`-only — hosting moved to Netlify so the repository could be private.
+repository on every push to `main` (`netlify.toml`: `npm run build` → `dist`).
+`.github/workflows/ci.yml` runs typecheck, tests and a production build on every push and
+pull request; it does not deploy.

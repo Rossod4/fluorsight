@@ -1,67 +1,109 @@
-# Fluorsight — PFAS Screening Decision Support
+# Fluorsight
 
-Fluorsight is a decision-support platform for **scalable PFAS screening**. It helps
-environmental teams triage which water sources, sites, and samples are most
-likely to require expensive confirmatory laboratory analysis (LC-MS/MS) — so
-organisations can **screen broadly, prioritise intelligently, and reserve the
-lab for the samples that matter**.
+**Decision support for PFAS water screening.** Fluorsight ranks water sources, sites and
+samples by how likely they are to need expensive confirmatory laboratory analysis
+(LC-MS/MS), so an environmental team can screen broadly with cheap field methods and
+reserve the lab for the samples that matter.
 
-Fluorsight is a **screening and triage tool, not a laboratory replacement**.
-Screening estimates are treated as uncertain, and every risk recommendation is
-fully explainable.
+Live site: **https://fluorsight.co.uk**
 
-Built as a prototype for a university innovation competition. All organisations,
-sites, and data in the demo are fictional.
+Built by a University of Bristol student team (chemistry, aerospace engineering and
+mathematics) for the 2026 Aegis Innovation Competition. Every organisation, site and
+sample in the demo is fictional. Fluorsight is a screening and triage tool, not a
+laboratory replacement: screening estimates are treated as uncertain, and every
+recommendation shows the factors that produced it.
 
-## What's inside
+## What it does
 
-- **Landing + "Why Fluorsight" pages** — the product story and a sourced business
-  case (UK/EU regulation, lab costs, market sizing, go-to-market, projections).
-  Research and citations live in [`docs/research-factsheet.md`](docs/research-factsheet.md).
-- **Interactive dashboard** (`/app`) — projects → sites → samples workflow,
-  transparent 0–100 risk scoring with a driver-by-driver explanation, a lab
-  escalation queue, a risk-coloured map, batch CSV import, CSV export, and
-  editable model weights/thresholds.
-- **Risk engine** ([`src/lib/riskEngine.ts`](src/lib/riskEngine.ts)) — a pure,
-  unit-tested, transparent weighted model. Deliberately modular so the screening
-  chemistry/sensor model can be swapped or upgraded (e.g. an ML model) later
-  without touching the rest of the app.
+- **Explainable risk scoring.** Each sample gets a 0 to 100 score from a transparent
+  weighted model over site history, land use, hydrology, screening evidence and
+  measurement confidence. The score comes with a driver-by-driver breakdown, so a
+  recommendation is never a black box.
+- **Escalation queue.** Samples above the escalation threshold land in a lab queue,
+  ordered by score, with the reason alongside.
+- **Projects, sites, samples.** The working structure an environmental consultancy
+  actually uses, with a risk-coloured map view.
+- **Batch import and export.** Upload a CSV of field readings and watch them score,
+  band and queue live; export any view back to CSV.
+- **Tunable model.** Weights and thresholds are editable in Settings and every sample
+  re-scores instantly. Uncertainty can raise a recommendation but never relax one.
+- **Validation page.** A retrospective back-test of the model against known lab results,
+  a threshold sweep, and a weight-sensitivity analysis.
+- **Business case.** The "Why Fluorsight" page carries a sourced case covering UK and EU
+  regulation, laboratory costs, market sizing and go-to-market. Sources and their
+  verification status are in [`docs/research-2026-08.md`](docs/research-2026-08.md);
+  the figures quoted from the demo are reproduced in
+  [`docs/verified-demo-figures.md`](docs/verified-demo-figures.md); the financial model
+  is [`docs/fluorsight-model.xlsx`](docs/fluorsight-model.xlsx).
+
+## Try it
+
+1. Open https://fluorsight.co.uk and go to **Demo** or **Open the app**.
+2. On **Import data**, download `mock-screening-results.csv` and upload it to see a batch
+   of readings scored and queued.
+3. Open any sample to see which factors drove its score and recommended action.
+4. Change a weight in **Settings** and watch the queue reorder.
+
+## How the risk model works
+
+The model lives in [`src/lib/riskEngine.ts`](src/lib/riskEngine.ts) and is deliberately a
+pure function with no UI or storage dependencies, so it can be unit-tested on its own and
+swapped for a calibrated or learned model later without touching the rest of the app.
+Two design rules are worth knowing:
+
+- The fluorescence signal and the estimated concentration band are the same measurement
+  expressed twice, so they share one weight and the stronger of the two counts, never both.
+- A low-confidence screen with a non-trivial signal is raised from "no action" to
+  "monitor", and the note says why. Uncertainty never lowers a recommendation.
+
+The default weights are a hand-set expert prior, not a calibrated model. That is stated in
+the app and is the main limitation of a prototype with no field data of its own.
 
 ## Tech stack
 
-Vite · React · TypeScript · Tailwind CSS · React Router (hash routing) ·
-Recharts · Leaflet. State is held in React context and persisted to
-`localStorage`, seeded from a demo dataset (reset any time from **Settings**).
-No backend.
+Vite, React 19, TypeScript (strict), Tailwind CSS v4, React Router (hash routing),
+Recharts, Leaflet. State is a single React context persisted to `localStorage` and seeded
+from a deterministic demo dataset. There is no backend.
+
+```
+src/
+  lib/          pure modules: riskEngine, validation, economics, csv, quickScreen, labels
+  store/        AppStore: context + reducer, localStorage persistence, seed loading
+  pages/        public pages (Landing, Why, Demo, QuickScreen) and the app under /app
+  components/   layouts and shared UI primitives
+  data/         deterministic seed dataset
+docs/           research references, verified demo figures, financial model
+```
 
 ## Develop
 
-Requires Node 20+.
+Requires Node 20 or later. CI runs on Node 22.
 
 ```bash
 npm install
-npm run dev        # start the dev server
-npm test           # risk-engine unit tests (Vitest)
+npm run dev        # dev server
+npm test           # 44 unit tests over the risk engine, validation and quick screen
 npm run typecheck  # tsc --noEmit
 npm run build      # production build to dist/
 ```
 
-## Demo tips
-
-- **CSV import demo:** on the **Import data** page, download
-  `mock-screening-results.csv`, then upload it to watch a batch of new field
-  readings get scored, banded, and pushed into the escalation queue live.
-- **Explainability:** open any sample to see exactly which factors drove its
-  risk score and recommended action.
-- **Tune the model:** change weights/thresholds in **Settings** and every sample
-  re-scores instantly.
+Continuous integration runs typecheck, tests and a production build on every push.
 
 ## Deployment
 
-The live site is **https://fluorsight.co.uk**, built and hosted by **Netlify** from
-this repository — see [`netlify.toml`](netlify.toml). We moved off GitHub Pages so
-the repository could be private; Pages only serves public repos on the free plan.
+Netlify builds `dist/` from this repository on every push to `main`; see
+[`netlify.toml`](netlify.toml). Because the app uses hash routing, the server only ever
+serves the index and no SPA redirect rule is needed.
 
-The app uses a relative base and hash routing, so every route is `/#/…` and the
-server only ever needs to serve the index. If routing ever moves to
-`BrowserRouter`, a catch-all redirect to `/index.html` becomes mandatory.
+## How this was built
+
+The app was built with Claude Code, an AI coding assistant, working from the team's
+product decisions, chemistry input and business research. The team set the scoring
+model's structure and rules, wrote and verified the research, and reviewed each change;
+the assistant wrote most of the code. Claims in the site copy were audited against
+primary sources in August 2026, and the constants behind cost and market figures are
+defined once in [`src/lib/economics.ts`](src/lib/economics.ts) with their sources noted.
+
+## License
+
+MIT. See [`LICENSE`](LICENSE).

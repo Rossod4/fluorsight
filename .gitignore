@@ -3,14 +3,10 @@ dist
 *.local
 .DS_Store
 
-.tmpscript
+# Local tool state
+.claude/settings.local.json
 .playwright-mcp
-
-# Scratch files subagents sometimes drop at the repo root. Scoped to the root
-# only ("/*.html", not "*.html") so real HTML in subdirectories is still tracked.
-/*.html
-!/index.html
-/soc2.txt
+.tmpscript
 
 # Excel lock files
 ~$*.xlsx
